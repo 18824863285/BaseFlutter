@@ -12,4 +12,8 @@ mixin NavigatorMixin {
     NavigatorHelper.pushForResult(context, page, callBack);
   }
 
+  void pop<T extends Object>(BuildContext context, [T result]) {
+    Navigator.pop(context, result);
+  }
+
 }

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
 import 'package:wan_android_flutter/base/base_view_model.dart';
 import 'package:wan_android_flutter/business/start/start_model.dart';
 
@@ -14,6 +15,8 @@ class StartViewModel extends BaseViewModel<StartModel> {
       notifyPage();
       if (timer.tick == 0) {
         cancelCountdown();
+        pop(context);
+
       }
     });
   }

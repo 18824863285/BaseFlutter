@@ -1,3 +1,5 @@
+import 'dart:js';
+
 import 'package:flutter/cupertino.dart';
 import 'base_view_model_interface.dart';
 import 'base_model.dart';
@@ -9,6 +11,7 @@ abstract class BaseViewModel<M extends BaseModel> extends ChangeNotifier
     with BaseViewModelInterface, NavigatorMixin {
   int _loadNum = 0;
   int _minLoadNum = 1;
+  BuildContext context;
   M model;
   bool _isDispose = false;
 

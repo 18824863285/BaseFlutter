@@ -17,6 +17,7 @@ abstract class BaseState<W extends StatefulWidget, VM extends BaseViewModel>
     if (viewModel == null) {
       viewModel = getIt.get<VM>();
       viewModel.init();
+      viewModel.context = context;
     }
     initEventBus();
   }
