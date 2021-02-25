@@ -8,10 +8,10 @@ version: 1.0.0+1
 environment:
   sdk: ">=2.7.0 <3.0.0"
 
+
 dependencies:
   flutter:
     sdk: flutter
-
   cupertino_icons: ^1.0.0
   analyzer: ^0.40.0
   injectable: ^1.0.5

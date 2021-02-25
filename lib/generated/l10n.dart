@@ -44,6 +44,36 @@ class S {
       args: [],
     );
   }
+
+  /// `age`
+  String get age {
+    return Intl.message(
+      'age',
+      name: 'age',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `language {name}`
+  String pageHomeWelcome(Object name) {
+    return Intl.message(
+      'language $name',
+      name: 'pageHomeWelcome',
+      desc: '',
+      args: [name],
+    );
+  }
+
+  /// `{param1} , s {param2}`
+  String test(Object param1, Object param2) {
+    return Intl.message(
+      '$param1 , s $param2',
+      name: 'test',
+      desc: '',
+      args: [param1, param2],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

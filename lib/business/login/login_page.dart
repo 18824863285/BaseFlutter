@@ -17,7 +17,6 @@ class LoginPage extends BaseStatefulWidget {
 class LoginState extends BaseState<LoginPage, LoginViewModel> {
   @override
   Widget build(BuildContext context) {
-    print("====>${S.of(context).name}");
     return BaseChangeNotifierProvider(
       context,
       viewModel: viewModel,
