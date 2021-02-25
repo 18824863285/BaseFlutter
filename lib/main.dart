@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:wan_android_flutter/base/navigator/navigator_helper.dart';
+import 'package:wan_android_flutter/business/login/login_page.dart';
 import 'base/inject/injector.dart';
+import 'generated/l10n.dart';
+import 'package:intl_module/generated/l10n.dart' as Smodule;
 
 void main() {
   configInjector();
@@ -31,42 +36,39 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-
-    return Scaffold(
-      appBar: AppBar(
-
-        title: Text(widget.title),
-      ),
-      body: Center(
-
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text("adaa"),
+        ),
+        body: Center(
+          child: Column(
+            children: <Widget>[getItem("login", LoginPage())],
+          ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      localizationsDelegates: const [
+        S.delegate,
+        Smodule.S.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      supportedLocales: [const Locale('zh', 'CH'), ...S.delegate.supportedLocales],
+      locale: const Locale('zh'),
+      localeListResolutionCallback: (locales, supportedLocales) {
+        print('当前系统语言环境$locales');
+        return;
+      },
     );
+  }
+
+  Widget getItem(String title, page) {
+    return Container(
+        child: RaisedButton(
+            onPressed: () => {NavigatorHelper.push(context, LoginPage())},
+            child: Text(title)));
   }
 }

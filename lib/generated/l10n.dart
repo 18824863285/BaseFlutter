@@ -35,11 +35,11 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `设置`
-  String get setting_personal_setting {
+  /// `name`
+  String get name {
     return Intl.message(
-      '设置',
-      name: 'setting_personal_setting',
+      'name',
+      name: 'name',
       desc: '',
       args: [],
     );
@@ -52,7 +52,8 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
   List<Locale> get supportedLocales {
     return const <Locale>[
       Locale.fromSubtags(languageCode: 'en'),
-      Locale.fromSubtags(languageCode: 'ch'),
+      Locale.fromSubtags(languageCode: 'zh', countryCode: 'CN'),
+      Locale.fromSubtags(languageCode: 'zh', countryCode: 'HK'),
     ];
   }
 

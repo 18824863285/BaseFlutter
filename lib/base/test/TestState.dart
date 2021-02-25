@@ -14,7 +14,7 @@ class Teststate<TestWidget, TestViewModel> extends BaseState {
       viewModel: viewModel,
       widget: MaterialApp(
         home: Container(
-          child: Text(S.of(context).setting_personal_setting),
+          child: Text(S.of(context).name),
         ),
       ),
     );

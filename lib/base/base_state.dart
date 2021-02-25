@@ -35,4 +35,10 @@ abstract class BaseState<W extends StatefulWidget, VM extends BaseViewModel>
       });
     }
   }
+
+  @override
+  void dispose() {
+    super.dispose();
+    viewModel?.dispose();
+  }
 }

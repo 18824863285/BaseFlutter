@@ -230,6 +230,11 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_localizations:
+    dependency: "direct main"
+    description: flutter
+    source: sdk
+    version: "0.0.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -310,6 +315,15 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.16.1"
+  intl_module:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: HEAD
+      resolved-ref: "4df5f00301d2979f5c2d1a0fdbf4bc09fe2cdeb6"
+      url: "https://github.com/lizhuoyuan/intl_module"
+    source: git
+    version: "1.0.0+1"
   io:
     dependency: transitive
     description:

@@ -9,10 +9,6 @@ const url = "https://www.wanandroid.com/";
 Dio dio = Dio(
     BaseOptions(baseUrl: url, connectTimeout: 30000, receiveTimeout: 30000));
 
-/**
- * API还是分模块比较好，不同模块对应不同的RetrofitModule和RestClient
- */
-
 @module
 abstract class RetrofitModule {
   //BaseUrl不能被注册两次
