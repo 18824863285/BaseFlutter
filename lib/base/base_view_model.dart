@@ -3,9 +3,10 @@ import 'base_view_model_interface.dart';
 import 'base_model.dart';
 import 'event_bus/event_bus.dart';
 import 'inject/injector.dart';
+import 'navigator/navigator_mixin.dart';
 
 abstract class BaseViewModel<M extends BaseModel> extends ChangeNotifier
-    with BaseViewModelInterface {
+    with BaseViewModelInterface, NavigatorMixin {
   int _loadNum = 0;
   int _minLoadNum = 1;
   M model;
