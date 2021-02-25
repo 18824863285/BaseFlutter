@@ -16,7 +16,6 @@ class StartViewModel extends BaseViewModel<StartModel> {
       if (timer.tick == 0) {
         cancelCountdown();
         pop(context);
-
       }
     });
   }
