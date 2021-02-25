@@ -7,7 +7,6 @@ import 'navigator/navigator_mixin.dart';
 // ignore: must_be_immutable
 abstract class BaseStatefulWidget extends StatefulWidget with NavigatorMixin{
 
-
    void sendEvent(dynamic event){
       EventBus.instance.fire(event);
    }
