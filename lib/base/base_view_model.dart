@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'BaseViewModelInterface.dart';
+import 'base_view_model_interface.dart';
 import 'base_model.dart';
 import 'event_bus/event_bus.dart';
 import 'inject/injector.dart';
@@ -12,6 +12,18 @@ abstract class BaseViewModel<M extends BaseModel> extends ChangeNotifier
   bool _isDispose = false;
 
   bool get isDispose => _isDispose;
+
+  set minLoadNum(int value) {
+    _minLoadNum = value;
+  }
+
+  set loadNum(int value) {
+    _loadNum = value;
+  }
+
+  get loadNum {
+    return _loadNum;
+  }
 
   void notifyPage() {
     if (!_isDispose) {
@@ -27,14 +39,6 @@ abstract class BaseViewModel<M extends BaseModel> extends ChangeNotifier
     model = getIt.get<M>();
   }
 
-  set minLoadNum(int value) {
-    _minLoadNum = value;
-  }
-
-  set loadNum(int value) {
-    _loadNum = value;
-  }
-
   void sendEvent(dynamic event) {
     if (!_isDispose) {
       EventBus.instance.fire(event);
@@ -46,4 +50,6 @@ abstract class BaseViewModel<M extends BaseModel> extends ChangeNotifier
     super.dispose();
     _isDispose = true;
   }
+
+
 }

@@ -37,11 +37,11 @@ abstract class BaseModel {
     }
   }
 
-  /// 发起网络请求，同时处理异常，日志，loading
-  void sendRequest(Future future, Block block,
-      {Error error, bool isNeedLoading = true}) {
+  /// 发起网络请求，同时处理异常，loading
+  void sendRequest<T>(Future<T> future, FutureOr<dynamic> onValue(T value),
+      {Function(Exception e) error, bool isNeedLoading = true}) {
     showLoading(isNeedLoading);
-    future.then(block).whenComplete(() {
+    future.then(onValue).whenComplete(() {
       dismissLoading(isNeedLoading);
     }).catchError((e) {
       dismissLoading(isNeedLoading);
@@ -51,7 +51,3 @@ abstract class BaseModel {
     });
   }
 }
-
-typedef Block = void Function<T>(T t);
-
-typedef Error = void Function(Exception e);

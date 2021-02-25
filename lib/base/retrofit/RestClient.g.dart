@@ -15,5 +15,4 @@ class _RestClient implements RestClient {
   final Dio _dio;
 
   String baseUrl;
-
 }

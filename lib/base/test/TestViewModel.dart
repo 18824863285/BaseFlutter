@@ -13,5 +13,7 @@ class TestViewModel extends BaseViewModel<TestModel>{
     model.test();
   }
 
+  void a(){
 
+  }
 }

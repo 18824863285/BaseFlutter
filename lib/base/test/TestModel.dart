@@ -10,10 +10,12 @@ class TestModel extends BaseModel {
   void test() {
     Future<Test> future;
 
-    sendRequest(future, <Test>(Test test) {
+    sendRequest(future, (Test test) {
       print("");
-    }, error: (e) {
-      print("");
-    }, isNeedLoading: false);
+    });
+
+    sendRequest<Test>(future, (value) {
+      value.a;
+    });
   }
 }

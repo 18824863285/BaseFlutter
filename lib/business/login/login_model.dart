@@ -8,4 +8,7 @@ class LoginModel extends BaseModel{
   @factoryMethod
   LoginModel();
 
+  void test(){
+
+  }
 }

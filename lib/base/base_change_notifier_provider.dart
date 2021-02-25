@@ -9,9 +9,12 @@ class BaseChangeNotifierProvider extends ChangeNotifierProvider {
   BaseViewModel viewModel;
   Widget widget;
   BuildContext context;
-
-  BaseChangeNotifierProvider(this.context, {this.key, this.viewModel, this.widget})
+  Function init;
+  BaseChangeNotifierProvider(this.context, {this.key, this.viewModel, this.widget, this.init})
       : super(key: key, create: (BuildContext context) {
+          if(init != null){
+            init.call();
+          }
           return viewModel;
         }, builder: (BuildContext context, Widget child) {
           return widget;
