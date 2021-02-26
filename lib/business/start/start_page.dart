@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:wan_android_flutter/base/base_change_notifier_provider.dart';
 import 'package:wan_android_flutter/base/base_state.dart';
 import 'package:wan_android_flutter/base/base_stateful_widget.dart';
+import 'package:wan_android_flutter/business/login/login_page.dart';
 import 'package:wan_android_flutter/business/start/start_view_model.dart';
 import 'package:wan_android_flutter/generated/l10n.dart';
 
@@ -41,7 +42,11 @@ class StartState extends BaseState<StartPage, StartViewModel> {
                 )),
                 Positioned(
                   child: GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      viewModel.cancelCountdown();
+                      pop();//需要先pop再push，因为路由栈是先进先出的，先push再pop等于没有push
+                      push(LoginPage());
+                    },
                     child: Container(
                         decoration: BoxDecoration(
                             color: Colors.blue,
@@ -53,7 +58,7 @@ class StartState extends BaseState<StartPage, StartViewModel> {
                               startViewModel.currTime,
                           builder: (context, count, child) {
                             return Text(
-                              "",
+                              "剩余${viewModel.currTime}s",
                               style:
                                   TextStyle(color: Colors.white, fontSize: 12),
                             );
@@ -62,14 +67,7 @@ class StartState extends BaseState<StartPage, StartViewModel> {
                   ),
                   right: 10,
                   top: 30,
-                ),
-                Positioned(child: RaisedButton(
-                  child: Text("后退"),
-                  onPressed: (){
-                    pop();
-                  },
-                ),top: 30)
-              ],
+                )],
             ),
           ),
         ));
