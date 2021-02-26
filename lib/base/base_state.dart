@@ -14,10 +14,11 @@ abstract class BaseState<W extends StatefulWidget, VM extends BaseViewModel>
   @override
   void initState() {
     super.initState();
+    setContext(context);
     if (viewModel == null) {
       viewModel = getIt.get<VM>();
-      viewModel.init();
       viewModel.context = context;
+      viewModel.init();
     }
     initEventBus();
   }
@@ -40,6 +41,6 @@ abstract class BaseState<W extends StatefulWidget, VM extends BaseViewModel>
   @override
   void dispose() {
     super.dispose();
-    viewModel?.dispose();
+    //viewModel?.dispose();
   }
 }

@@ -1,3 +1,9 @@
+import 'package:injectable/injectable.dart';
 import 'package:wan_android_flutter/base/base_model.dart';
 
-class StartModel extends BaseModel {}
+@injectable
+class StartModel extends BaseModel {
+
+  @factoryMethod
+  StartModel();
+}

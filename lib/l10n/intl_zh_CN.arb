@@ -2,5 +2,7 @@
   "name": "name",
   "age": "age",
   "pageHomeWelcome": "language {name}",
-  "test": "{param1} , s {param2}"
+  "test": "{param1} , s {param2}",
+  "leaveTime": "剩余{time}S"
+
 }

@@ -74,6 +74,16 @@ class S {
       args: [param1, param2],
     );
   }
+
+  /// `剩余{time}S`
+  String leaveTime(Object time) {
+    return Intl.message(
+      '剩余${time}S',
+      name: 'leaveTime',
+      desc: '',
+      args: [time],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

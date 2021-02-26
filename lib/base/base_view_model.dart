@@ -1,5 +1,3 @@
-import 'dart:js';
-
 import 'package:flutter/cupertino.dart';
 import 'base_view_model_interface.dart';
 import 'base_model.dart';
@@ -41,6 +39,7 @@ abstract class BaseViewModel<M extends BaseModel> extends ChangeNotifier
   @override
   void init() {
     model = getIt.get<M>();
+    setContext(context);
   }
 
   void sendEvent(dynamic event) {
@@ -49,11 +48,11 @@ abstract class BaseViewModel<M extends BaseModel> extends ChangeNotifier
     }
   }
 
-  @override
-  void dispose() {
-    super.dispose();
-    _isDispose = true;
-  }
+  // @override
+  // void dispose() {
+  //   super.dispose();
+  //   _isDispose = true;
+  // }
 
 
 }
