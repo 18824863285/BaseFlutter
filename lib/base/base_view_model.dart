@@ -48,11 +48,11 @@ abstract class BaseViewModel<M extends BaseModel> extends ChangeNotifier
     }
   }
 
-  // @override
-  // void dispose() {
-  //   super.dispose();
-  //   _isDispose = true;
-  // }
+  @override
+  void dispose() {
+    super.dispose();
+    _isDispose = true;
+  }
 
 
 }

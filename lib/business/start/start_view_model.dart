@@ -16,10 +16,9 @@ class StartViewModel extends BaseViewModel<StartModel> {
   void startCountdown(int seconds) {
     _timer = new Timer.periodic(new Duration(seconds: 1), (timer) {
       currTime--;
-      print("====>currTime:${currTime}");
       notifyListeners();
       if (currTime == 0) {
-       // cancelCountdown();
+        cancelCountdown();
         pop();
         push(LoginPage());
       }
@@ -35,6 +34,5 @@ class StartViewModel extends BaseViewModel<StartModel> {
   void dispose() {
     super.dispose();
     cancelCountdown();
-    print("====>dispose--StartViewModel");
   }
 }
