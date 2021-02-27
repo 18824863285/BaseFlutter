@@ -84,6 +84,26 @@ class S {
       args: [time],
     );
   }
+
+  /// `账号登录`
+  String get loginTitle {
+    return Intl.message(
+      '账号登录',
+      name: 'loginTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `请输入登录账号`
+  String get input_login_name {
+    return Intl.message(
+      '请输入登录账号',
+      name: 'input_login_name',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -28,7 +28,9 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
     "age" : MessageLookupByLibrary.simpleMessage("age"),
+    "input_login_name" : MessageLookupByLibrary.simpleMessage("请输入登录账号"),
     "leaveTime" : m0,
+    "loginTitle" : MessageLookupByLibrary.simpleMessage("账号登录"),
     "name" : MessageLookupByLibrary.simpleMessage("name"),
     "pageHomeWelcome" : m1,
     "test" : m2

@@ -3,5 +3,8 @@
   "age": "age",
   "pageHomeWelcome": "language {name}",
   "test": "{param1} , s {param2}",
-  "leaveTime": "剩余{time}S"
+  "leaveTime": "剩余{time}S",
+  "loginTitle": "账号登录",
+  "input_login_name": "请输入登录账号"
+
 }
