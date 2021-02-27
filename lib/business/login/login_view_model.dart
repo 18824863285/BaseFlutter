@@ -16,8 +16,6 @@ class LoginViewModel extends BaseViewModel<LoginModel> {
       showToast(S.of(context).login_is_not_empty);
     } else if (psw.isEmpty) {
       showToast(S.of(context).login_psw_is_not_empty);
-    } else {
-
-    }
+    } else {}
   }
 }

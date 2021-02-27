@@ -14,7 +14,6 @@ class LoginPage extends BaseStatefulWidget {
 }
 
 class LoginState extends BaseState<LoginPage, LoginViewModel> {
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -38,9 +37,7 @@ class LoginState extends BaseState<LoginPage, LoginViewModel> {
                 )),
             Positioned(
                 top: 100,
-                child: Text(S
-                    .of(context)
-                    .loginTitle,
+                child: Text(S.of(context).loginTitle,
                     style: TextStyle(color: Colors.white, fontSize: 25))),
             Positioned(
               top: 200,
@@ -53,9 +50,7 @@ class LoginState extends BaseState<LoginPage, LoginViewModel> {
                   decoration: InputDecoration(
                       fillColor: Color(0x30cccccc),
                       filled: true,
-                      hintText: S
-                          .of(context)
-                          .input_login_name,
+                      hintText: S.of(context).input_login_name,
                       hintStyle: TextStyle(color: Colors.white),
                       focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
@@ -63,8 +58,8 @@ class LoginState extends BaseState<LoginPage, LoginViewModel> {
                       enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
                           borderRadius:
-                          BorderRadius.all(Radius.circular(100)))),
-                  onChanged: (text){
+                              BorderRadius.all(Radius.circular(100)))),
+                  onChanged: (text) {
                     viewModel.psw = text;
                   },
                 ),
@@ -79,19 +74,17 @@ class LoginState extends BaseState<LoginPage, LoginViewModel> {
                     obscureText: true,
                     style: TextStyle(color: Colors.white, fontSize: 15),
                     decoration: InputDecoration(
-                        hintText: S
-                            .of(context)
-                            .input_login_psw,
+                        hintText: S.of(context).input_login_psw,
                         hintStyle: TextStyle(color: Colors.white, fontSize: 15),
                         focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.white),
                             borderRadius:
-                            BorderRadius.all(Radius.circular(100))),
+                                BorderRadius.all(Radius.circular(100))),
                         enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.white),
                             borderRadius:
-                            BorderRadius.all(Radius.circular(100)))),
-                    onChanged: (text){
+                                BorderRadius.all(Radius.circular(100)))),
+                    onChanged: (text) {
                       viewModel.psw = text;
                     },
                   ),
@@ -110,9 +103,7 @@ class LoginState extends BaseState<LoginPage, LoginViewModel> {
                       viewModel.login();
                     },
                     child: Text(
-                      S
-                          .of(context)
-                          .login,
+                      S.of(context).login,
                       style: TextStyle(color: Colors.blue, fontSize: 15),
                     ),
                   ),
