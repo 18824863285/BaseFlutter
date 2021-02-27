@@ -5,6 +5,9 @@
   "test": "{param1} , s {param2}",
   "leaveTime": "剩余{time}S",
   "loginTitle": "账号登录",
-  "input_login_name": "请输入登录账号"
-
+  "input_login_name": "请输入登录账号",
+  "input_login_psw": "请输入登录密码",
+  "login": "登录",
+  "login_is_not_empty": "登录账号不可为空",
+  "login_psw_is_not_empty": "登录密码不可为空"
 }

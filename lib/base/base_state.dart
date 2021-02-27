@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:wan_android_flutter/base/navigator/navigator_mixin.dart';
+import 'package:wan_android_flutter/base/widget/toast_help.dart';
 import 'base_state_interfce.dart';
 import 'base_view_model.dart';
 import 'event/Loading.dart';
@@ -7,7 +8,7 @@ import 'event_bus/event_bus.dart';
 import 'inject/injector.dart';
 
 abstract class BaseState<W extends StatefulWidget, VM extends BaseViewModel>
-    extends State<W> with BaseStateInterface, NavigatorMixin {
+    extends State<W> with BaseStateInterface, NavigatorMixin, ToastHelp {
   VM viewModel;
   EventBus eventBus;
 

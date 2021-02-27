@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:wan_android_flutter/base/widget/toast_help.dart';
 import 'base_view_model_interface.dart';
 import 'base_model.dart';
 import 'event_bus/event_bus.dart';
@@ -6,7 +7,7 @@ import 'inject/injector.dart';
 import 'navigator/navigator_mixin.dart';
 
 abstract class BaseViewModel<M extends BaseModel> extends ChangeNotifier
-    with BaseViewModelInterface, NavigatorMixin {
+    with BaseViewModelInterface, NavigatorMixin, ToastHelp {
   int _loadNum = 0;
   int _minLoadNum = 1;
   BuildContext context;

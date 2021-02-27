@@ -104,6 +104,46 @@ class S {
       args: [],
     );
   }
+
+  /// `请输入登录密码`
+  String get input_login_psw {
+    return Intl.message(
+      '请输入登录密码',
+      name: 'input_login_psw',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `登录`
+  String get login {
+    return Intl.message(
+      '登录',
+      name: 'login',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `登录账号不可为空`
+  String get login_is_not_empty {
+    return Intl.message(
+      '登录账号不可为空',
+      name: 'login_is_not_empty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `登录密码不可为空`
+  String get login_psw_is_not_empty {
+    return Intl.message(
+      '登录密码不可为空',
+      name: 'login_psw_is_not_empty',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

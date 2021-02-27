@@ -15,6 +15,7 @@ class LoginPage extends BaseStatefulWidget {
 
 //  "setting_personal_setting": "设置"
 class LoginState extends BaseState<LoginPage, LoginViewModel> {
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -38,26 +39,87 @@ class LoginState extends BaseState<LoginPage, LoginViewModel> {
                 )),
             Positioned(
                 top: 100,
-                child: Text(S.of(context).loginTitle,
-                    style: TextStyle(color: Colors.white, fontSize: 20))),
+                child: Text(S
+                    .of(context)
+                    .loginTitle,
+                    style: TextStyle(color: Colors.white, fontSize: 25))),
             Positioned(
-                top: 200,
-                child: Container(
-                  height: 60,
-                  width: 300,
-                  child: TextField(
-                    style: TextStyle(color: Colors.white),
-                    decoration: InputDecoration(
+              top: 200,
+              child: Container(
+                height: 60,
+                width: 300,
+                child: TextField(
+                  style: TextStyle(color: Colors.white, fontSize: 15),
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
                       fillColor: Color(0x30cccccc),
                       filled: true,
-                      hintText: S.of(context).input_login_name,
+                      hintText: S
+                          .of(context)
+                          .input_login_name,
                       hintStyle: TextStyle(color: Colors.white),
                       focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
                           borderRadius: BorderRadius.all(Radius.circular(100))),
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white),
+                          borderRadius:
+                          BorderRadius.all(Radius.circular(100)))),
+                  onChanged: (text){
+                    viewModel.psw = text;
+                  },
+                ),
+              ),
+            ),
+            Positioned(
+                top: 280,
+                child: Container(
+                  height: 60,
+                  width: 300,
+                  child: TextField(
+                    obscureText: true,
+                    style: TextStyle(color: Colors.white, fontSize: 15),
+                    decoration: InputDecoration(
+                        hintText: S
+                            .of(context)
+                            .input_login_psw,
+                        hintStyle: TextStyle(color: Colors.white, fontSize: 15),
+                        focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                            borderRadius:
+                            BorderRadius.all(Radius.circular(100))),
+                        enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                            borderRadius:
+                            BorderRadius.all(Radius.circular(100)))),
+                    onChanged: (text){
+                      viewModel.psw = text;
+                    },
+                  ),
+                )),
+            Positioned(
+              top: 420,
+              child: Container(
+                width: 230,
+                height: 50,
+                alignment: Alignment.center,
+                child: ConstrainedBox(
+                  child: RaisedButton(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(100))),
+                    onPressed: () {
+                      viewModel.login();
+                    },
+                    child: Text(
+                      S
+                          .of(context)
+                          .login,
+                      style: TextStyle(color: Colors.blue, fontSize: 15),
                     ),
                   ),
+                  constraints: new BoxConstraints.expand(),
                 ),
+              ),
             )
           ],
         ),
