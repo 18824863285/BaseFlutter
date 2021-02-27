@@ -13,7 +13,6 @@ class LoginPage extends BaseStatefulWidget {
   State<StatefulWidget> createState() => LoginState();
 }
 
-//  "setting_personal_setting": "设置"
 class LoginState extends BaseState<LoginPage, LoginViewModel> {
 
   @override
