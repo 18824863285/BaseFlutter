@@ -1,6 +1,6 @@
 import 'package:fluttertoast/fluttertoast.dart';
 
-mixin ToastHelp {
+mixin ToastMixin {
   void showToast(String msg,
       {Toast toastLength = Toast.LENGTH_SHORT,
       ToastGravity gravity = ToastGravity.BOTTOM,

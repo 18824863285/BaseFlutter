@@ -1,7 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
-import 'package:wan_android_flutter/base/widget/toast_help.dart';
+import 'package:wan_android_flutter/base/sharePreference/share_preference_mixin.dart';
+import 'package:wan_android_flutter/base/widget/toast_mixin.dart';
 import 'package:wan_android_flutter/retrofit/RestClient.dart';
 import 'base_view_model_interface.dart';
 import 'base_model.dart';
@@ -11,7 +12,11 @@ import 'inject/injector.dart';
 import 'navigator/navigator_mixin.dart';
 
 abstract class BaseViewModel<M> extends ChangeNotifier
-    with BaseViewModelInterface, NavigatorMixin, ToastHelp {
+    with
+        BaseViewModelInterface,
+        NavigatorMixin,
+        ToastMixin,
+        SharePreferenceMixin {
   int _loadNum = 0;
   int _minLoadNum = 1;
   BuildContext context;
@@ -90,6 +95,7 @@ abstract class BaseViewModel<M> extends ChangeNotifier
     future.then(onValue).whenComplete(() {
       dismissLoading(isNeedLoading);
     }).catchError((e) {
+      print("====>error:$e");
       dismissLoading(isNeedLoading);
       if (error != null) {
         error(e);
@@ -102,6 +108,4 @@ abstract class BaseViewModel<M> extends ChangeNotifier
     super.dispose();
     _isDispose = true;
   }
-
-
 }

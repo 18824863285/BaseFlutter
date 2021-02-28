@@ -3,12 +3,15 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart';
 import 'package:wan_android_flutter/retrofit/RestClient.dart';
 import 'base/inject/injector.dart';
+import 'base/util/preference_utils.dart';
 import 'business/start/start_page.dart';
 import 'generated/l10n.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   configInjector();
   initRestClient();
+  PreferenceUtils.instance.initSharedPreferences();
   runApp(MyApp());
 }
 
