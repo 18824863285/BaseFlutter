@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -18,6 +19,7 @@ class LoginState extends BaseState<LoginPage, LoginViewModel> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: Colors.blue,
         body: Stack(
@@ -29,6 +31,7 @@ class LoginState extends BaseState<LoginPage, LoginViewModel> {
                 child: GestureDetector(
                   onTap: () {
                     pop();
+                    exit(0);
                   },
                   child: Image.asset(
                     R.ASSETS_IMAGES_ROUND_ARROW_FORWARD_LEFT_PNG,
@@ -117,7 +120,7 @@ class LoginState extends BaseState<LoginPage, LoginViewModel> {
                 top: 480,
                 child: GestureDetector(
                   onTap: () {
-                    
+
                   },
                   child: Text(
                     S.of(context).register,

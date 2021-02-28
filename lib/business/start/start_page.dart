@@ -22,6 +22,7 @@ class StartState extends BaseState<StartPage, StartViewModel> {
           return viewModel;
         },
         child: MaterialApp(
+          debugShowCheckedModeBanner: false,
           home: Scaffold(
             body: Stack(
               children: [
