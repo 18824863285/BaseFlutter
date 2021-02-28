@@ -144,6 +144,16 @@ class S {
       args: [],
     );
   }
+
+  /// `注册`
+  String get register {
+    return Intl.message(
+      '注册',
+      name: 'register',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

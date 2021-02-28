@@ -37,6 +37,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "login_psw_is_not_empty" : MessageLookupByLibrary.simpleMessage("登录密码不可为空"),
     "name" : MessageLookupByLibrary.simpleMessage("name"),
     "pageHomeWelcome" : m1,
+    "register" : MessageLookupByLibrary.simpleMessage("注册"),
     "test" : m2
   };
 }

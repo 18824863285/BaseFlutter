@@ -112,7 +112,18 @@ class LoginState extends BaseState<LoginPage, LoginViewModel> {
                   constraints: new BoxConstraints.expand(),
                 ),
               ),
-            )
+            ),
+            Positioned(
+                top: 480,
+                child: GestureDetector(
+                  onTap: () {
+                    
+                  },
+                  child: Text(
+                    S.of(context).register,
+                    style: TextStyle(color: Colors.white, fontSize: 15),
+                  ),
+                ))
           ],
         ),
       ),
