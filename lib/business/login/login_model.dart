@@ -3,13 +3,6 @@ import 'package:retrofit/retrofit.dart';
 import 'package:wan_android_flutter/business/login/model/login_result.dart';
 import 'package:wan_android_flutter/retrofit/RestClient.dart';
 
-// @injectable
-// class LoginModel extends BaseModel {
-//   @factoryMethod
-//   LoginModel();
-//
-// }
-
 part 'login_model.g.dart';
 
 @RestApi(baseUrl: url)
