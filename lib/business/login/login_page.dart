@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:wan_android_flutter/base/base_state.dart';
 import 'package:wan_android_flutter/base/base_stateful_widget.dart';
 import 'package:wan_android_flutter/generated/l10n.dart';
+import 'package:wan_android_flutter/sharePreference/user_info_share_preference.dart';
 import 'login_view_model.dart';
 import 'package:wan_android_flutter/const/resource.dart';
 
@@ -50,7 +51,8 @@ class LoginState extends BaseState<LoginPage, LoginViewModel> {
                   decoration: InputDecoration(
                       fillColor: Color(0x30cccccc),
                       filled: true,
-                      hintText: S.of(context).input_login_name,
+                      hintText: UserInfoSp.getInstance().userName ??
+                          S.of(context).input_login_name,
                       hintStyle: TextStyle(color: Colors.white),
                       focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
