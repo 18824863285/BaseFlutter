@@ -15,7 +15,6 @@ class UserInfoSp {
   factory UserInfoSp.getInstance() => _getInstance();
 
   static _getInstance() {
-    // 只能有一个实例
     if (_instance == null) {
       _instance = UserInfoSp._internal();
     }

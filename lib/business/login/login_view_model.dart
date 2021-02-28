@@ -21,9 +21,6 @@ class LoginViewModel extends BaseViewModel<LoginModel> {
     } else if (psw.isEmpty) {
       showToast(S.of(context).login_psw_is_not_empty);
     } else {
-      // model.login(loginName, psw).then((value) {
-      //   print("====>then");
-      // });
       sendRequest<LoginResult>(model.login(loginName, psw), (value) {
         UserInfoSp.getInstance().uid = value.data.id;
         UserInfoSp.getInstance().token = value.data.token;
