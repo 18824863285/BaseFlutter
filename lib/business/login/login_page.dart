@@ -60,7 +60,7 @@ class LoginState extends BaseState<LoginPage, LoginViewModel> {
                           borderRadius:
                               BorderRadius.all(Radius.circular(100)))),
                   onChanged: (text) {
-                    viewModel.psw = text;
+                    viewModel.loginName = text;
                   },
                 ),
               ),

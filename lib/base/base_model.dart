@@ -39,7 +39,7 @@ abstract class BaseModel {
 
   /// 发起网络请求，同时处理异常，loading
   void sendRequest<T>(Future<T> future, FutureOr<dynamic> onValue(T value),
-      {Function(Exception e) error, bool isNeedLoading = true}) {
+      {Function(Exception e) error, bool isNeedLoading = false}) {
     showLoading(isNeedLoading);
     future.then(onValue).whenComplete(() {
       dismissLoading(isNeedLoading);
@@ -51,3 +51,4 @@ abstract class BaseModel {
     });
   }
 }
+

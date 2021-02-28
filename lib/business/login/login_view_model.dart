@@ -1,6 +1,7 @@
 import 'package:injectable/injectable.dart';
 import 'package:wan_android_flutter/base/base_view_model.dart';
 import 'package:wan_android_flutter/business/login/login_model.dart';
+import 'package:wan_android_flutter/business/login/model/login_result.dart';
 import 'package:wan_android_flutter/generated/l10n.dart';
 
 @injectable
@@ -16,6 +17,10 @@ class LoginViewModel extends BaseViewModel<LoginModel> {
       showToast(S.of(context).login_is_not_empty);
     } else if (psw.isEmpty) {
       showToast(S.of(context).login_psw_is_not_empty);
-    } else {}
+    } else {
+      sendRequest<LoginResult>(model.login(loginName, psw), (value) {
+        print("====>value:${value.data.id}");
+      });
+    }
   }
 }
