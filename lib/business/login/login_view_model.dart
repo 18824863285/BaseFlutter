@@ -1,5 +1,4 @@
 import 'package:injectable/injectable.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:wan_android_flutter/base/base_view_model.dart';
 import 'package:wan_android_flutter/business/login/login_model.dart';
 import 'package:wan_android_flutter/business/login/model/login_result.dart';
