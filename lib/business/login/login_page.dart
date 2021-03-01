@@ -54,8 +54,9 @@ class LoginState extends BaseState<LoginPage, LoginViewModel> {
                   decoration: InputDecoration(
                       fillColor: Color(0x30cccccc),
                       filled: true,
-                      hintText: UserInfoSp.getInstance().userName ??
-                          S.of(context).input_login_name,
+                      hintText: UserInfoSp.getInstance().userName.isEmpty
+                          ? S.of(context).input_login_name
+                          : UserInfoSp.getInstance().userName.isEmpty,
                       hintStyle: TextStyle(color: Colors.white),
                       focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
@@ -119,9 +120,7 @@ class LoginState extends BaseState<LoginPage, LoginViewModel> {
             Positioned(
                 top: 480,
                 child: GestureDetector(
-                  onTap: () {
-
-                  },
+                  onTap: () {},
                   child: Text(
                     S.of(context).register,
                     style: TextStyle(color: Colors.white, fontSize: 15),
