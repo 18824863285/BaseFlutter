@@ -27,7 +27,9 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
+    "account" : MessageLookupByLibrary.simpleMessage("账号"),
     "age" : MessageLookupByLibrary.simpleMessage("age"),
+    "ensure_psw" : MessageLookupByLibrary.simpleMessage("确认密码"),
     "input_login_name" : MessageLookupByLibrary.simpleMessage("请输入登录账号"),
     "input_login_psw" : MessageLookupByLibrary.simpleMessage("请输入登录密码"),
     "leaveTime" : m0,
@@ -37,6 +39,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "login_psw_is_not_empty" : MessageLookupByLibrary.simpleMessage("登录密码不可为空"),
     "name" : MessageLookupByLibrary.simpleMessage("name"),
     "pageHomeWelcome" : m1,
+    "psw" : MessageLookupByLibrary.simpleMessage("密码"),
     "register" : MessageLookupByLibrary.simpleMessage("注册"),
     "test" : m2
   };

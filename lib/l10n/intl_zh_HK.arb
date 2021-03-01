@@ -10,5 +10,8 @@
   "login": "登录",
   "login_is_not_empty": "登录账号不可为空",
   "login_psw_is_not_empty": "登录密码不可为空",
-  "register": "注册"
+  "register": "注册",
+  "account": "账号",
+  "psw": "密码",
+  "ensure_psw": "确认密码"
 }

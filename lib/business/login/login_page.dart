@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:wan_android_flutter/base/base_state.dart';
 import 'package:wan_android_flutter/base/base_stateful_widget.dart';
+import 'package:wan_android_flutter/business/register/register_page.dart';
 import 'package:wan_android_flutter/generated/l10n.dart';
 import 'package:wan_android_flutter/sharePreference/user_info_share_preference.dart';
 import 'login_view_model.dart';
@@ -120,7 +121,9 @@ class LoginState extends BaseState<LoginPage, LoginViewModel> {
             Positioned(
                 top: 480,
                 child: GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    push(RegisterPage());
+                  },
                   child: Text(
                     S.of(context).register,
                     style: TextStyle(color: Colors.white, fontSize: 15),

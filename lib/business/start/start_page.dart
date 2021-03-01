@@ -32,7 +32,7 @@ class StartState extends BaseState<StartPage, StartViewModel> {
                     "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=851178854,1709478981&fm=26&gp=0.jpg",
                     fit: BoxFit.cover,
                   ),
-                  constraints: new BoxConstraints.expand(),
+                  constraints: BoxConstraints.expand(),
                 ),
                 Positioned(
                     right: 10,

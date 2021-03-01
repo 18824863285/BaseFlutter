@@ -3,6 +3,7 @@ import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
 import 'package:wan_android_flutter/business/login/login_model.dart';
 import 'package:wan_android_flutter/business/login/model/login_result.dart';
+import 'package:wan_android_flutter/business/register/register_model.dart';
 
 part 'RestClient.g.dart';
 
@@ -30,6 +31,12 @@ abstract class RetrofitModule {
   LoginModel loginModel() {
     dio.interceptors.add(LogInterceptor());
     final client = LoginModel(dio);
+    return client;
+  }
+
+  RegisterModel registerModel() {
+    dio.interceptors.add(LogInterceptor());
+    final client = RegisterModel(dio);
     return client;
   }
 }

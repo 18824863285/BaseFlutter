@@ -154,6 +154,36 @@ class S {
       args: [],
     );
   }
+
+  /// `账号`
+  String get account {
+    return Intl.message(
+      '账号',
+      name: 'account',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `密码`
+  String get psw {
+    return Intl.message(
+      '密码',
+      name: 'psw',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `确认密码`
+  String get ensure_psw {
+    return Intl.message(
+      '确认密码',
+      name: 'ensure_psw',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
