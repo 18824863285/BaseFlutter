@@ -96,7 +96,6 @@ abstract class BaseViewModel<M> extends ChangeNotifier
       dismissLoading(isNeedLoading);
     }).catchError((e) {
       print("====>error:$e");
-      dismissLoading(isNeedLoading);
       if (error != null) {
         error(e);
       }
