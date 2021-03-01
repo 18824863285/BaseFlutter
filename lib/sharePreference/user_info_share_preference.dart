@@ -33,7 +33,7 @@ class UserInfoSp {
 
   set token(String value) => _preferenceUtils.saveString(TOKEN, value);
 
-  String _userName;
+   String _userName;
 
   get userName => _preferenceUtils.getString(USER_NAME);
 
