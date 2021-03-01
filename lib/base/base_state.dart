@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:wan_android_flutter/base/navigator/navigator_mixin.dart';
+import 'package:wan_android_flutter/base/widget/loading_dialog.dart';
 import 'package:wan_android_flutter/base/widget/toast_mixin.dart';
 import 'base_state_interfce.dart';
 import 'base_view_model.dart';
@@ -11,6 +13,7 @@ abstract class BaseState<W extends StatefulWidget, VM extends BaseViewModel>
     extends State<W> with BaseStateInterface, NavigatorMixin, ToastMixin {
   VM viewModel;
   EventBus eventBus;
+  LoadingDialog loadingDialog;
 
   @override
   void initState() {
@@ -34,14 +37,25 @@ abstract class BaseState<W extends StatefulWidget, VM extends BaseViewModel>
       eventBus = EventBus.get();
       eventBus.on<Loading>().listen((event) {
         if (event.status == Loading.SHOW_LOADING) {
-        } else {}
+          showLoading();
+        } else {
+          if (loadingDialog != null) {
+            loadingDialog.dismissDialog();
+          }
+        }
       });
     }
   }
 
-  @override
-  void dispose() {
-    super.dispose();
-    //viewModel?.dispose();
+  void showLoading() {
+    showDialog(
+        context: context,
+        builder: (_) {
+          if (loadingDialog == null) {
+            loadingDialog = LoadingDialog();
+          }
+          return loadingDialog;
+        });
   }
+
 }

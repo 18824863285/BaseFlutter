@@ -4,6 +4,7 @@ class Loading {
   static const DISMISS_LOADING = 2;
 
   int status;
+  bool outsideDismiss;
 
-  Loading({this.status = SHOW_LOADING});
+  Loading({this.status = SHOW_LOADING, this.outsideDismiss = false});
 }
