@@ -2,6 +2,6 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 
-class SystemUtil {
+class ScreenUtil {
   static double getStatusBarHigh() => MediaQueryData.fromWindow(window).padding.top;
 }
