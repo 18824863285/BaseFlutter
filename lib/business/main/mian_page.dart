@@ -23,9 +23,9 @@ class MainState extends BaseState<MainPage, MainViewModel> {
           padding: EdgeInsets.only(top: SystemUtil.getStatusBarHigh()),
           child: Text("ada"),
         ),
-        bottomNavigationBar: BottomNavigationBar(
-
-        ),
+        // bottomNavigationBar: BottomNavigationBar(
+        //
+        // ),
       ),
 
     );
