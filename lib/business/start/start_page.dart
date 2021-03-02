@@ -45,8 +45,7 @@ class StartState extends BaseState<StartPage, StartViewModel> {
                   child: GestureDetector(
                     onTap: () {
                       viewModel.cancelCountdown();
-                      pop();//需要先pop再push，因为路由栈是先进先出的，先push再pop等于没有push
-                      push(LoginPage());
+                      viewModel.toNextPage();
                     },
                     child: Container(
                         decoration: BoxDecoration(

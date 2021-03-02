@@ -38,4 +38,8 @@ class UserInfoSp {
   get userName => _preferenceUtils.getString(USER_NAME);
 
   set userName(String value) => _preferenceUtils.saveString(USER_NAME, value);
+
+  bool _isLogin;
+
+  get isLogin => uid != 0;
 }

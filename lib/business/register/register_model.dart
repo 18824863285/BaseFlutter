@@ -2,7 +2,6 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/http.dart';
 import 'package:wan_android_flutter/retrofit/RestClient.dart';
-
 import 'model/register_result.dart';
 
 part 'register_model.g.dart';

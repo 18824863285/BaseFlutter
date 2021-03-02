@@ -3,7 +3,9 @@ import 'dart:async';
 import 'package:injectable/injectable.dart';
 import 'package:wan_android_flutter/base/base_view_model.dart';
 import 'package:wan_android_flutter/business/login/login_page.dart';
+import 'package:wan_android_flutter/business/main/mian_page.dart';
 import 'package:wan_android_flutter/business/start/start_model.dart';
+import 'package:wan_android_flutter/sharePreference/user_info_share_preference.dart';
 
 @injectable
 class StartViewModel extends BaseViewModel<StartModel> {
@@ -19,10 +21,18 @@ class StartViewModel extends BaseViewModel<StartModel> {
       notifyListeners();
       if (currTime == 0) {
         cancelCountdown();
-        pop();
-        push(LoginPage());
+        toNextPage();
       }
     });
+  }
+
+  void toNextPage(){
+    pop();
+    if(UserInfoSp.getInstance().isLogin){
+      push(MainPage());
+    }else{
+      push(LoginPage());
+    }
   }
 
   void cancelCountdown() {
