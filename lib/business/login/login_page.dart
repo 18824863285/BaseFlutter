@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:wan_android_flutter/base/base_state.dart';
 import 'package:wan_android_flutter/base/base_stateful_widget.dart';
+import 'package:wan_android_flutter/base/event_bus/event_bus.dart';
 import 'package:wan_android_flutter/business/register/register_page.dart';
+import 'package:wan_android_flutter/enent/register_result_event.dart';
 import 'package:wan_android_flutter/generated/l10n.dart';
 import 'package:wan_android_flutter/sharePreference/user_info_share_preference.dart';
 import 'login_view_model.dart';
@@ -17,6 +19,15 @@ class LoginPage extends BaseStatefulWidget {
 }
 
 class LoginState extends BaseState<LoginPage, LoginViewModel> {
+
+  @override
+  void initEventBus() {
+    super.initEventBus();
+    EventBus.instance.on<RegisterResultEvent>().listen((event) {
+      pop();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

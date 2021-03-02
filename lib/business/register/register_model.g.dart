@@ -17,16 +17,16 @@ class _RegisterModel implements RegisterModel {
   String baseUrl;
 
   @override
-  Future<RegisterResult> register(username, password, rePassword) async {
+  Future<RegisterResult> register(username, password, repassword) async {
     ArgumentError.checkNotNull(username, 'username');
     ArgumentError.checkNotNull(password, 'password');
-    ArgumentError.checkNotNull(rePassword, 'rePassword');
+    ArgumentError.checkNotNull(repassword, 'repassword');
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _data = {
       'username': username,
       'password': password,
-      'rePassword': rePassword
+      'repassword': repassword
     };
     _data.removeWhere((k, v) => v == null);
     final _result = await _dio.request<Map<String, dynamic>>('user/register',

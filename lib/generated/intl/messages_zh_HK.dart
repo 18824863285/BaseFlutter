@@ -30,6 +30,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "account" : MessageLookupByLibrary.simpleMessage("账号"),
     "age" : MessageLookupByLibrary.simpleMessage("age"),
     "ensure_psw" : MessageLookupByLibrary.simpleMessage("确认密码"),
+    "ensure_psw_true" : MessageLookupByLibrary.simpleMessage("密码和确认密码不一致"),
     "input_login_name" : MessageLookupByLibrary.simpleMessage("请输入登录账号"),
     "input_login_psw" : MessageLookupByLibrary.simpleMessage("请输入登录密码"),
     "leaveTime" : m0,
@@ -41,6 +42,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "pageHomeWelcome" : m1,
     "psw" : MessageLookupByLibrary.simpleMessage("密码"),
     "register" : MessageLookupByLibrary.simpleMessage("注册"),
-    "test" : m2
+    "test" : m2,
+    "true_login_name" : MessageLookupByLibrary.simpleMessage("请输入正确格式的手机号码"),
+    "true_login_psw" : MessageLookupByLibrary.simpleMessage("请输入6-16数字或字母组合的密码")
   };
 }

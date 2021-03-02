@@ -46,6 +46,9 @@ class RegisterState extends BaseState<RegisterPage, RegisterViewModel> {
                             border: InputBorder.none,
                             hintText: S.of(context).input_login_psw,
                           ),
+                          onChanged: (value) {
+                            viewModel.loginName = value;
+                          },
                         ),
                       ),
                       Container(
@@ -80,6 +83,7 @@ class RegisterState extends BaseState<RegisterPage, RegisterViewModel> {
                         width: 260,
                         height: 45,
                         child: TextField(
+                          obscureText: true,
                           keyboardType: TextInputType.number,
                           style:
                               TextStyle(color: Color(0Xff313133), fontSize: 18),
@@ -87,6 +91,9 @@ class RegisterState extends BaseState<RegisterPage, RegisterViewModel> {
                             border: InputBorder.none,
                             hintText: S.of(context).input_login_psw,
                           ),
+                          onChanged: (value) {
+                            viewModel.psw = value;
+                          },
                         ),
                       ),
                       Container(
@@ -121,13 +128,17 @@ class RegisterState extends BaseState<RegisterPage, RegisterViewModel> {
                         width: 260,
                         height: 45,
                         child: TextField(
+                          obscureText: true,
                           keyboardType: TextInputType.number,
                           style:
-                          TextStyle(color: Color(0Xff313133), fontSize: 18),
+                              TextStyle(color: Color(0Xff313133), fontSize: 18),
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             hintText: S.of(context).input_login_psw,
                           ),
+                          onChanged: (value) {
+                            viewModel.ensurePsw = value;
+                          },
                         ),
                       ),
                       Container(
@@ -146,10 +157,13 @@ class RegisterState extends BaseState<RegisterPage, RegisterViewModel> {
             height: 50,
             margin: EdgeInsets.only(top: 50),
             child: RaisedButton(
-              child: Text(S.of(context).register, style: TextStyle(color: Colors.white, fontSize: 18),),
+                child: Text(
+                  S.of(context).register,
+                  style: TextStyle(color: Colors.white, fontSize: 18),
+                ),
                 color: Colors.blue,
-                onPressed: (){
-
+                onPressed: () {
+                  viewModel.register();
                 },
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(100)))),

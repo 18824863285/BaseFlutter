@@ -184,6 +184,36 @@ class S {
       args: [],
     );
   }
+
+  /// `请输入正确格式的手机号码`
+  String get true_login_name {
+    return Intl.message(
+      '请输入正确格式的手机号码',
+      name: 'true_login_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `请输入6-16数字或字母组合的密码`
+  String get true_login_psw {
+    return Intl.message(
+      '请输入6-16数字或字母组合的密码',
+      name: 'true_login_psw',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `密码和确认密码不一致`
+  String get ensure_psw_true {
+    return Intl.message(
+      '密码和确认密码不一致',
+      name: 'ensure_psw_true',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

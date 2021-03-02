@@ -14,6 +14,6 @@ abstract class RegisterModel{
 
   @POST("user/register")
   @FormUrlEncoded()
-  Future<RegisterResult> register(@Field() String username, @Field() String password, @Field() String rePassword);
+  Future<RegisterResult> register(@Field() String username, @Field() String password, @Field() String repassword);
 
 }
