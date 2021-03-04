@@ -7,18 +7,26 @@
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
-import '../../business/login/login_model.dart' as _i3;
-import '../../business/login/login_view_model.dart' as _i4;
-import '../../business/main/main_model.dart' as _i5;
-import '../../business/main/main_view_model.dart' as _i6;
-import '../../business/register/register_model.dart' as _i7;
-import '../../business/register/register_view_model.dart' as _i8;
-import '../../business/start/start_model.dart' as _i10;
-import '../../business/start/start_view_model.dart' as _i11;
-import '../../retrofit/RestClient.dart' as _i9;
-import '../test/TestModel.dart' as _i12;
+import '../../business/homePage/home_model.dart' as _i3;
+import '../../business/homePage/home_view_model.dart' as _i4;
+import '../../business/knowledgeHierarchy/knowledge_model.dart' as _i5;
+import '../../business/knowledgeHierarchy/knowledge_view_model.dart' as _i6;
+import '../../business/login/login_model.dart' as _i7;
+import '../../business/login/login_view_model.dart' as _i8;
+import '../../business/main/main_model.dart' as _i9;
+import '../../business/main/main_view_model.dart' as _i10;
+import '../../business/officialAccounts/official_accounts_model.dart' as _i11;
+import '../../business/officialAccounts/official_accounts_view_model.dart'
+    as _i12;
+import '../../business/project/project_model.dart' as _i13;
+import '../../business/register/register_model.dart' as _i14;
+import '../../business/register/register_view_model.dart' as _i15;
+import '../../business/start/start_model.dart' as _i17;
+import '../../business/start/start_view_model.dart' as _i18;
+import '../../retrofit/RestClient.dart' as _i16;
+import '../test/TestModel.dart' as _i19;
 import '../test/TestViewModel.dart'
-    as _i13; // ignore_for_file: unnecessary_lambdas
+    as _i20; // ignore_for_file: unnecessary_lambdas
 
 // ignore_for_file: lines_longer_than_80_chars
 /// an extension to register the provided dependencies inside of [GetIt]
@@ -28,19 +36,28 @@ extension GetItInjectableX on _i1.GetIt {
       {String environment, _i2.EnvironmentFilter environmentFilter}) {
     final gh = _i2.GetItHelper(this, environment, environmentFilter);
     final retrofitModule = _$RetrofitModule();
-    gh.factory<_i3.LoginModel>(() => retrofitModule.loginModel());
-    gh.factory<_i4.LoginViewModel>(() => _i4.LoginViewModel());
-    gh.factory<_i5.MainModel>(() => retrofitModule.mainModel());
-    gh.factory<_i6.MainViewModel>(() => _i6.MainViewModel());
-    gh.factory<_i7.RegisterModel>(() => retrofitModule.registerModel());
-    gh.factory<_i8.RegisterViewModel>(() => _i8.RegisterViewModel());
-    gh.factory<_i9.RestClient>(() => retrofitModule.restClient());
-    gh.factory<_i10.StartModel>(() => _i10.StartModel());
-    gh.factory<_i11.StartViewModel>(() => _i11.StartViewModel());
-    gh.factory<_i12.TestModel>(() => _i12.TestModel());
-    gh.factory<_i13.TestViewModel>(() => _i13.TestViewModel());
+    gh.factory<_i3.HomeModel>(() => retrofitModule.homeModel());
+    gh.factory<_i4.HomeViewModel>(() => _i4.HomeViewModel());
+    gh.factory<_i5.KnowledgeModel>(() => retrofitModule.knowledgeModel());
+    gh.factory<_i6.KnowledgeViewModel>(() => _i6.KnowledgeViewModel());
+    gh.factory<_i7.LoginModel>(() => retrofitModule.loginModel());
+    gh.factory<_i8.LoginViewModel>(() => _i8.LoginViewModel());
+    gh.factory<_i9.MainModel>(() => retrofitModule.mainModel());
+    gh.factory<_i10.MainViewModel>(() => _i10.MainViewModel());
+    gh.factory<_i11.OfficialAccountsModel>(
+        () => retrofitModule.officialAccountsModel());
+    gh.factory<_i12.OfficialAccountsViewModel>(
+        () => _i12.OfficialAccountsViewModel());
+    gh.factory<_i13.ProjectModel>(() => retrofitModule.projectModel());
+    gh.factory<_i14.RegisterModel>(() => retrofitModule.registerModel());
+    gh.factory<_i15.RegisterViewModel>(() => _i15.RegisterViewModel());
+    gh.factory<_i16.RestClient>(() => retrofitModule.restClient());
+    gh.factory<_i17.StartModel>(() => _i17.StartModel());
+    gh.factory<_i18.StartViewModel>(() => _i18.StartViewModel());
+    gh.factory<_i19.TestModel>(() => _i19.TestModel());
+    gh.factory<_i20.TestViewModel>(() => _i20.TestViewModel());
     return this;
   }
 }
 
-class _$RetrofitModule extends _i9.RetrofitModule {}
+class _$RetrofitModule extends _i16.RetrofitModule {}
