@@ -15,6 +15,8 @@ class OfficialAccountsState
     extends BaseState<OfficialAccountsPage, OfficialAccountsViewModel> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp();
+    return Container(
+      color: Colors.amber,
+    );
   }
 }

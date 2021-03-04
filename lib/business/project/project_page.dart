@@ -17,8 +17,8 @@ class ProjectPage extends BaseStatefulWidget{
 class ProjectState extends BaseState<ProjectPage, ProjectViewModel>{
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-
+    return Container(
+      color: Colors.blueAccent,
     );
   }
 

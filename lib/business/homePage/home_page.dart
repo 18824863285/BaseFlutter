@@ -15,7 +15,7 @@ class HomePage extends BaseStatefulWidget{
 class HomeState extends BaseState<HomePage, HomeViewModel>{
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return Container(
 
     );
   }

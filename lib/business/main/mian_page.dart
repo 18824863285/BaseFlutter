@@ -3,7 +3,11 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:wan_android_flutter/base/base_state.dart';
 import 'package:wan_android_flutter/base/base_stateful_widget.dart';
 import 'package:wan_android_flutter/base/util/screen_util.dart';
+import 'package:wan_android_flutter/business/homePage/home_page.dart';
+import 'package:wan_android_flutter/business/knowledgeHierarchy/knowledge_page.dart';
 import 'package:wan_android_flutter/business/main/main_view_model.dart';
+import 'package:wan_android_flutter/business/officialAccounts/official_accounts_page.dart';
+import 'package:wan_android_flutter/business/project/project_page.dart';
 
 class MainPage extends BaseStatefulWidget {
   @override
@@ -11,16 +15,17 @@ class MainPage extends BaseStatefulWidget {
 }
 
 class MainState extends BaseState<MainPage, MainViewModel> {
+  HomePage _homePage;
+  OfficialAccountsPage _officialAccountsPage;
+  KnowledgePage _knowledgePage;
+  ProjectPage _projectPage;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: Container(
-          alignment: Alignment.topCenter,
-          padding: EdgeInsets.only(top: ScreenUtil.getStatusBarHigh()),
-          child: Text("ada"),
-        ),
+        body: getPage(viewModel.currPageIndex),
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: viewModel.currPageIndex,
           onTap: (index) {
@@ -48,6 +53,38 @@ class MainState extends BaseState<MainPage, MainViewModel> {
         ),
       ),
     );
+  }
+
+  // ignore: missing_return
+  BaseStatefulWidget getPage(int currIndex) {
+    switch (currIndex) {
+      case 0:
+        if (_homePage == null) {
+          _homePage = HomePage();
+        }
+        return _homePage;
+        break;
+      case 1:
+        if (_officialAccountsPage == null) {
+          _officialAccountsPage = OfficialAccountsPage();
+        }
+        return _officialAccountsPage;
+        break;
+      case 2:
+        if (_knowledgePage == null) {
+          _knowledgePage = KnowledgePage();
+        }
+        return _knowledgePage;
+        break;
+      case 3:
+        if (_projectPage == null) {
+          _projectPage = ProjectPage();
+        }
+        return _projectPage;
+        break;
+      default:
+        break;
+    } 
   }
 
   Icon getIcon(IconData iconData) => Icon(iconData, color: Colors.grey);

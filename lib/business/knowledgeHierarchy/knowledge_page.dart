@@ -17,8 +17,8 @@ class KnowledgePage extends BaseStatefulWidget{
 class KnowledgeState extends BaseState<KnowledgePage, KnowledgeViewModel>{
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-
+    return Container(
+      color: Colors.red,
     );
   }
 
