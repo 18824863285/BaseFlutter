@@ -84,7 +84,7 @@ class MainState extends BaseState<MainPage, MainViewModel> {
         break;
       default:
         break;
-    } 
+    }
   }
 
   Icon getIcon(IconData iconData) => Icon(iconData, color: Colors.grey);
