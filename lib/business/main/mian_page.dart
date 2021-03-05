@@ -8,6 +8,7 @@ import 'package:wan_android_flutter/business/knowledgeHierarchy/knowledge_page.d
 import 'package:wan_android_flutter/business/main/main_view_model.dart';
 import 'package:wan_android_flutter/business/officialAccounts/official_accounts_page.dart';
 import 'package:wan_android_flutter/business/project/project_page.dart';
+import 'package:wan_android_flutter/generated/l10n.dart';
 
 class MainPage extends BaseStatefulWidget {
   @override
@@ -36,19 +37,19 @@ class MainState extends BaseState<MainPage, MainViewModel> {
             BottomNavigationBarItem(
                 icon: getIcon(Icons.home),
                 activeIcon: getActiveIcon(Icons.home),
-                title: getBottomText('首页')),
+                title: getBottomText(S.of(context).home_page)),
             BottomNavigationBarItem(
                 icon: getIcon(Icons.list),
                 activeIcon: getActiveIcon(Icons.list),
-                title: getBottomText('公众号')),
+                title: getBottomText(S.of(context).officialAccounts)),
             BottomNavigationBarItem(
                 icon: getIcon(Icons.map),
                 activeIcon: getActiveIcon(Icons.map),
-                title: getBottomText('知识体系')),
+                title: getBottomText(S.of(context).knowledgeHierarchy)),
             BottomNavigationBarItem(
                 icon: getIcon(Icons.description),
                 activeIcon: getActiveIcon(Icons.description),
-                title: getBottomText('项目'))
+                title: getBottomText(S.of(context).project))
           ],
         ),
       ),

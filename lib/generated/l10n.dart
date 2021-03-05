@@ -214,6 +214,56 @@ class S {
       args: [],
     );
   }
+
+  /// `首页`
+  String get home_page {
+    return Intl.message(
+      '首页',
+      name: 'home_page',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `公众号`
+  String get officialAccounts {
+    return Intl.message(
+      '公众号',
+      name: 'officialAccounts',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `知识体系`
+  String get knowledgeHierarchy {
+    return Intl.message(
+      '知识体系',
+      name: 'knowledgeHierarchy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `项目`
+  String get project {
+    return Intl.message(
+      '项目',
+      name: 'project',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `请输入搜索信息`
+  String get please_input_search_msg {
+    return Intl.message(
+      '请输入搜索信息',
+      name: 'please_input_search_msg',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -16,5 +16,11 @@
   "ensure_psw": "确认密码",
   "true_login_name": "请输入正确格式的手机号码",
   "true_login_psw": "请输入6-16数字或字母组合的密码",
-  "ensure_psw_true": "密码和确认密码不一致"
+  "ensure_psw_true": "密码和确认密码不一致",
+  "home_page": "首页",
+  "officialAccounts": "公众号",
+  "knowledgeHierarchy": "知识体系",
+  "project":"项目",
+  "please_input_search_msg":"请输入搜索信息"
+
 }
