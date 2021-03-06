@@ -15,4 +15,24 @@ class _HomeModel implements HomeModel {
   final Dio _dio;
 
   String baseUrl;
+
+  @override
+  Future<Article> getArticleList(index) async {
+    ArgumentError.checkNotNull(index, 'index');
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.request<Map<String, dynamic>>(
+        'article/list/$index/json',
+        queryParameters: queryParameters,
+        options: RequestOptions(
+            method: 'GET',
+            headers: <String, dynamic>{},
+            extra: _extra,
+            contentType: 'application/x-www-form-urlencoded',
+            baseUrl: baseUrl),
+        data: _data);
+    final value = Article.fromJson(_result.data);
+    return value;
+  }
 }

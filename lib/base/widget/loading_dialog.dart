@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:wan_android_flutter/base/util/density_util.dart';
 
 ///加载弹窗动画
+// ignore: must_be_immutable
 class LoadingDialog extends StatefulWidget {
   //加载中的文字
   final String loadingText;

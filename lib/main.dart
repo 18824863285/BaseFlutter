@@ -29,9 +29,9 @@ class MyApp extends StatelessWidget {
       ],
       supportedLocales: [const Locale('zh', 'CH'), ...S.delegate.supportedLocales],
       locale: const Locale('zh'),
-      localeListResolutionCallback: (locales, supportedLocales) {
-        print('当前系统语言环境$locales');
-        return;
+      localeResolutionCallback:
+          (Locale locale, Iterable<Locale> supportedLocales) {
+        return locale;
       },
       theme: ThemeData(
         primarySwatch: Colors.blue,

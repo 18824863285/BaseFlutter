@@ -90,8 +90,8 @@ class MainState extends BaseState<MainPage, MainViewModel> {
 
   Icon getIcon(IconData iconData) => Icon(iconData, color: Colors.grey);
 
-  Icon getActiveIcon(IconData iconData) => Icon(iconData, color: Colors.blue);
+  Icon getActiveIcon(IconData iconData) => Icon(iconData, color: Color(0xFA000000));
 
   Text getBottomText(String text) =>
-      Text(text, style: TextStyle(color: Colors.blue));
+      Text(text, style: TextStyle(color:  Color(0xFA000000)));
 }

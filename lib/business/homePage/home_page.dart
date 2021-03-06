@@ -5,7 +5,6 @@ import 'package:wan_android_flutter/base/base_stateful_widget.dart';
 import 'package:wan_android_flutter/base/util/screen_util.dart';
 import 'package:wan_android_flutter/business/homePage/home_view_model.dart';
 import 'package:wan_android_flutter/const/resource.dart';
-import 'package:wan_android_flutter/generated/l10n.dart';
 
 class HomePage extends BaseStatefulWidget {
   @override
