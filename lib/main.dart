@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart';
@@ -20,15 +21,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
       localizationsDelegates: const [
         S.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate
+        GlobalWidgetsLocalizations.delegate,
+        DefaultWidgetsLocalizations.delegate
       ],
-      supportedLocales: [const Locale('zh', 'CH'), ...S.delegate.supportedLocales],
-      locale: const Locale('zh'),
+      supportedLocales: S.delegate.supportedLocales,
       localeResolutionCallback:
           (Locale locale, Iterable<Locale> supportedLocales) {
         return locale;

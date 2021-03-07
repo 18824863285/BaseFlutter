@@ -8,7 +8,7 @@ import 'package:wan_android_flutter/const/resource.dart';
 
 class HomePage extends BaseStatefulWidget {
   @override
-  State<StatefulWidget> createState() {
+  State<HomePage> createState() {
     return HomeState();
   }
 }
