@@ -24,13 +24,13 @@ dependencies:
   event_bus: ^1.1.1
   json_annotation: ^3.0.1
   json_serializable: ^3.5.0
-  pull_to_refresh: ^1.6.4
   extended_image: ^1.3.0
   webview_flutter: ^0.3.22+1
   shared_preferences: ^0.5.12+4
   flutter_localizations:
     sdk: flutter
   fluttertoast: ^7.1.8
+  pull_to_refresh: 1.6.3
 
 dev_dependencies:
   flutter_test:

@@ -5,15 +5,37 @@ import 'package:wan_android_flutter/business/homePage/model/article.dart';
 
 @injectable
 class HomeViewModel extends BaseViewModel<HomeModel> {
-  List<Datas> dataList;
+  List<Datas> dataList = [];
+
+  int _currIndex = 0;
+
+  bool isRequest = true;
 
   @factoryMethod
   HomeViewModel();
 
-  void getArticleList(int index) {
-    sendRequest<Article>(model.getArticleList(index), (value) {
-      dataList = value.data.datas;
+  void _getArticleList() {
+    isRequest = true;
+    sendRequest<Article>(model.getArticleList(_currIndex), (value) {
+      isRequest = false;
+      if (_currIndex == 0) {
+        dataList = value.data.datas;
+      } else {
+        dataList.addAll(value.data.datas);
+      }
       notifyPage();
+    }, error: (e) {
+      isRequest = false;
     });
+  }
+
+  void refresh() {
+    _currIndex = 0;
+    _getArticleList();
+  }
+
+  void loadMore() {
+    _currIndex++;
+    _getArticleList();
   }
 }

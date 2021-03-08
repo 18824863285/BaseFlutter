@@ -71,49 +71,5 @@ class StartState extends BaseState<StartPage, StartViewModel> {
             ),
           ),
         ));
-
-    // return BaseChangeNotifierProvider(context, viewModel: viewModel, init: () {
-    //   viewModel.startCountdown(5);
-    // },
-    //     widget: MaterialApp(
-    //       home: Scaffold(
-    //         body: Stack(
-    //           children: [
-    //             ConstrainedBox(
-    //               //填充父类
-    //               child: Image.network(
-    //                 "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=851178854,1709478981&fm=26&gp=0.jpg",
-    //                 fit: BoxFit.cover,
-    //               ),
-    //               constraints: new BoxConstraints.expand(),
-    //             ),
-    //             Positioned(
-    //               child: GestureDetector(
-    //                 onTap: () {},
-    //                 child: Container(
-    //                     decoration: BoxDecoration(
-    //                         color: Colors.blue,
-    //                         borderRadius:
-    //                             BorderRadius.all(Radius.circular(15))),
-    //                     padding: EdgeInsets.fromLTRB(10, 2, 10, 2),
-    //                     child: Selector<StartViewModel, int>(
-    //                       selector: (context, startViewModel) =>
-    //                       startViewModel.currTime,
-    //                       builder: (context, count, child) {
-    //                         return Text(
-    //                           S.of(context).leaveTime(viewModel.currTime),
-    //                           style:
-    //                               TextStyle(color: Colors.white, fontSize: 12),
-    //                         );
-    //                       },
-    //                     )),
-    //               ),
-    //               right: 10,
-    //               top: 30,
-    //             )
-    //           ],
-    //         ),
-    //       ),
-    //     ));
   }
 }
