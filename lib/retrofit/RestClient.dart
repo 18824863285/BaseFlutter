@@ -34,43 +34,36 @@ abstract class RetrofitModule {
   }
 
   LoginModel loginModel() {
-    dio.interceptors.add(LogInterceptor());
     final client = LoginModel(dio);
     return client;
   }
 
   RegisterModel registerModel() {
-    dio.interceptors.add(LogInterceptor());
     final client = RegisterModel(dio);
     return client;
   }
 
   MainModel mainModel() {
-    dio.interceptors.add(LogInterceptor());
     final client = MainModel(dio);
     return client;
   }
 
   HomeModel homeModel() {
-    dio.interceptors.add(LogInterceptor());
     final client = HomeModel(dio);
     return client;
   }
 
   OfficialAccountsModel officialAccountsModel() {
-    dio.interceptors.add(LogInterceptor());
     final client = OfficialAccountsModel(dio);
     return client;
   }
 
   KnowledgeModel knowledgeModel() {
-    dio.interceptors.add(LogInterceptor());
     final client = KnowledgeModel(dio);
     return client;
   }
 
   ProjectModel projectModel() {
-    dio.interceptors.add(LogInterceptor());
     final client = ProjectModel(dio);
     return client;
   }
