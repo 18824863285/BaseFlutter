@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:wan_android_flutter/base/base_state.dart';
 import 'package:wan_android_flutter/base/base_stateful_widget.dart';
+import 'package:wan_android_flutter/base/dialog/center_dialog.dart';
 import 'package:wan_android_flutter/base/event_bus/event_bus.dart';
 import 'package:wan_android_flutter/business/register/register_page.dart';
 import 'package:wan_android_flutter/enent/register_result_event.dart';
@@ -19,6 +20,9 @@ class LoginPage extends BaseStatefulWidget {
 }
 
 class LoginState extends BaseState<LoginPage, LoginViewModel> {
+  void show() {
+    CenterDialog(Container()).show(context);
+  }
 
   @override
   void initEventBus() {
