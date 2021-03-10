@@ -7,7 +7,7 @@ import 'package:wan_android_flutter/base/base_stateful_widget.dart';
 import 'package:wan_android_flutter/base/dialog/center_dialog.dart';
 import 'package:wan_android_flutter/base/event_bus/event_bus.dart';
 import 'package:wan_android_flutter/business/register/register_page.dart';
-import 'package:wan_android_flutter/enent/register_result_event.dart';
+import 'package:wan_android_flutter/event/register_result_event.dart';
 import 'package:wan_android_flutter/generated/l10n.dart';
 import 'package:wan_android_flutter/sharePreference/user_info_share_preference.dart';
 import 'login_view_model.dart';

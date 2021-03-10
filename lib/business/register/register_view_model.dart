@@ -2,7 +2,7 @@ import 'package:injectable/injectable.dart';
 import 'package:wan_android_flutter/base/base_view_model.dart';
 import 'package:wan_android_flutter/base/util/reg_exp_util.dart';
 import 'package:wan_android_flutter/business/register/register_model.dart';
-import 'package:wan_android_flutter/enent/register_result_event.dart';
+import 'package:wan_android_flutter/event/register_result_event.dart';
 import 'package:wan_android_flutter/generated/l10n.dart';
 import 'package:wan_android_flutter/sharePreference/user_info_share_preference.dart';
 import 'model/register_result.dart';
