@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wan_android_flutter/base/navigator/event_bus_mixin.dart';
+import 'event_bus/event/Loading.dart';
+import 'file:///D:/wan-android/wan_android_flutter/lib/base/event_bus/event_bus_mixin.dart';
 import 'package:wan_android_flutter/base/navigator/navigator_mixin.dart';
-import 'package:wan_android_flutter/base/navigator/toast_mixin.dart';
+import 'file:///D:/wan-android/wan_android_flutter/lib/base/toast/toast_mixin.dart';
 import 'package:wan_android_flutter/base/sharePreference/share_preference_mixin.dart';
-import 'package:wan_android_flutter/base/widget/loading_dialog.dart';
+import 'file:///D:/wan-android/wan_android_flutter/lib/base/dialog/loading_dialog.dart';
 import 'base_state_interfce.dart';
 import 'base_view_model.dart';
-import 'event/Loading.dart';
 import 'event_bus/event_bus.dart';
 import 'inject/injector.dart';
 

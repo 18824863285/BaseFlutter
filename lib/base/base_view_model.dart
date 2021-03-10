@@ -1,16 +1,15 @@
 import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
-import 'package:wan_android_flutter/base/navigator/event_bus_mixin.dart';
+import 'event_bus/event/Loading.dart';
+import 'file:///D:/wan-android/wan_android_flutter/lib/base/event_bus/event_bus_mixin.dart';
 import 'package:wan_android_flutter/base/sharePreference/share_preference_mixin.dart';
 import 'package:wan_android_flutter/retrofit/RestClient.dart';
 import 'base_view_model_interface.dart';
-import 'base_model.dart';
-import 'event/Loading.dart';
 import 'event_bus/event_bus.dart';
 import 'inject/injector.dart';
 import 'navigator/navigator_mixin.dart';
-import 'navigator/toast_mixin.dart';
+import 'toast/toast_mixin.dart';
 
 abstract class BaseViewModel<M> extends ChangeNotifier
     with
