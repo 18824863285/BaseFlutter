@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:wan_android_flutter/base/adapter/screen/screen_adapter_mixin.dart';
 import 'event_bus/event/Loading.dart';
 import 'file:///D:/wan-android/wan_android_flutter/lib/base/event_bus/event_bus_mixin.dart';
 import 'package:wan_android_flutter/base/navigator/navigator_mixin.dart';
@@ -18,7 +19,8 @@ abstract class BaseState<W extends StatefulWidget, VM extends BaseViewModel>
         NavigatorMixin,
         ToastMixin,
         EventBusMixin,
-        SharePreferenceMixin {
+        SharePreferenceMixin,
+        ScreenAdapterMixin {
   VM viewModel;
   EventBus eventBus;
   LoadingDialog loadingDialog;
