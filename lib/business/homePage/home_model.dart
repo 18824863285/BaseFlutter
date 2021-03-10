@@ -1,7 +1,6 @@
 
 import 'package:dio/dio.dart';
 import 'package:retrofit/http.dart';
-import 'package:wan_android_flutter/base/model/result.dart';
 import 'package:wan_android_flutter/business/homePage/model/article.dart';
 import 'package:wan_android_flutter/retrofit/RestClient.dart';
 

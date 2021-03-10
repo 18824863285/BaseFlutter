@@ -1,9 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:provider/provider.dart';
 import 'package:wan_android_flutter/base/base_state.dart';
 import 'package:wan_android_flutter/base/base_stateful_widget.dart';
 import 'package:wan_android_flutter/base/util/screen_util.dart';
+import 'package:wan_android_flutter/base/util/time_util.dart';
 import 'package:wan_android_flutter/business/homePage/home_view_model.dart';
 import 'package:wan_android_flutter/const/resource.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -16,7 +18,6 @@ class HomePage extends BaseStatefulWidget {
 }
 
 class HomeState extends BaseState<HomePage, HomeViewModel> {
-  var refreshController = RefreshController(initialRefresh: true);
 
   @override
   Widget build(BuildContext context) {
@@ -82,30 +83,64 @@ class HomeState extends BaseState<HomePage, HomeViewModel> {
                   child: Selector<HomeViewModel, int>(
                     selector: (context, homeViewModel) => viewModel.loadNum,
                     builder: (context, count, child) {
-                      if (!viewModel.isRequest) {
-                        refreshController.refreshCompleted();
-                      }
                       return SmartRefresher(
-                        controller: refreshController,
+                        enablePullDown: true,
+                        enablePullUp: true,
+                        controller: viewModel.refreshController,
                         onRefresh: () {
                           viewModel.refresh();
                         },
                         onLoading: () {
                           viewModel.loadMore();
                         },
-                        child: ListView.builder(itemBuilder: (context, index) {
-                          return Container(
-                            margin: EdgeInsets.only(
-                                left: 15, right: 15, top: 5, bottom: 5),
-                            decoration: new BoxDecoration(
-                                border: new Border.all(
-                                    color: Color(0xFA000000), width: 0.5),
-                                color: Colors.white,
-                                borderRadius: new BorderRadius.circular((5.0))),
-                            height: 80, //高度要加上，不然会卡死
-                            child: Stack(),
-                          );
-                        }),
+                        child: ListView.builder(
+                            itemBuilder: (context, index) {
+                              return Container(
+                                height: 100, //高度要加上，不然会卡死
+                                margin: EdgeInsets.only(
+                                    left: 15, right: 15, top: 5, bottom: 5),
+                                decoration: new BoxDecoration(
+                                    border: new Border.all(
+                                        color: Color(0xFA000000), width: 0.5),
+                                    color: Colors.white,
+                                    borderRadius:
+                                        new BorderRadius.circular((5.0))),
+                                child: Stack(
+                                  children: [
+                                    Positioned(
+                                      child: Container(
+                                        child: Text(
+                                            viewModel.getData(index)?.title ??
+                                                "",
+                                            maxLines: 1,
+                                            overflow: TextOverflow.ellipsis),
+                                        constraints:
+                                            BoxConstraints(maxWidth: 320),
+                                      ),
+                                      left: 15,
+                                      top: 10,
+                                    ),
+                                    Positioned(
+                                      child: Text(
+                                        '作者：${viewModel.getData(index)?.author ?? ""}',
+                                        style: TextStyle(color: Colors.grey),
+                                      ),
+                                      left: 15,
+                                      top: 30,
+                                    ),
+                                    Positioned(
+                                      child: Text(
+                                        '时间：${TimeUtil.getStandardTime(viewModel.getData(index)?.publishTime ?? 0)}',
+                                        style: TextStyle(color: Colors.grey),
+                                      ),
+                                      left: 15,
+                                      top: 70,
+                                    )
+                                  ],
+                                ),
+                              );
+                            },
+                            itemCount: viewModel.dataList.length),
                       );
                     },
                   ),
