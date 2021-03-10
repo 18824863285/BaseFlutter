@@ -1,8 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
+import 'package:wan_android_flutter/base/navigator/event_bus_mixin.dart';
 import 'package:wan_android_flutter/base/sharePreference/share_preference_mixin.dart';
-import 'package:wan_android_flutter/base/widget/toast_mixin.dart';
+import 'file:///D:/wanAndroid/wan_android_flutter/lib/base/navigator/toast_mixin.dart';
 import 'package:wan_android_flutter/retrofit/RestClient.dart';
 import 'base_view_model_interface.dart';
 import 'base_model.dart';
@@ -16,7 +17,8 @@ abstract class BaseViewModel<M> extends ChangeNotifier
         BaseViewModelInterface,
         NavigatorMixin,
         ToastMixin,
-        SharePreferenceMixin {
+        SharePreferenceMixin,
+        EventBusMixin {
   int _loadNum = 0;
   int _minLoadNum = 1;
   BuildContext context;
@@ -60,12 +62,7 @@ abstract class BaseViewModel<M> extends ChangeNotifier
   void init() {
     model = getIt.get<M>();
     setContext(context);
-  }
-
-  void sendEvent(dynamic event) {
-    if (!_isDispose) {
-      EventBus.instance.fire(event);
-    }
+    setIsDispose(false);
   }
 
   void showLoading(bool isNeedLoading) {
@@ -106,5 +103,6 @@ abstract class BaseViewModel<M> extends ChangeNotifier
   void dispose() {
     super.dispose();
     _isDispose = true;
+    setIsDispose(_isDispose);
   }
 }
