@@ -134,12 +134,13 @@ class HomeState extends BaseState<HomePage, HomeViewModel> {
                                         style: TextStyle(color: Colors.grey),
                                       ),
                                       left: 15,
-                                      top: 70,
+                                      top: 60,
                                     )
                                   ],
                                 ),
                               );
                             },
+                            itemExtent: 100,
                             itemCount: viewModel.dataList.length),
                       );
                     },
