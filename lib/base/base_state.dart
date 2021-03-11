@@ -1,15 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wan_android_flutter/base/adapter/screen/screen_adapter_mixin.dart';
-import 'event_bus/event/Loading.dart';
-import 'file:///D:/wan-android/wan_android_flutter/lib/base/event_bus/event_bus_mixin.dart';
+import 'package:wan_android_flutter/base/toast/toast_mixin.dart';
+import 'dialog/loading_dialog.dart';
 import 'package:wan_android_flutter/base/navigator/navigator_mixin.dart';
-import 'file:///D:/wan-android/wan_android_flutter/lib/base/toast/toast_mixin.dart';
 import 'package:wan_android_flutter/base/sharePreference/share_preference_mixin.dart';
-import 'file:///D:/wan-android/wan_android_flutter/lib/base/dialog/loading_dialog.dart';
 import 'base_state_interfce.dart';
 import 'base_view_model.dart';
 import 'event_bus/event_bus.dart';
+import 'event_bus/event_bus_mixin.dart';
 import 'inject/injector.dart';
 
 abstract class BaseState<W extends StatefulWidget, VM extends BaseViewModel>
@@ -34,6 +33,12 @@ abstract class BaseState<W extends StatefulWidget, VM extends BaseViewModel>
       viewModel = getIt.get<VM>();
       viewModel.context = context;
       viewModel.init();
+      viewModel.showLoadingFun = () {
+        showLoading();
+      };
+      viewModel.dismissLoadingFun = () {
+        loadingDialog.dismissDialog();
+      };
     }
     initEventBus();
   }
@@ -42,15 +47,6 @@ abstract class BaseState<W extends StatefulWidget, VM extends BaseViewModel>
   void initEventBus() {
     if (eventBus == null) {
       eventBus = EventBus.get();
-      eventBus.on<Loading>().listen((event) {
-        if (event.status == Loading.SHOW_LOADING) {
-          showLoading();
-        } else {
-          if (loadingDialog != null) {
-            loadingDialog.dismissDialog();
-          }
-        }
-      });
     }
   }
 
@@ -69,5 +65,7 @@ abstract class BaseState<W extends StatefulWidget, VM extends BaseViewModel>
   void dispose() {
     super.dispose();
     setIsDispose(true);
+    viewModel?.showLoadingFun = null;
+    viewModel?.dismissLoadingFun = null;
   }
 }

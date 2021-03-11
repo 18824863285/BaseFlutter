@@ -26,7 +26,7 @@ class LoginViewModel extends BaseViewModel<LoginModel> {
         UserInfoSp.getInstance().userName = value.data.username;
         pop();
         push(MainPage());
-      });
+      }, isNeedLoading: true);
     }
   }
 }

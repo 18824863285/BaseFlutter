@@ -1,12 +1,8 @@
 import 'dart:async';
-
 import 'package:flutter/cupertino.dart';
-import 'event_bus/event/Loading.dart';
-import 'file:///D:/wan-android/wan_android_flutter/lib/base/event_bus/event_bus_mixin.dart';
 import 'package:wan_android_flutter/base/sharePreference/share_preference_mixin.dart';
-import 'package:wan_android_flutter/retrofit/RestClient.dart';
 import 'base_view_model_interface.dart';
-import 'event_bus/event_bus.dart';
+import 'event_bus/event_bus_mixin.dart';
 import 'inject/injector.dart';
 import 'navigator/navigator_mixin.dart';
 import 'toast/toast_mixin.dart';
@@ -26,15 +22,13 @@ abstract class BaseViewModel<M> extends ChangeNotifier
 
   bool get isDispose => _isDispose;
 
-  var restClient = getIt.get<RestClient>();
-
-  static final _loading = Loading();
-
-  static final _dismissLoading = Loading(status: Loading.DISMISS_LOADING);
-
   int needLoadingRequestCount = 0;
 
   bool isLoading = false;
+
+  Function() showLoadingFun;
+
+  Function dismissLoadingFun;
 
   set minLoadNum(int value) {
     _minLoadNum = value;
@@ -69,7 +63,9 @@ abstract class BaseViewModel<M> extends ChangeNotifier
       needLoadingRequestCount++;
       if (!isLoading) {
         isLoading = true;
-        EventBus.instance.fire(_loading);
+        if (showLoadingFun != null) {
+          showLoadingFun.call();
+        }
       }
     }
   }
@@ -79,7 +75,9 @@ abstract class BaseViewModel<M> extends ChangeNotifier
       needLoadingRequestCount--;
       if (needLoadingRequestCount == 0) {
         isLoading = false;
-        EventBus.instance.fire(_dismissLoading);
+        if (dismissLoadingFun != null) {
+          dismissLoadingFun.call();
+        }
       }
     }
   }
@@ -88,9 +86,11 @@ abstract class BaseViewModel<M> extends ChangeNotifier
   void sendRequest<T>(Future<T> future, FutureOr<dynamic> onValue(T value),
       {Function(Exception e) error, bool isNeedLoading = false}) {
     showLoading(isNeedLoading);
-    future.then(onValue).whenComplete(() {
+    future.then((t) {
       dismissLoading(isNeedLoading);
+      onValue(t);
     }).catchError((e) {
+      dismissLoading(isNeedLoading);
       print("====>error:$e");
       if (error != null) {
         error(e);

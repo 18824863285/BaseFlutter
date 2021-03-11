@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:wan_android_flutter/base/base_change_notifier_provider.dart';
 import 'package:wan_android_flutter/base/base_state.dart';
 import 'package:wan_android_flutter/base/base_stateful_widget.dart';
+import 'package:wan_android_flutter/base/util/density_util.dart';
 import 'package:wan_android_flutter/business/login/login_page.dart';
 import 'package:wan_android_flutter/business/start/start_view_model.dart';
 import 'package:wan_android_flutter/generated/l10n.dart';
@@ -16,6 +17,7 @@ class StartPage extends BaseStatefulWidget {
 class StartState extends BaseState<StartPage, StartViewModel> {
   @override
   Widget build(BuildContext context) {
+    Density.instance.init(context, 780, null);
     return ChangeNotifierProvider(
         create: (_) {
           viewModel.startCountdown(5);

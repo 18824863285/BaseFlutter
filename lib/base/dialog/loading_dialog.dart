@@ -32,7 +32,9 @@ class LoadingDialog extends StatefulWidget {
 class _LoadingDialogState extends State<LoadingDialog> {
   dismissDialog() {
     Navigator.of(context).pop();
-    widget.dismissListener();
+    if(widget.dismissListener != null){
+      widget.dismissListener();
+    }
   }
 
   @override

@@ -6,6 +6,7 @@ import 'package:intl/intl.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:wan_android_flutter/retrofit/RestClient.dart';
 import 'base/inject/injector.dart';
+import 'base/util/density_util.dart';
 import 'base/util/preference_utils.dart';
 import 'business/start/start_page.dart';
 import 'generated/l10n.dart';
@@ -64,28 +65,6 @@ class MyApp extends StatelessWidget {
           ),
           home: StartPage(),
         ));
-
-    // return MaterialApp(
-    //   debugShowCheckedModeBanner: false,
-    //   localizationsDelegates: const [
-    //     S.delegate,
-    //     RefreshLocalizations.delegate,
-    //     GlobalMaterialLocalizations.delegate,
-    //     GlobalCupertinoLocalizations.delegate,
-    //     GlobalWidgetsLocalizations.delegate,
-    //     DefaultWidgetsLocalizations.delegate
-    //   ],
-    //   supportedLocales: S.delegate.supportedLocales,
-    //   localeResolutionCallback:
-    //       (Locale locale, Iterable<Locale> supportedLocales) {
-    //     return locale;
-    //   },
-    //   theme: ThemeData(
-    //     primarySwatch: Colors.blue,
-    //     //  visualDensity: VisualDensity.adaptivePlatformDensity,
-    //   ),
-    //   home: StartPage(),
-    // );
   }
 }
 
