@@ -8,17 +8,17 @@ class CommonAppBar extends AppBar {
 
   CommonAppBar(this.context, {this.titleStr = ""})
       : super(
+            toolbarHeight: 45,
             centerTitle: true,
             title: Text(
               titleStr,
-              style: TextStyle(color: Color(0Xff313133), fontSize: 20),
+              style: TextStyle(color: Color(0Xff313133), fontSize: 16),
             ),
             backgroundColor: Colors.white,
             leading: BackButton(
               color: Color(0Xff313133),
-              onPressed: (){
+              onPressed: () {
                 NavigatorHelper.pop(context);
               },
             ));
-  
 }

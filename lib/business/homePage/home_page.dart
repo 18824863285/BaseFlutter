@@ -8,6 +8,7 @@ import 'package:wan_android_flutter/base/base_stateful_widget.dart';
 import 'package:wan_android_flutter/base/dialog/ensure_and_cancel_dialog.dart';
 import 'package:wan_android_flutter/base/util/screen_util.dart';
 import 'package:wan_android_flutter/base/util/time_util.dart';
+import 'package:wan_android_flutter/base/webview/webView_page.dart';
 import 'package:wan_android_flutter/base/widget/smart_drawer.dart';
 import 'package:wan_android_flutter/business/homePage/home_view_model.dart';
 import 'package:wan_android_flutter/const/resource.dart';
@@ -186,7 +187,7 @@ class HomeState extends BaseState<HomePage, HomeViewModel> {
                             itemBuilder: (context, index) {
                               return GestureDetector(
                                 onTap: () {
-
+                                   push(WebViewPage(viewModel.dataList[index].link, title: viewModel.dataList[index].title,));
                                 },
                                 child: Container(
                                   height: 100, //高度要加上，不然会卡死
