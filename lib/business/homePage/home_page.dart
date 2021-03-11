@@ -34,6 +34,7 @@ class HomeState extends BaseState<HomePage, HomeViewModel> {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
+          resizeToAvoidBottomInset: false,//解决键盘导致页面溢出
           drawer: SmartDrawer(
             widthPercent: 0.5,
             child: Container(
