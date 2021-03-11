@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:wan_android_flutter/base/adapter/screen/screen_adapter_mixin.dart';
 
 // ignore: must_be_immutable
-abstract class CenterDialog extends StatefulWidget {
+abstract class CenterDialog extends StatefulWidget with ScreenAdapterMixin{
   Widget child;
   bool outsideDismiss;
   CenterState centerState;
