@@ -184,48 +184,53 @@ class HomeState extends BaseState<HomePage, HomeViewModel> {
                         },
                         child: ListView.builder(
                             itemBuilder: (context, index) {
-                              return Container(
-                                height: 100, //高度要加上，不然会卡死
-                                margin: EdgeInsets.only(
-                                    left: 15, right: 15, top: 5, bottom: 5),
-                                decoration: new BoxDecoration(
-                                    border: new Border.all(
-                                        color: Color(0xFA000000), width: 0.5),
-                                    color: Colors.white,
-                                    borderRadius:
-                                        new BorderRadius.circular((5.0))),
-                                child: Stack(
-                                  children: [
-                                    Positioned(
-                                      child: Container(
+                              return GestureDetector(
+                                onTap: () {
+
+                                },
+                                child: Container(
+                                  height: 100, //高度要加上，不然会卡死
+                                  margin: EdgeInsets.only(
+                                      left: 15, right: 15, top: 5, bottom: 5),
+                                  decoration: new BoxDecoration(
+                                      border: new Border.all(
+                                          color: Color(0xFA000000), width: 0.5),
+                                      color: Colors.white,
+                                      borderRadius:
+                                          new BorderRadius.circular((5.0))),
+                                  child: Stack(
+                                    children: [
+                                      Positioned(
+                                        child: Container(
+                                          child: Text(
+                                              viewModel.getData(index)?.title ??
+                                                  "",
+                                              maxLines: 1,
+                                              overflow: TextOverflow.ellipsis),
+                                          constraints:
+                                              BoxConstraints(maxWidth: 280),
+                                        ),
+                                        left: 15,
+                                        top: 10,
+                                      ),
+                                      Positioned(
                                         child: Text(
-                                            viewModel.getData(index)?.title ??
-                                                "",
-                                            maxLines: 1,
-                                            overflow: TextOverflow.ellipsis),
-                                        constraints:
-                                            BoxConstraints(maxWidth: 280),
+                                          '作者：${viewModel.getData(index)?.author ?? ""}',
+                                          style: TextStyle(color: Colors.grey),
+                                        ),
+                                        left: 15,
+                                        top: 30,
                                       ),
-                                      left: 15,
-                                      top: 10,
-                                    ),
-                                    Positioned(
-                                      child: Text(
-                                        '作者：${viewModel.getData(index)?.author ?? ""}',
-                                        style: TextStyle(color: Colors.grey),
-                                      ),
-                                      left: 15,
-                                      top: 30,
-                                    ),
-                                    Positioned(
-                                      child: Text(
-                                        '时间：${TimeUtil.getStandardTime(viewModel.getData(index)?.publishTime ?? 0)}',
-                                        style: TextStyle(color: Colors.grey),
-                                      ),
-                                      left: 15,
-                                      top: 60,
-                                    )
-                                  ],
+                                      Positioned(
+                                        child: Text(
+                                          '时间：${TimeUtil.getStandardTime(viewModel.getData(index)?.publishTime ?? 0)}',
+                                          style: TextStyle(color: Colors.grey),
+                                        ),
+                                        left: 15,
+                                        top: 60,
+                                      )
+                                    ],
+                                  ),
                                 ),
                               );
                             },
