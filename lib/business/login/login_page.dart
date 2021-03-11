@@ -20,9 +20,6 @@ class LoginPage extends BaseStatefulWidget {
 }
 
 class LoginState extends BaseState<LoginPage, LoginViewModel> {
-  void show() {
-    CenterDialog(Container()).show(context);
-  }
 
   @override
   void initEventBus() {

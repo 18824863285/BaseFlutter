@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:provider/provider.dart';
 import 'package:wan_android_flutter/base/base_state.dart';
 import 'package:wan_android_flutter/base/base_stateful_widget.dart';
+import 'package:wan_android_flutter/base/dialog/ensure_and_cancel_dialog.dart';
 import 'package:wan_android_flutter/base/util/screen_util.dart';
 import 'package:wan_android_flutter/base/util/time_util.dart';
 import 'package:wan_android_flutter/business/homePage/home_view_model.dart';
@@ -19,6 +20,8 @@ class HomePage extends BaseStatefulWidget {
 
 class HomeState extends BaseState<HomePage, HomeViewModel> {
 
+  EnsureAndCancelDialog dialog = EnsureAndCancelDialog("asd");
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -26,6 +29,7 @@ class HomeState extends BaseState<HomePage, HomeViewModel> {
         return viewModel;
       },
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         home: Scaffold(
           body: Container(
             color: Colors.white,
@@ -89,6 +93,7 @@ class HomeState extends BaseState<HomePage, HomeViewModel> {
                         controller: viewModel.refreshController,
                         onRefresh: () {
                           viewModel.refresh();
+                          dialog.show(context);
                         },
                         onLoading: () {
                           viewModel.loadMore();
@@ -115,7 +120,7 @@ class HomeState extends BaseState<HomePage, HomeViewModel> {
                                             maxLines: 1,
                                             overflow: TextOverflow.ellipsis),
                                         constraints:
-                                            BoxConstraints(maxWidth: 320),
+                                            BoxConstraints(maxWidth: 280),
                                       ),
                                       left: 15,
                                       top: 10,
