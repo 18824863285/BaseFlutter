@@ -2,6 +2,7 @@ import 'package:extended_image/extended_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:provider/provider.dart';
 import 'package:wan_android_flutter/base/base_state.dart';
 import 'package:wan_android_flutter/base/base_stateful_widget.dart';
@@ -34,7 +35,7 @@ class HomeState extends BaseState<HomePage, HomeViewModel> {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
-          resizeToAvoidBottomInset: false,//解决键盘导致页面溢出
+          resizeToAvoidBottomInset: false, //解决键盘导致页面溢出
           drawer: SmartDrawer(
             widthPercent: 0.5,
             child: Container(
@@ -179,65 +180,111 @@ class HomeState extends BaseState<HomePage, HomeViewModel> {
                         enablePullUp: true,
                         controller: viewModel.refreshController,
                         onRefresh: () {
+                          viewModel.getBanner();
                           viewModel.refresh();
                         },
                         onLoading: () {
                           viewModel.loadMore();
                         },
-                        child: ListView.builder(
-                            itemBuilder: (context, index) {
-                              return GestureDetector(
-                                onTap: () {
-                                   push(WebViewPage(viewModel.dataList[index].link, title: viewModel.dataList[index].title,));
-                                },
-                                child: Container(
-                                  height: 100, //高度要加上，不然会卡死
-                                  margin: EdgeInsets.only(
-                                      left: 15, right: 15, top: 5, bottom: 5),
-                                  decoration: new BoxDecoration(
-                                      border: new Border.all(
-                                          color: Color(0xFA000000), width: 0.5),
-                                      color: Colors.white,
-                                      borderRadius:
-                                          new BorderRadius.circular((5.0))),
-                                  child: Stack(
-                                    children: [
-                                      Positioned(
-                                        child: Container(
-                                          child: Text(
-                                              viewModel.getData(index)?.title ??
-                                                  "",
-                                              maxLines: 1,
-                                              overflow: TextOverflow.ellipsis),
-                                          constraints:
-                                              BoxConstraints(maxWidth: 280),
-                                        ),
-                                        left: 15,
-                                        top: 10,
+                        child: CustomScrollView(
+                          slivers: <Widget>[
+                            // 如果不是Sliver家族的Widget，需要使用SliverToBoxAdapter做层包裹
+                            SliverToBoxAdapter(
+                              child: Container(
+                                height: 180,
+                                color: Colors.green,
+                                child: Swiper(
+                                  itemBuilder:
+                                      (BuildContext context, int index) {
+                                    return new GestureDetector(
+                                      onTap: () {},
+                                      child: Image.network(
+                                        "https://p0.ssl.qhimgs1.com/t01e647b057a74476a9.jpg",
+                                        fit: BoxFit.cover,
                                       ),
-                                      Positioned(
-                                        child: Text(
-                                          '作者：${viewModel.getData(index)?.author ?? ""}',
-                                          style: TextStyle(color: Colors.grey),
-                                        ),
-                                        left: 15,
-                                        top: 30,
-                                      ),
-                                      Positioned(
-                                        child: Text(
-                                          '时间：${TimeUtil.getStandardTime(viewModel.getData(index)?.publishTime ?? 0)}',
-                                          style: TextStyle(color: Colors.grey),
-                                        ),
-                                        left: 15,
-                                        top: 60,
-                                      )
-                                    ],
-                                  ),
+                                    );
+                                  },
+                                  itemCount: 3,
+                                  pagination: SwiperPagination(
+                                      builder: DotSwiperPaginationBuilder(
+                                          color: Colors.white,
+                                          activeColor: Colors.black,
+                                          size: 6,
+                                          activeSize: 6)),
+                                  autoplay: true,
+                                  duration: 800,
                                 ),
-                              );
-                            },
-                            itemExtent: 100,
-                            itemCount: viewModel.dataList.length),
+                              ),
+                            ),
+                            // 当列表项高度固定时，使用 SliverFixedExtendList 比 SliverList 具有更高的性能
+                            SliverFixedExtentList(
+                                delegate: SliverChildBuilderDelegate(
+                                    (context, index) {
+                                  return GestureDetector(
+                                    onTap: () {
+                                      push(WebViewPage(
+                                        viewModel.dataList[index].link,
+                                        title: viewModel.dataList[index].title,
+                                      ));
+                                    },
+                                    child: Container(
+                                      height: 100, //高度要加上，不然会卡死
+                                      margin: EdgeInsets.only(
+                                          left: 15,
+                                          right: 15,
+                                          top: 5,
+                                          bottom: 5),
+                                      decoration: new BoxDecoration(
+                                          border: new Border.all(
+                                              color: Color(0xFA000000),
+                                              width: 0.5),
+                                          color: Colors.white,
+                                          borderRadius:
+                                              new BorderRadius.circular((5.0))),
+                                      child: Stack(
+                                        children: [
+                                          Positioned(
+                                            child: Container(
+                                              child: Text(
+                                                  viewModel
+                                                          .getData(index)
+                                                          ?.title ??
+                                                      "",
+                                                  maxLines: 1,
+                                                  overflow:
+                                                      TextOverflow.ellipsis),
+                                              constraints:
+                                                  BoxConstraints(maxWidth: 280),
+                                            ),
+                                            left: 15,
+                                            top: 10,
+                                          ),
+                                          Positioned(
+                                            child: Text(
+                                              '作者：${viewModel.getData(index)?.author ?? ""}',
+                                              style:
+                                                  TextStyle(color: Colors.grey),
+                                            ),
+                                            left: 15,
+                                            top: 30,
+                                          ),
+                                          Positioned(
+                                            child: Text(
+                                              '时间：${TimeUtil.getStandardTime(viewModel.getData(index)?.publishTime ?? 0)}',
+                                              style:
+                                                  TextStyle(color: Colors.grey),
+                                            ),
+                                            left: 15,
+                                            top: 60,
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  );
+                                }, childCount: viewModel.dataList.length),
+                                itemExtent: 100)
+                          ],
+                        ),
                       );
                     },
                   ),

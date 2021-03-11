@@ -2,6 +2,7 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/http.dart';
 import 'package:wan_android_flutter/business/homePage/model/article.dart';
+import 'package:wan_android_flutter/business/homePage/model/banner.dart';
 import 'package:wan_android_flutter/retrofit/RestClient.dart';
 import 'model/logout_result.dart';
 
@@ -18,5 +19,8 @@ abstract class HomeModel {
 
   @GET("user/logout/json")
   Future<LogoutResult> logout();
+
+  @GET("banner/json")
+  Future<Banner> getBanner();
 
 }

@@ -52,4 +52,21 @@ class _HomeModel implements HomeModel {
     final value = LogoutResult.fromJson(_result.data);
     return value;
   }
+
+  @override
+  Future<Banner> getBanner() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.request<Map<String, dynamic>>('banner/json',
+        queryParameters: queryParameters,
+        options: RequestOptions(
+            method: 'GET',
+            headers: <String, dynamic>{},
+            extra: _extra,
+            baseUrl: baseUrl),
+        data: _data);
+    final value = Banner.fromJson(_result.data);
+    return value;
+  }
 }

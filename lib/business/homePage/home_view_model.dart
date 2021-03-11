@@ -3,6 +3,7 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:wan_android_flutter/base/base_view_model.dart';
 import 'package:wan_android_flutter/business/homePage/home_model.dart';
 import 'package:wan_android_flutter/business/homePage/model/article.dart';
+import 'package:wan_android_flutter/business/homePage/model/banner.dart';
 import 'package:wan_android_flutter/business/homePage/model/logout_result.dart';
 import 'package:wan_android_flutter/business/login/login_page.dart';
 import 'package:wan_android_flutter/sharePreference/user_info_share_preference.dart';
@@ -17,8 +18,16 @@ class HomeViewModel extends BaseViewModel<HomeModel> {
 
   bool isRequest = true;
 
+  List<BannerItem> bannerItems;
+
   @factoryMethod
   HomeViewModel();
+
+  @override
+  void init() {
+    super.init();
+    minLoadNum = 2;
+  }
 
   void _getArticleList() {
     isRequest = true;
@@ -39,6 +48,13 @@ class HomeViewModel extends BaseViewModel<HomeModel> {
       notifyPage();
     }, error: (e) {
       isRequest = false;
+    });
+  }
+
+  void getBanner() {
+    sendRequest<Banner>(model.getBanner(), (value) {
+      bannerItems = value.data;
+      notifyPage();
     });
   }
 
