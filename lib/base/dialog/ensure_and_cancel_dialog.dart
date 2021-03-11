@@ -35,17 +35,18 @@ class EnsureAndCancelDialog extends CenterDialog {
               children: [
                 GestureDetector(
                   onTap: () {
+                    dismiss();
                     if (onCancel != null) {
                       onCancel.call();
                     }
-                    dismiss();
                   },
-                  child: SizedBox(
+                  child: Container(
+                    alignment: Alignment.center,
                     width: 129.5,
                     height: 45,
                     child: Center(
                       child: Text(
-                        "取消",
+                        "    取消    ",
                         style: TextStyle(color: Colors.grey, fontSize: 15),
                         textAlign: TextAlign.center,
                       ),
@@ -59,17 +60,18 @@ class EnsureAndCancelDialog extends CenterDialog {
                 ),
                 GestureDetector(
                   onTap: () {
+                    dismiss();
                     if (onEnsure != null) {
                       onEnsure.call();
                     }
-                    dismiss();
                   },
-                  child: SizedBox(
+                  child: Container(
                     width: 129.5,
                     height: 45,
+                    alignment: Alignment.center,
                     child: Center(
                       child: Text(
-                        "确定",
+                        "    确定    ",
                         style: TextStyle(color: Colors.black, fontSize: 15),
                         textAlign: TextAlign.center,
                       ),

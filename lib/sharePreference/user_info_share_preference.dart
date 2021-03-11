@@ -42,4 +42,8 @@ class UserInfoSp {
   bool _isLogin;
 
   get isLogin => uid != 0;
+
+  void clear() {
+    _preferenceUtils.clear();
+  }
 }

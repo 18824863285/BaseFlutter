@@ -35,4 +35,21 @@ class _HomeModel implements HomeModel {
     final value = Article.fromJson(_result.data);
     return value;
   }
+
+  @override
+  Future<LogoutResult> logout() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.request<Map<String, dynamic>>('user/logout/json',
+        queryParameters: queryParameters,
+        options: RequestOptions(
+            method: 'GET',
+            headers: <String, dynamic>{},
+            extra: _extra,
+            baseUrl: baseUrl),
+        data: _data);
+    final value = LogoutResult.fromJson(_result.data);
+    return value;
+  }
 }

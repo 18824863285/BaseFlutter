@@ -20,7 +20,6 @@ class LoginPage extends BaseStatefulWidget {
 }
 
 class LoginState extends BaseState<LoginPage, LoginViewModel> {
-
   @override
   void initEventBus() {
     super.initEventBus();
@@ -54,7 +53,7 @@ class LoginState extends BaseState<LoginPage, LoginViewModel> {
                 )),
             Positioned(
                 top: 100,
-                child: Text(S.of(context).loginTitle,
+                child: Text("账号登录",
                     style: TextStyle(color: Colors.white, fontSize: 25))),
             Positioned(
               top: 200,
@@ -68,8 +67,8 @@ class LoginState extends BaseState<LoginPage, LoginViewModel> {
                       fillColor: Color(0x30cccccc),
                       filled: true,
                       hintText: UserInfoSp.getInstance().userName.isEmpty
-                          ? S.of(context).input_login_name
-                          : UserInfoSp.getInstance().userName.isEmpty,
+                          ? "请输入登录账号"
+                          : UserInfoSp.getInstance().userName,
                       hintStyle: TextStyle(color: Colors.white),
                       focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
@@ -93,7 +92,7 @@ class LoginState extends BaseState<LoginPage, LoginViewModel> {
                     obscureText: true,
                     style: TextStyle(color: Colors.white, fontSize: 15),
                     decoration: InputDecoration(
-                        hintText: S.of(context).input_login_psw,
+                        hintText: "请输入登录密码",
                         hintStyle: TextStyle(color: Colors.white, fontSize: 15),
                         focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.white),
@@ -122,7 +121,7 @@ class LoginState extends BaseState<LoginPage, LoginViewModel> {
                       viewModel.login();
                     },
                     child: Text(
-                      S.of(context).login,
+                      "登录",
                       style: TextStyle(color: Colors.blue, fontSize: 15),
                     ),
                   ),
@@ -137,7 +136,7 @@ class LoginState extends BaseState<LoginPage, LoginViewModel> {
                     push(RegisterPage());
                   },
                   child: Text(
-                    S.of(context).register,
+                    "注册",
                     style: TextStyle(color: Colors.white, fontSize: 15),
                   ),
                 ))

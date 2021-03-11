@@ -1,3 +1,4 @@
+import 'package:extended_image/extended_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -7,9 +8,11 @@ import 'package:wan_android_flutter/base/base_stateful_widget.dart';
 import 'package:wan_android_flutter/base/dialog/ensure_and_cancel_dialog.dart';
 import 'package:wan_android_flutter/base/util/screen_util.dart';
 import 'package:wan_android_flutter/base/util/time_util.dart';
+import 'package:wan_android_flutter/base/widget/smart_drawer.dart';
 import 'package:wan_android_flutter/business/homePage/home_view_model.dart';
 import 'package:wan_android_flutter/const/resource.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:wan_android_flutter/sharePreference/user_info_share_preference.dart';
 
 class HomePage extends BaseStatefulWidget {
   @override
@@ -19,8 +22,7 @@ class HomePage extends BaseStatefulWidget {
 }
 
 class HomeState extends BaseState<HomePage, HomeViewModel> {
-
-  EnsureAndCancelDialog dialog = EnsureAndCancelDialog("asd");
+  EnsureAndCancelDialog ensureAndCancelDialog;
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +33,82 @@ class HomeState extends BaseState<HomePage, HomeViewModel> {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
+          drawer: SmartDrawer(
+            widthPercent: 0.5,
+            child: Container(
+              alignment: Alignment.center,
+              child: Column(
+                children: [
+                  Container(
+                    height: 160,
+                    color: Colors.blue,
+                    child: Stack(
+                      alignment: Alignment.topCenter,
+                      children: [
+                        Positioned(
+                          child: ExtendedImage.network(
+                            "http://p0.so.qhmsg.com/t016a86d036a514bb77.jpg",
+                            width: 80,
+                            height: 80,
+                            fit: BoxFit.cover,
+                            shape: BoxShape.circle,
+                          ),
+                          top: 28,
+                        ),
+                        Positioned(
+                          child: Text(
+                            UserInfoSp.getInstance().userName,
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          top: 120,
+                        )
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                      child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Positioned(
+                        child: GestureDetector(
+                          onTap: () {
+                            if (ensureAndCancelDialog == null) {
+                              ensureAndCancelDialog = EnsureAndCancelDialog(
+                                  "确定要退出登录吗？", onEnsure: () {
+                                viewModel.logout();
+                              });
+                            }
+                            ensureAndCancelDialog.show(context);
+                          },
+                          child: Container(
+                            height: 50,
+                            alignment: Alignment.center,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Image.asset(
+                                  R.ASSETS_IMAGES_BASELINE_POWER_SETTINGS_NEW_BLACK_36DP_PNG,
+                                  width: 25,
+                                  height: 25,
+                                  fit: BoxFit.cover,
+                                ),
+                                Container(
+                                  padding: EdgeInsets.only(left: 5, right: 15),
+                                  child: Text("退出登录"),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        bottom: 0,
+                      )
+                    ],
+                  ))
+                ],
+              ),
+            ),
+          ),
           body: Container(
             color: Colors.white,
             padding: EdgeInsets.only(top: ScreenUtil.getStatusBarHigh()),
@@ -42,11 +120,18 @@ class HomeState extends BaseState<HomePage, HomeViewModel> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Container(
-                        child: Image.asset(
-                          R.ASSETS_IMAGES_IC_VIEW_LIST_BLACK_48DP_PNG,
-                          width: 25,
-                          height: 25,
-                        ),
+                        child: Builder(builder: (context) {
+                          return GestureDetector(
+                            onTap: () {
+                              Scaffold.of(context).openDrawer();
+                            },
+                            child: Image.asset(
+                              R.ASSETS_IMAGES_IC_VIEW_LIST_BLACK_48DP_PNG,
+                              width: 25,
+                              height: 25,
+                            ),
+                          );
+                        }),
                         padding: EdgeInsets.only(left: 10, right: 10),
                       ),
                       Expanded(
@@ -93,7 +178,6 @@ class HomeState extends BaseState<HomePage, HomeViewModel> {
                         controller: viewModel.refreshController,
                         onRefresh: () {
                           viewModel.refresh();
-                          dialog.show(context);
                         },
                         onLoading: () {
                           viewModel.loadMore();

@@ -21,6 +21,7 @@
   "officialAccounts": "公众号",
   "knowledgeHierarchy": "知识体系",
   "project":"项目",
-  "please_input_search_msg":"请输入搜索信息"
+  "please_input_search_msg":"请输入搜索信息",
+  "logout":"退出登录"
 
 }

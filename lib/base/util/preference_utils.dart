@@ -57,4 +57,8 @@ class PreferenceUtils {
     var value = _sharedPreferences.getStringList(key);
     return value ?? defaultValue;
   }
+
+  void clear(){
+    _sharedPreferences.clear();
+  }
 }

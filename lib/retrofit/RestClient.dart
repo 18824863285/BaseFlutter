@@ -9,6 +9,7 @@ import 'package:wan_android_flutter/business/main/main_model.dart';
 import 'package:wan_android_flutter/business/officialAccounts/official_accounts_model.dart';
 import 'package:wan_android_flutter/business/project/project_model.dart';
 import 'package:wan_android_flutter/business/register/register_model.dart';
+import 'package:wan_android_flutter/retrofit/request_head_interceptor.dart';
 
 part 'RestClient.g.dart';
 
@@ -20,6 +21,7 @@ Dio dio = Dio(
 void initRestClient() {
   dio.interceptors.add(LogInterceptor(
       requestHeader: true, requestBody: true, responseBody: true));
+  dio.interceptors.add(RequestHeadInterceptor());
 }
 
 @module
@@ -67,7 +69,6 @@ abstract class RetrofitModule {
     final client = ProjectModel(dio);
     return client;
   }
-
 }
 
 @RestApi(baseUrl: url)

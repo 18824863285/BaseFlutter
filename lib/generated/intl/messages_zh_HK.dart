@@ -40,6 +40,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "loginTitle" : MessageLookupByLibrary.simpleMessage("账号登录"),
     "login_is_not_empty" : MessageLookupByLibrary.simpleMessage("登录账号不可为空"),
     "login_psw_is_not_empty" : MessageLookupByLibrary.simpleMessage("登录密码不可为空"),
+    "logout" : MessageLookupByLibrary.simpleMessage("退出登录"),
     "name" : MessageLookupByLibrary.simpleMessage("name"),
     "officialAccounts" : MessageLookupByLibrary.simpleMessage("公众号"),
     "pageHomeWelcome" : m1,

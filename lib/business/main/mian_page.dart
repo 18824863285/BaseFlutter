@@ -37,19 +37,19 @@ class MainState extends BaseState<MainPage, MainViewModel> {
             BottomNavigationBarItem(
                 icon: getIcon(Icons.home),
                 activeIcon: getActiveIcon(Icons.home),
-                title: getBottomText(S.of(context).home_page)),
+                title: getBottomText("首页")),//退出后在进入到这里的时候国际化回报错
             BottomNavigationBarItem(
                 icon: getIcon(Icons.list),
                 activeIcon: getActiveIcon(Icons.list),
-                title: getBottomText(S.of(context).officialAccounts)),
+                title: getBottomText("公众号")),
             BottomNavigationBarItem(
                 icon: getIcon(Icons.map),
                 activeIcon: getActiveIcon(Icons.map),
-                title: getBottomText(S.of(context).knowledgeHierarchy)),
+                title: getBottomText("知识体系")),
             BottomNavigationBarItem(
                 icon: getIcon(Icons.description),
                 activeIcon: getActiveIcon(Icons.description),
-                title: getBottomText(S.of(context).project))
+                title: getBottomText("项目"))
           ],
         ),
       ),

@@ -3,6 +3,9 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:wan_android_flutter/base/base_view_model.dart';
 import 'package:wan_android_flutter/business/homePage/home_model.dart';
 import 'package:wan_android_flutter/business/homePage/model/article.dart';
+import 'package:wan_android_flutter/business/homePage/model/logout_result.dart';
+import 'package:wan_android_flutter/business/login/login_page.dart';
+import 'package:wan_android_flutter/sharePreference/user_info_share_preference.dart';
 
 @injectable
 class HomeViewModel extends BaseViewModel<HomeModel> {
@@ -37,6 +40,18 @@ class HomeViewModel extends BaseViewModel<HomeModel> {
     }, error: (e) {
       isRequest = false;
     });
+  }
+
+  void logout() {
+    sendRequest<LogoutResult>(model.logout(), (value) {
+      if (value.errorCode == 0) {
+        UserInfoSp.getInstance().clear();
+        pop();
+        push(LoginPage());
+      } else {
+        showToast(value.errorMsg);
+      }
+    }, isNeedLoading: true);
   }
 
   Datas getData(int index) {
