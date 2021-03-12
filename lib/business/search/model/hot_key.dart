@@ -1,3 +1,4 @@
+import 'package:floor/floor.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'hot_key.g.dart';
@@ -19,7 +20,9 @@ class HotKey {
 }
 
 @JsonSerializable()
+@entity
 class HotKeyItem {
+  @primaryKey
   int id;
   String link;
   String name;
