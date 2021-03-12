@@ -46,7 +46,7 @@ abstract class BaseState<W extends StatefulWidget, VM extends BaseViewModel>
         showLoading();
       };
       viewModel.dismissLoadingFun = () {
-        loadingDialog.dismissDialog();
+        loadingDialog?.dismissDialog();
       };
     }
     initEventBus();
@@ -60,7 +60,7 @@ abstract class BaseState<W extends StatefulWidget, VM extends BaseViewModel>
   }
 
   void showLoading() async {
-    if (isBuildFinish) {
+    if (isBuildFinish) {//必须等到父组件build结束后才能构建自己，https://blog.csdn.net/qq_39493848/article/details/108514136
       showDialog(
           context: context,
           builder: (_) {
