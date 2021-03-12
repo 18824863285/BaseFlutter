@@ -8,7 +8,7 @@ part of 'banner.dart';
 
 Banner _$BannerFromJson(Map<String, dynamic> json) {
   return Banner(
-    json['errorCode'] as String,
+    json['errorCode'] as int,
     json['errorMsg'] as String,
     (json['data'] as List)
         ?.map((e) =>

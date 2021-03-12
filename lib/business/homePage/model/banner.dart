@@ -5,7 +5,7 @@ part 'banner.g.dart';
 @JsonSerializable()
 class Banner {
 
-  String errorCode;
+  int errorCode;
   String errorMsg;
   List<BannerItem> data;
 

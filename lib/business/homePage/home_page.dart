@@ -140,24 +140,34 @@ class HomeState extends BaseState<HomePage, HomeViewModel> {
                       Expanded(
                           child: Container(
                         margin: EdgeInsets.only(right: 15),
-                        child: SizedBox(
-                          height: 40,
-                          child: TextField(
-                            style: TextStyle(color: Colors.black),
-                            decoration: InputDecoration(
-                                fillColor: Color(0x30cccccc),
-                                contentPadding: EdgeInsets.only(left: 15),
-                                filled: true,
-                                hintText: "请输入搜索信息",
-                                hintStyle: TextStyle(color: Colors.grey),
-                                focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(color: Colors.white),
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10))),
-                                enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(color: Colors.white),
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10)))),
+                        child: GestureDetector(
+                          onTap: () {
+
+                          },
+                          child: SizedBox(
+                            height: 40,
+                            width: 260,
+                            child: TextField(
+                              enabled: false,
+                              style: TextStyle(color: Colors.black),
+                              decoration: InputDecoration(
+                                  fillColor: Color(0x30cccccc),
+                                  contentPadding:
+                                      EdgeInsets.only(left: 10, bottom: 5),
+                                  filled: true,
+                                  hintText: "请输入搜索信息",
+                                  hintStyle: TextStyle(color: Colors.grey),
+                                  focusedBorder: OutlineInputBorder(
+                                      borderSide:
+                                          BorderSide(color: Colors.white),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(10))),
+                                  enabledBorder: OutlineInputBorder(
+                                      borderSide:
+                                          BorderSide(color: Colors.white),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(10)))),
+                            ),
                           ),
                         ),
                       ))
@@ -175,6 +185,7 @@ class HomeState extends BaseState<HomePage, HomeViewModel> {
                   child: Selector<HomeViewModel, int>(
                     selector: (context, homeViewModel) => viewModel.loadNum,
                     builder: (context, count, child) {
+                      print("====>SmartRefresher");
                       return SmartRefresher(
                         enablePullDown: true,
                         enablePullUp: true,
