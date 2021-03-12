@@ -34,11 +34,6 @@ abstract class BaseState<W extends StatefulWidget, VM extends BaseViewModel>
     widgetsBinding.addPostFrameCallback((callback) {//说明build结束了
       print("====>build结束了");
       isBuildFinish = true;
-      widgetsBinding.addPersistentFrameCallback((callback){
-        print("addPersistentFrameCallback be invoke");
-        //触发一帧的绘制
-        widgetsBinding.scheduleFrame();
-      });
     });
 
     setContext(context);
