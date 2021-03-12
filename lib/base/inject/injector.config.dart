@@ -22,12 +22,14 @@ import '../../business/project/project_model.dart' as _i13;
 import '../../business/project/project_view_model.dart' as _i14;
 import '../../business/register/register_model.dart' as _i15;
 import '../../business/register/register_view_model.dart' as _i16;
-import '../../business/start/start_model.dart' as _i18;
-import '../../business/start/start_view_model.dart' as _i19;
+import '../../business/search/search_model.dart' as _i18;
+import '../../business/search/search_view_model.dart' as _i19;
+import '../../business/start/start_model.dart' as _i20;
+import '../../business/start/start_view_model.dart' as _i21;
 import '../../retrofit/RestClient.dart' as _i17;
-import '../test/TestModel.dart' as _i20;
+import '../test/TestModel.dart' as _i22;
 import '../test/TestViewModel.dart'
-    as _i21; // ignore_for_file: unnecessary_lambdas
+    as _i23; // ignore_for_file: unnecessary_lambdas
 
 // ignore_for_file: lines_longer_than_80_chars
 /// an extension to register the provided dependencies inside of [GetIt]
@@ -54,10 +56,12 @@ extension GetItInjectableX on _i1.GetIt {
     gh.factory<_i15.RegisterModel>(() => retrofitModule.registerModel());
     gh.factory<_i16.RegisterViewModel>(() => _i16.RegisterViewModel());
     gh.factory<_i17.RestClient>(() => retrofitModule.restClient());
-    gh.factory<_i18.StartModel>(() => _i18.StartModel());
-    gh.factory<_i19.StartViewModel>(() => _i19.StartViewModel());
-    gh.factory<_i20.TestModel>(() => _i20.TestModel());
-    gh.factory<_i21.TestViewModel>(() => _i21.TestViewModel());
+    gh.factory<_i18.SearchModel>(() => retrofitModule.searchModel());
+    gh.factory<_i19.SearchViewModel>(() => _i19.SearchViewModel());
+    gh.factory<_i20.StartModel>(() => _i20.StartModel());
+    gh.factory<_i21.StartViewModel>(() => _i21.StartViewModel());
+    gh.factory<_i22.TestModel>(() => _i22.TestModel());
+    gh.factory<_i23.TestViewModel>(() => _i23.TestViewModel());
     return this;
   }
 }

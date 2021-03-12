@@ -12,6 +12,7 @@ import 'package:wan_android_flutter/base/util/time_util.dart';
 import 'package:wan_android_flutter/base/webview/webView_page.dart';
 import 'package:wan_android_flutter/base/widget/smart_drawer.dart';
 import 'package:wan_android_flutter/business/homePage/home_view_model.dart';
+import 'package:wan_android_flutter/business/search/search_page.dart';
 import 'package:wan_android_flutter/const/resource.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:wan_android_flutter/sharePreference/user_info_share_preference.dart';
@@ -142,7 +143,7 @@ class HomeState extends BaseState<HomePage, HomeViewModel> {
                         margin: EdgeInsets.only(right: 15),
                         child: GestureDetector(
                           onTap: () {
-
+                            push(SearchPage());
                           },
                           child: SizedBox(
                             height: 40,
@@ -185,7 +186,6 @@ class HomeState extends BaseState<HomePage, HomeViewModel> {
                   child: Selector<HomeViewModel, int>(
                     selector: (context, homeViewModel) => viewModel.loadNum,
                     builder: (context, count, child) {
-                      print("====>SmartRefresher");
                       return SmartRefresher(
                         enablePullDown: true,
                         enablePullUp: true,
@@ -205,17 +205,20 @@ class HomeState extends BaseState<HomePage, HomeViewModel> {
                                 height: 180,
                                 color: Colors.green,
                                 child: Swiper(
+                                  onTap: (int index) {
+                                    push(WebViewPage(
+                                      viewModel.bannerItems[index].url,
+                                      title: viewModel.bannerItems[index].title,
+                                    ));
+                                  },
                                   itemBuilder:
                                       (BuildContext context, int index) {
-                                    return new GestureDetector(
-                                      onTap: () {},
-                                      child: Image.network(
-                                        "https://p0.ssl.qhimgs1.com/t01e647b057a74476a9.jpg",
-                                        fit: BoxFit.cover,
-                                      ),
+                                    return Image.network(
+                                      viewModel.bannerItems[index].imagePath,
+                                      fit: BoxFit.cover,
                                     );
                                   },
-                                  itemCount: 3,
+                                  itemCount: viewModel.bannerItems?.length ?? 0,
                                   pagination: SwiperPagination(
                                       builder: DotSwiperPaginationBuilder(
                                           color: Colors.white,

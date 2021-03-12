@@ -9,6 +9,7 @@ import 'package:wan_android_flutter/business/main/main_model.dart';
 import 'package:wan_android_flutter/business/officialAccounts/official_accounts_model.dart';
 import 'package:wan_android_flutter/business/project/project_model.dart';
 import 'package:wan_android_flutter/business/register/register_model.dart';
+import 'package:wan_android_flutter/business/search/search_model.dart';
 import 'package:wan_android_flutter/retrofit/request_head_interceptor.dart';
 
 part 'RestClient.g.dart';
@@ -69,6 +70,12 @@ abstract class RetrofitModule {
     final client = ProjectModel(dio);
     return client;
   }
+
+  SearchModel searchModel() {
+    final client = SearchModel(dio);
+    return client;
+  }
+
 }
 
 @RestApi(baseUrl: url)

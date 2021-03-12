@@ -24,9 +24,18 @@ abstract class BaseState<W extends StatefulWidget, VM extends BaseViewModel>
   EventBus eventBus;
   LoadingDialog loadingDialog;
 
+  bool isBuildFinish;
+
   @override
   void initState() {
     super.initState();
+    isBuildFinish = false;
+    WidgetsBinding widgetsBinding = WidgetsBinding.instance;
+    widgetsBinding.addPostFrameCallback((callback) {//说明build结束了
+      print("====>build结束了");
+      isBuildFinish = true;
+    });
+
     setContext(context);
     setIsDispose(false);
     if (viewModel == null) {
@@ -50,15 +59,20 @@ abstract class BaseState<W extends StatefulWidget, VM extends BaseViewModel>
     }
   }
 
-  void showLoading() {
-    showDialog(
-        context: context,
-        builder: (_) {
-          if (loadingDialog == null) {
-            loadingDialog = LoadingDialog();
-          }
-          return loadingDialog;
-        });
+  void showLoading() async {
+    if (isBuildFinish) {
+      showDialog(
+          context: context,
+          builder: (_) {
+            if (loadingDialog == null) {
+              loadingDialog = LoadingDialog();
+            }
+            return loadingDialog;
+          });
+    } else {
+      await Future.delayed(Duration(milliseconds: 10));
+      showLoading();
+    }
   }
 
   @override
