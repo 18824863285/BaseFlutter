@@ -82,6 +82,9 @@ class R {
   /// ![preview](file://D:\wan-android\wan_android_flutter\assets\images\play.png)
   static const String ASSETS_IMAGES_PLAY_PNG = 'assets/images/play.png';
 
+  /// ![preview](file://D:\wan-android\wan_android_flutter\assets\images\qq.jpg)
+  static const String ASSETS_IMAGES_QQ_JPG = 'assets/images/qq.jpg';
+
   /// ![preview](file://D:\wan-android\wan_android_flutter\assets\images\round_arrow_forward_left.png)
   static const String ASSETS_IMAGES_ROUND_ARROW_FORWARD_LEFT_PNG =
       'assets/images/round_arrow_forward_left.png';
@@ -93,4 +96,7 @@ class R {
   /// ![preview](file://D:\wan-android\wan_android_flutter\assets\images\round_arrow_forward_up_down.png)
   static const String ASSETS_IMAGES_ROUND_ARROW_FORWARD_UP_DOWN_PNG =
       'assets/images/round_arrow_forward_up_down.png';
+
+  /// ![preview](file://D:\wan-android\wan_android_flutter\assets\images\wx.jpg)
+  static const String ASSETS_IMAGES_WX_JPG = 'assets/images/wx.jpg';
 }

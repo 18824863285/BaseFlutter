@@ -1,25 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wan_android_flutter/base/adapter/screen/screen_adapter_mixin.dart';
+import 'package:wan_android_flutter/base/dialog/base_dialog.dart';
 
 // ignore: must_be_immutable
-abstract class CenterDialog extends StatefulWidget with ScreenAdapterMixin{
-  Widget child;
-  bool outsideDismiss;
-  CenterState centerState;
-
-  @override
-  State<StatefulWidget> createState() => centerState = CenterState();
-
-  Widget getChild();
-
-  bool isOutsideDismiss();
-
-  void init() {
-    child = getChild();
-    outsideDismiss = isOutsideDismiss();
-  }
-
+abstract class CenterDialog extends BaseDialog {
   void show(BuildContext context) {
     init();
     showDialog(
@@ -27,26 +11,19 @@ abstract class CenterDialog extends StatefulWidget with ScreenAdapterMixin{
       barrierDismissible: outsideDismiss,
       builder: (_) => StatefulBuilder(builder:
           (BuildContext context, void Function(void Function()) setState) {
-        return this;
+        this.context = context;
+        setContext(context);
+        return WillPopScope(
+            child: Material(
+              type: MaterialType.transparency,
+              child: Center(
+                child: child,
+              ),
+            ),
+            onWillPop: () async {
+              return outsideDismiss;
+            });
       }),
     );
   }
-
-  void dismiss() {
-    Navigator.of(centerState.context).pop();
-  }
-}
-
-class CenterState extends State<CenterDialog> {
-  @override
-  Widget build(BuildContext context) => WillPopScope(
-      child: Material(
-        type: MaterialType.transparency,
-        child: Center(
-          child: widget.child,
-        ),
-      ),
-      onWillPop: () async {
-        return widget.outsideDismiss;
-      });
 }

@@ -21,11 +21,15 @@ class LoginViewModel extends BaseViewModel<LoginModel> {
       showToast(S.of(context).login_psw_is_not_empty);
     } else {
       sendRequest<LoginResult>(model.login(loginName, psw), (value) {
-        UserInfoSp.getInstance().uid = value.data.id;
-        UserInfoSp.getInstance().token = value.data.token;
-        UserInfoSp.getInstance().userName = value.data.username;
-        pop();
-        push(MainPage());
+        if (value.errorCode == 0) {
+          UserInfoSp.getInstance().uid = value.data.id;
+          UserInfoSp.getInstance().token = value.data.token;
+          UserInfoSp.getInstance().userName = value.data.username;
+          pop();
+          push(MainPage());
+        } else {
+          showToast(value.errorMsg);
+        }
       }, isNeedLoading: true);
     }
   }

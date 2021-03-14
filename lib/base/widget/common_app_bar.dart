@@ -5,11 +5,13 @@ import 'package:wan_android_flutter/const/resource.dart';
 class CommonAppBar extends AppBar {
   final String titleStr;
   final BuildContext context;
+  final List<Widget> actions;
 
-  CommonAppBar(this.context, {this.titleStr = ""})
+  CommonAppBar(this.context, {this.actions, this.titleStr = ""})
       : super(
             toolbarHeight: 45,
             centerTitle: true,
+            actions: actions,
             title: Text(
               titleStr,
               style: TextStyle(color: Color(0Xff313133), fontSize: 16),
