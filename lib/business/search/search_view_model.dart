@@ -12,8 +12,6 @@ class SearchViewModel extends BaseViewModel<SearchModel> {
   @factoryMethod
   SearchViewModel();
 
-  get term => null;
-
   @override
   void init() {
     super.init();
