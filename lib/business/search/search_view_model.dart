@@ -25,8 +25,9 @@ class SearchViewModel extends BaseViewModel<SearchModel> {
     }, isNeedLoading: true);
   }
 
-  void getHistorySearchKeys() async{
-    historySearchKeys = await database.historySearchKeyDao.findHistorySearchKeys();
+  void getHistorySearchKeys() async {
+    historySearchKeys =
+        await database.historySearchKeyDao.findHistorySearchKeys();
     notifyPage();
   }
 
