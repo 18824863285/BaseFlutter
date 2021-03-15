@@ -2,6 +2,7 @@ import 'app_data_base.dart';
 
 class DatabaseManger {
   static DatabaseManger _instance;
+  static const _dbName = "base_flutter_database.db";
 
   AppDatabase _database;
 
@@ -25,9 +26,7 @@ class DatabaseManger {
   }
 
   Future<bool> initDatabase() async {
-    database = await $FloorAppDatabase
-        .databaseBuilder('base_flutter_database.db')
-        .build();
+    database = await $FloorAppDatabase.databaseBuilder(_dbName).build();
     return true;
   }
 }
