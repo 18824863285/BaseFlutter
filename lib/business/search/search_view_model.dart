@@ -29,13 +29,11 @@ class SearchViewModel extends BaseViewModel<SearchModel> {
 
   void getHistorySearchKeys() async{
     historySearchKeys = await database.historySearchKeyDao.findHistorySearchKeys();
-    print("====>historySearchKeys:${historySearchKeys.length}");
     notifyPage();
   }
 
   void saveSearchKeyToDataBase(String key) async {
     int result = await database.historySearchKeyDao.insertHotKeyItem(HistorySearchKey(key));
-    print("====>result:$result");
     getHistorySearchKeys();
   }
 }
