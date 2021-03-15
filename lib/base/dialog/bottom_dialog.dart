@@ -19,7 +19,10 @@ abstract class BottomDialog extends BaseDialog {
           return WillPopScope(
               child: Material(
                 type: MaterialType.transparency,
-                child: child,
+                child: Container(
+                  padding: EdgeInsets.all(3),
+                  child: child,
+                ),
               ),
               onWillPop: () async {
                 return outsideDismiss;
