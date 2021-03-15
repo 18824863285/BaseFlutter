@@ -20,8 +20,7 @@ abstract class BaseState<W extends StatefulWidget, VM extends BaseViewModel>
         ToastMixin,
         EventBusMixin,
         SharePreferenceMixin,
-        ScreenAdapterMixin,
-        DataBaseMixin {
+        ScreenAdapterMixin{
   VM viewModel;
   EventBus eventBus;
   LoadingDialog loadingDialog;
