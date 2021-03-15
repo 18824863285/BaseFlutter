@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:wan_android_flutter/base/sharePreference/share_preference_mixin.dart';
+import 'package:wan_android_flutter/dataBase/dataBase_mixin.dart';
 import 'base_view_model_interface.dart';
 import 'event_bus/event_bus_mixin.dart';
 import 'inject/injector.dart';
@@ -13,7 +14,8 @@ abstract class BaseViewModel<M> extends ChangeNotifier
         NavigatorMixin,
         ToastMixin,
         SharePreferenceMixin,
-        EventBusMixin {
+        EventBusMixin,
+        DataBaseMixin {
   int _loadNum = 0;
   int _minLoadNum = 1;
   BuildContext context;
@@ -92,14 +94,14 @@ abstract class BaseViewModel<M> extends ChangeNotifier
       dismissLoading(isNeedLoading);
       onValue(t);
     })
-    //     .catchError((e) {
-    //   dismissLoading(isNeedLoading);
-    //   print("====>error:$e");
-    //   if (error != null) {
-    //     error(e);
-    //   }
-    // })
-    ;
+        //     .catchError((e) {
+        //   dismissLoading(isNeedLoading);
+        //   print("====>error:$e");
+        //   if (error != null) {
+        //     error(e);
+        //   }
+        // })
+        ;
   }
 
   @override

@@ -7,6 +7,10 @@ import 'package:wan_android_flutter/base/util/screen_util.dart';
 import 'package:wan_android_flutter/base/widget/common_wrap.dart';
 import 'package:wan_android_flutter/business/search/model/hot_key.dart';
 import 'package:wan_android_flutter/business/search/search_view_model.dart';
+import 'package:wan_android_flutter/dataBase/app_data_base.dart';
+import 'package:wan_android_flutter/dataBase/database_manger.dart';
+
+import 'model/history_search_key.dart';
 
 class SearchPage extends BaseStatefulWidget {
   @override
@@ -21,6 +25,7 @@ class SearchState extends BaseState<SearchPage, SearchViewModel> {
     return ChangeNotifierProvider(
       create: (BuildContext context) {
         viewModel.getHotSearchKey();
+        viewModel.getHistorySearchKeys();
         return viewModel;
       },
       child: MaterialApp(
@@ -54,7 +59,7 @@ class SearchState extends BaseState<SearchPage, SearchViewModel> {
                           height: 40,
                           width: 260,
                           child: TextFormField(
-                              textInputAction: TextInputAction.done,
+                              textInputAction: TextInputAction.search,
                               style: TextStyle(color: Colors.black),
                               decoration: InputDecoration(
                                   fillColor: Color(0x30cccccc),
@@ -74,7 +79,7 @@ class SearchState extends BaseState<SearchPage, SearchViewModel> {
                                       borderRadius: BorderRadius.all(
                                           Radius.circular(10)))),
                               onFieldSubmitted: (term) {
-
+                                viewModel.saveSearchKeyToDataBase(term);
                               }),
                         ),
                       ))
@@ -132,6 +137,38 @@ class SearchState extends BaseState<SearchPage, SearchViewModel> {
                               alignment: Alignment.topLeft,
                               margin: EdgeInsets.only(top: 18, left: 15),
                               child: Text("历史搜索"),
+                            ),
+                            Container(
+                              height: 10,
+                            ),
+                            Container(
+                              alignment: Alignment.topLeft,
+                              padding: EdgeInsets.only(left: 16, right: 16),
+                              child: CommonWrap<HistorySearchKey>(
+                                  viewModel.historySearchKeys, (historySearchKey, index) {
+                                return Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Container(
+                                      decoration: new BoxDecoration(
+                                          border: new Border.all(
+                                              color: Colors.black54,
+                                              width: 0.5),
+                                          color: Colors.white,
+                                          borderRadius:
+                                              new BorderRadius.circular((5.0))),
+                                      padding: EdgeInsets.only(
+                                          left: 5, right: 5, top: 5, bottom: 5),
+                                      child: Text(historySearchKey.title),
+                                      height: 30,
+                                      alignment: Alignment.center,
+                                    )
+                                  ],
+                                );
+                              },
+                                  onItemTap: (hotKeyItem, index) {},
+                                  spacing: 5,
+                                  runSpacing: 6),
                             ),
                           ],
                         ),

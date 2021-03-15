@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wan_android_flutter/base/adapter/screen/screen_adapter_mixin.dart';
 import 'package:wan_android_flutter/base/toast/toast_mixin.dart';
+import 'package:wan_android_flutter/dataBase/dataBase_mixin.dart';
 import 'dialog/loading_dialog.dart';
 import 'package:wan_android_flutter/base/navigator/navigator_mixin.dart';
 import 'package:wan_android_flutter/base/sharePreference/share_preference_mixin.dart';
@@ -19,7 +20,8 @@ abstract class BaseState<W extends StatefulWidget, VM extends BaseViewModel>
         ToastMixin,
         EventBusMixin,
         SharePreferenceMixin,
-        ScreenAdapterMixin {
+        ScreenAdapterMixin,
+        DataBaseMixin {
   VM viewModel;
   EventBus eventBus;
   LoadingDialog loadingDialog;
@@ -31,7 +33,8 @@ abstract class BaseState<W extends StatefulWidget, VM extends BaseViewModel>
     super.initState();
     isBuildFinish = false;
     WidgetsBinding widgetsBinding = WidgetsBinding.instance;
-    widgetsBinding.addPostFrameCallback((callback) {//说明build结束了
+    widgetsBinding.addPostFrameCallback((callback) {
+      //说明build结束了
       print("====>build结束了");
       isBuildFinish = true;
       onBuildFinish();
@@ -54,8 +57,7 @@ abstract class BaseState<W extends StatefulWidget, VM extends BaseViewModel>
   }
 
   @override
-  void onBuildFinish() {
-  }
+  void onBuildFinish() {}
 
   @override
   void initEventBus() {
@@ -65,7 +67,8 @@ abstract class BaseState<W extends StatefulWidget, VM extends BaseViewModel>
   }
 
   void showLoading() async {
-    if (isBuildFinish) {//必须等到父组件build结束后才能构建自己，https://blog.csdn.net/qq_39493848/article/details/108514136
+    if (isBuildFinish) {
+      //必须等到父组件build结束后才能构建自己，https://blog.csdn.net/qq_39493848/article/details/108514136
       showDialog(
           context: context,
           builder: (_) {

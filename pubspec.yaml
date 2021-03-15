@@ -40,6 +40,7 @@ dev_dependencies:
   build_runner: ^1.4.0
   injectable_generator:
   retrofit_generator: any
+  floor_generator: 0.18.0
 
 flutter:
   uses-material-design: true

@@ -9,6 +9,7 @@ import 'base/inject/injector.dart';
 import 'base/util/density_util.dart';
 import 'base/util/preference_utils.dart';
 import 'business/start/start_page.dart';
+import 'dataBase/database_manger.dart';
 import 'generated/l10n.dart';
 
 void main() {
@@ -16,6 +17,7 @@ void main() {
   configInjector();
   initRestClient();
   PreferenceUtils.instance.initSharedPreferences();
+  DatabaseManger.getInstance().initDatabase();
   runApp(MyApp());
 }
 

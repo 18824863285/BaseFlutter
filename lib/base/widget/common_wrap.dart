@@ -48,7 +48,7 @@ List<Widget> getChildList<T>(
     void Function(T value, int index) onItemTap) {
   List<Widget> childList = [];
   if (dataList != null && dataList.length > 0) {
-    for (int i = 0; i < dataList.length - 1; i++) {
+    for (int i = 0; i < dataList.length; i++) {
       Widget child = itemBuilder(dataList[i], i);
       if (onItemTap != null) {
         childList.add(GestureDetector(
