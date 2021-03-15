@@ -33,7 +33,7 @@ class SearchViewModel extends BaseViewModel<SearchModel> {
   }
 
   void saveSearchKeyToDataBase(String key) async {
-    int result = await database.historySearchKeyDao.insertHotKeyItem(HistorySearchKey(key));
+    await database.historySearchKeyDao.insertHotKeyItem(HistorySearchKey(key));
     getHistorySearchKeys();
   }
 }
