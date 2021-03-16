@@ -20,7 +20,7 @@ class OfficialAccountsArticlePage extends BaseStatefulWidget {
 }
 
 class OfficialAccountsArticleState extends BaseListViewState<
-    OfficialAccountsArticlePage, OfficialAccountsArticleViewModel> {
+    OfficialAccountsArticlePage, OfficialAccountsArticleViewModel> with AutomaticKeepAliveClientMixin{
   var controller = new ScrollController();
 
   @override
@@ -34,6 +34,7 @@ class OfficialAccountsArticleState extends BaseListViewState<
 
   @override
   Widget build(BuildContext context) {
+    super.build(context); /// see AutomaticKeepAliveClientMixin
     return ChangeNotifierProvider(
       create: (_) {
         return viewModel;
@@ -107,4 +108,7 @@ class OfficialAccountsArticleState extends BaseListViewState<
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
