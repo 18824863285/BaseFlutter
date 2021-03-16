@@ -143,7 +143,9 @@ class SearchState extends BaseState<SearchPage, SearchViewModel> {
                                   ],
                                 );
                               },
-                                  onItemTap: (hotKeyItem, index) {},
+                                  onItemTap: (hotKeyItem, index) {
+                                    viewModel.saveSearchKeyToDataBase(hotKeyItem.name);
+                                  },
                                   spacing: 5,
                                   runSpacing: 6),
                             ),

@@ -41,9 +41,8 @@ class SearchViewModel extends BaseViewModel<SearchModel> {
     if (historySearchKeys != null && historySearchKeys.length > 0) {
       int result = await database.historySearchKeyDao
           .deleteHistorySearchKeys(historySearchKeys);
-      historySearchKeys.clear();
-      notifyPage();
       if (result > 0) {
+        historySearchKeys.clear();
         notifyPage();
       }
     }
