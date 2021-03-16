@@ -102,6 +102,12 @@ class _$HistorySearchKeyDao extends HistorySearchKeyDao {
             database,
             'HistorySearchKey',
             (HistorySearchKey item) =>
+                <String, dynamic>{'id': item.id, 'title': item.title}),
+        _historySearchKeyDeletionAdapter = DeletionAdapter(
+            database,
+            'HistorySearchKey',
+            ['id'],
+            (HistorySearchKey item) =>
                 <String, dynamic>{'id': item.id, 'title': item.title});
 
   final sqflite.DatabaseExecutor database;
@@ -112,11 +118,13 @@ class _$HistorySearchKeyDao extends HistorySearchKeyDao {
 
   final InsertionAdapter<HistorySearchKey> _historySearchKeyInsertionAdapter;
 
+  final DeletionAdapter<HistorySearchKey> _historySearchKeyDeletionAdapter;
+
   @override
   Future<List<HistorySearchKey>> findHistorySearchKeys() async {
     return _queryAdapter.queryList('SELECT * FROM HistorySearchKey',
         mapper: (Map<String, dynamic> row) =>
-            HistorySearchKey(row['title'] as String));
+            HistorySearchKey(row['id'] as int, row['title'] as String));
   }
 
   @override
@@ -129,5 +137,16 @@ class _$HistorySearchKeyDao extends HistorySearchKeyDao {
   Future<void> insertHotKeyItemList(List<HistorySearchKey> hotKeyItems) async {
     await _historySearchKeyInsertionAdapter.insertList(
         hotKeyItems, OnConflictStrategy.abort);
+  }
+
+  @override
+  Future<void> deleteHistorySearchKey(HistorySearchKey historySearchKey) async {
+    await _historySearchKeyDeletionAdapter.delete(historySearchKey);
+  }
+
+  @override
+  Future<void> deleteHistorySearchKeys(
+      List<HistorySearchKey> historySearchKeys) async {
+    await _historySearchKeyDeletionAdapter.deleteList(historySearchKeys);
   }
 }

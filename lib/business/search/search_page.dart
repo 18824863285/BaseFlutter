@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:provider/provider.dart';
 import 'package:wan_android_flutter/base/base_state.dart';
 import 'package:wan_android_flutter/base/base_stateful_widget.dart';
+import 'package:wan_android_flutter/base/dialog/ensure_and_cancel_dialog.dart';
 import 'package:wan_android_flutter/base/util/screen_util.dart';
 import 'package:wan_android_flutter/base/widget/common_wrap.dart';
 import 'package:wan_android_flutter/business/search/model/hot_key.dart';
@@ -20,6 +21,19 @@ class SearchPage extends BaseStatefulWidget {
 }
 
 class SearchState extends BaseState<SearchPage, SearchViewModel> {
+  EnsureAndCancelDialog _ensureAndCancelDialog;
+
+  // ignore: missing_return
+  EnsureAndCancelDialog get ensureAndCancelDialog {
+    if (_ensureAndCancelDialog == null) {
+      _ensureAndCancelDialog =
+          EnsureAndCancelDialog("确定清空历史记录吗？", onEnsure: () {
+        viewModel.deleteAllHistorySearchKey();
+      });
+    }
+    _ensureAndCancelDialog.show(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -136,7 +150,30 @@ class SearchState extends BaseState<SearchPage, SearchViewModel> {
                             Container(
                               alignment: Alignment.topLeft,
                               margin: EdgeInsets.only(top: 18, left: 15),
-                              child: Text("历史搜索"),
+                              child: Stack(
+                                alignment: Alignment.centerLeft,
+                                children: [
+                                  Text("历史搜索"),
+                                  Align(
+                                    alignment: Alignment.centerRight,
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        ensureAndCancelDialog?.show(context);
+                                      },
+                                      child: Container(
+                                        padding: EdgeInsets.only(right: 15),
+                                        alignment: Alignment.centerRight,
+                                        width: double.infinity,
+                                        child: Text(
+                                          "清空历史记录",
+                                          style: TextStyle(
+                                              color: Colors.grey, fontSize: 10),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                             Container(
                               height: 10,
@@ -145,7 +182,8 @@ class SearchState extends BaseState<SearchPage, SearchViewModel> {
                               alignment: Alignment.topLeft,
                               padding: EdgeInsets.only(left: 16, right: 16),
                               child: CommonWrap<HistorySearchKey>(
-                                  viewModel.historySearchKeys, (historySearchKey, index) {
+                                  viewModel.historySearchKeys,
+                                  (historySearchKey, index) {
                                 return Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [

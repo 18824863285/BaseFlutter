@@ -46,6 +46,7 @@ class HomeState extends BaseState<HomePage, HomeViewModel> {
                   Container(
                     height: 160,
                     color: Colors.blue,
+                    alignment: Alignment.center,
                     child: Stack(
                       alignment: Alignment.topCenter,
                       children: [

@@ -11,4 +11,10 @@ abstract class HistorySearchKeyDao {
 
   @insert
   Future<void> insertHotKeyItemList(List<HistorySearchKey> hotKeyItems);
+
+  @delete
+  Future<void> deleteHistorySearchKey(HistorySearchKey historySearchKey);
+
+  @delete
+  Future<void> deleteHistorySearchKeys(List<HistorySearchKey> historySearchKeys);
 }

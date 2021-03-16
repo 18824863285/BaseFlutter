@@ -20,7 +20,6 @@ class StartState extends BaseState<StartPage, StartViewModel> {
     Density.instance.init(context, 780, null);
     return ChangeNotifierProvider(
         create: (_) {
-          print("====>StartState--ChangeNotifierProvider");
           viewModel.startCountdown(5);
           return viewModel;
         },
