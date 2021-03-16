@@ -15,4 +15,22 @@ class _OfficialAccountsModel implements OfficialAccountsModel {
   final Dio _dio;
 
   String baseUrl;
+
+  @override
+  Future<OfficialAccount> getOfficialAccounts() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.request<Map<String, dynamic>>(
+        'wxarticle/chapters/json',
+        queryParameters: queryParameters,
+        options: RequestOptions(
+            method: 'GET',
+            headers: <String, dynamic>{},
+            extra: _extra,
+            baseUrl: baseUrl),
+        data: _data);
+    final value = OfficialAccount.fromJson(_result.data);
+    return value;
+  }
 }
