@@ -33,6 +33,13 @@ abstract class BaseListViewViewModel<T, M> extends BaseViewModel<M> {
     getData();
   }
 
-  void getData();
+  T getItemData(int index) {
+    if (index <= dataList.length - 1) {
+      return dataList[index];
+    } else {
+      return null;
+    }
+  }
 
+  void getData();
 }
