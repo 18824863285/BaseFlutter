@@ -147,33 +147,38 @@ class SearchState extends BaseState<SearchPage, SearchViewModel> {
                                   spacing: 5,
                                   runSpacing: 6),
                             ),
-                            Container(
-                              alignment: Alignment.topLeft,
-                              margin: EdgeInsets.only(top: 18, left: 15),
-                              child: Stack(
-                                alignment: Alignment.centerLeft,
-                                children: [
-                                  Text("历史搜索"),
-                                  Align(
-                                    alignment: Alignment.centerRight,
-                                    child: GestureDetector(
-                                      onTap: () {
-                                        ensureAndCancelDialog?.show(context);
-                                      },
-                                      child: Container(
-                                        padding: EdgeInsets.only(right: 15),
-                                        alignment: Alignment.centerRight,
-                                        width: double.infinity,
-                                        child: Text(
-                                          "清空历史记录",
-                                          style: TextStyle(
-                                              color: Colors.grey, fontSize: 10),
+                            Visibility(
+                              child: Container(
+                                alignment: Alignment.topLeft,
+                                margin: EdgeInsets.only(top: 18, left: 15),
+                                child: Stack(
+                                  alignment: Alignment.centerLeft,
+                                  children: [
+                                    Text("历史搜索"),
+                                    Align(
+                                      alignment: Alignment.centerRight,
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          ensureAndCancelDialog?.show(context);
+                                        },
+                                        child: Container(
+                                          padding: EdgeInsets.only(right: 15),
+                                          alignment: Alignment.centerRight,
+                                          width: double.infinity,
+                                          child: Text(
+                                            "清空历史记录",
+                                            style: TextStyle(
+                                                color: Colors.grey,
+                                                fontSize: 10),
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
+                              visible: viewModel.historySearchKeys != null &&
+                                  viewModel.historySearchKeys.length > 0,
                             ),
                             Container(
                               height: 10,
