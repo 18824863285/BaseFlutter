@@ -6,6 +6,7 @@ import 'package:wan_android_flutter/business/knowledgeHierarchy/knowledge_model.
 import 'package:wan_android_flutter/business/login/login_model.dart';
 import 'package:wan_android_flutter/business/login/model/login_result.dart';
 import 'package:wan_android_flutter/business/main/main_model.dart';
+import 'package:wan_android_flutter/business/officialAccounts/officialAccountsArticle/official_accounts_article_model.dart';
 import 'package:wan_android_flutter/business/officialAccounts/official_accounts_model.dart';
 import 'package:wan_android_flutter/business/project/project_model.dart';
 import 'package:wan_android_flutter/business/register/register_model.dart';
@@ -75,6 +76,12 @@ abstract class RetrofitModule {
     final client = SearchModel(dio);
     return client;
   }
+
+  OfficialAccountsArticleModel officialAccountsArticleModel() {
+    final client = OfficialAccountsArticleModel(dio);
+    return client;
+  }
+
 
 }
 

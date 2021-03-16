@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:wan_android_flutter/base/base_state.dart';
 import 'package:wan_android_flutter/base/base_stateful_widget.dart';
 import 'package:wan_android_flutter/base/util/screen_util.dart';
+import 'package:wan_android_flutter/business/officialAccounts/officialAccountsArticle/official_accounts_article_page.dart';
 import 'package:wan_android_flutter/business/officialAccounts/official_accounts_view_model.dart';
 
 class OfficialAccountsPage extends BaseStatefulWidget {
@@ -103,12 +104,9 @@ class OfficialAccountsState
       return TabBarView(
         controller: _tabController,
         children: viewModel.officialAccounts?.map((item) {
-          return Center(
-            child: Container(
-              width: 300,
-              height: 300,
-              color: Colors.blue,
-            ),
+          return Container(
+            alignment: Alignment.center,
+            child: OfficialAccountsArticlePage(item),
           );
         })?.toList(),
       );
