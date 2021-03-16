@@ -140,13 +140,15 @@ class _$HistorySearchKeyDao extends HistorySearchKeyDao {
   }
 
   @override
-  Future<void> deleteHistorySearchKey(HistorySearchKey historySearchKey) async {
-    await _historySearchKeyDeletionAdapter.delete(historySearchKey);
+  Future<int> deleteHistorySearchKey(HistorySearchKey historySearchKey) {
+    return _historySearchKeyDeletionAdapter
+        .deleteAndReturnChangedRows(historySearchKey);
   }
 
   @override
-  Future<void> deleteHistorySearchKeys(
-      List<HistorySearchKey> historySearchKeys) async {
-    await _historySearchKeyDeletionAdapter.deleteList(historySearchKeys);
+  Future<int> deleteHistorySearchKeys(
+      List<HistorySearchKey> historySearchKeys) {
+    return _historySearchKeyDeletionAdapter
+        .deleteListAndReturnChangedRows(historySearchKeys);
   }
 }

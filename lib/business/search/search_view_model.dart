@@ -39,16 +39,13 @@ class SearchViewModel extends BaseViewModel<SearchModel> {
 
   void deleteAllHistorySearchKey() async {
     if (historySearchKeys != null && historySearchKeys.length > 0) {
-      historySearchKeys.forEach((element) async {
-        await database.historySearchKeyDao.deleteHistorySearchKey(element);
-      });
-
-      // await database.historySearchKeyDao.deleteHistorySearchKeys(historySearchKeys);
-      // historySearchKeys.clear();
-      // notifyPage();
-      // if(result > 0){
-      //   notifyPage();
-      // }
+      int result = await database.historySearchKeyDao
+          .deleteHistorySearchKeys(historySearchKeys);
+      historySearchKeys.clear();
+      notifyPage();
+      if (result > 0) {
+        notifyPage();
+      }
     }
   }
 }
