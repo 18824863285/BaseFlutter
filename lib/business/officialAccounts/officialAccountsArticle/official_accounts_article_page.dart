@@ -9,6 +9,7 @@ import 'package:wan_android_flutter/base/webview/webView_page.dart';
 import 'package:wan_android_flutter/business/officialAccounts/model/official_account.dart';
 import 'package:wan_android_flutter/business/officialAccounts/officialAccountsArticle/official_accounts_article_view_model.dart';
 
+/// 公众号文章列表
 class OfficialAccountsArticlePage extends BaseStatefulWidget {
   final OfficialAccountItem officialAccount;
   final BuildContext parentContext;
@@ -32,7 +33,8 @@ class OfficialAccountsArticleState extends BaseListViewState<
   @override
   void initState() {
     super.initState();
-    setContext(widget.parentContext);
+    setContext(widget
+        .parentContext); // 使用父page的context，解决首页跳转子页面依然显示BottomNavigationBar的问题
     viewModel.officialAccount = widget.officialAccount;
   }
 
@@ -106,13 +108,6 @@ class OfficialAccountsArticleState extends BaseListViewState<
                           ),
                         ),
                         onTap: () {
-
-                          // Navigator.push(context, MaterialPageRoute(builder: (context) => WebViewPage(
-                          //   viewModel.dataList[index].link,
-                          //   title: viewModel.dataList[index].title,
-                          // )));
-
-
                           push(WebViewPage(
                             viewModel.dataList[index].link,
                             title: viewModel.dataList[index].title,
