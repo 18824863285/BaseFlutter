@@ -31,8 +31,6 @@ class KnowledgeState extends BaseState<KnowledgePage, KnowledgeViewModel> {
                 },
                 child: Container(
                   padding: EdgeInsets.all(15),
-                  width: 26,
-                  height: 26,
                   child: Image(
                       fit: BoxFit.fill,
                       image: AssetImage(
