@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:wan_android_flutter/base/base_state.dart';
 import 'package:wan_android_flutter/base/base_stateful_widget.dart';
 import 'package:wan_android_flutter/base/util/screen_util.dart';
+import 'package:wan_android_flutter/base/widget/lazy_indexed_stack.dart';
 import 'package:wan_android_flutter/business/homePage/home_page.dart';
 import 'package:wan_android_flutter/business/knowledgeHierarchy/knowledge_page.dart';
 import 'package:wan_android_flutter/business/main/main_view_model.dart';
@@ -16,21 +17,33 @@ class MainPage extends BaseStatefulWidget {
 }
 
 class MainState extends BaseState<MainPage, MainViewModel> {
-  List<Widget> _pageList = [
-    HomePage(),
-    OfficialAccountsPage(),
-    KnowledgePage(),
-    ProjectPage()
-  ];
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: IndexedStack(
+        body: LazyIndexedStack(
           index: viewModel.currPageIndex,
-          children: _pageList,
+          itemCount: 4,
+          itemBuilder: (BuildContext context, int index) {
+            switch (index) {
+              case 0:
+                return HomePage();
+                break;
+              case 1:
+                return OfficialAccountsPage();
+                break;
+              case 2:
+                return KnowledgePage();
+                break;
+              case 3:
+                return ProjectPage();
+                break;
+              default:
+                return HomePage();
+                break;
+            }
+          },
         ),
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: viewModel.currPageIndex,
