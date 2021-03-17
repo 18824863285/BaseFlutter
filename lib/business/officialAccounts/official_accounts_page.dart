@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:wan_android_flutter/base/base_state.dart';
 import 'package:wan_android_flutter/base/base_stateful_widget.dart';
 import 'package:wan_android_flutter/base/util/screen_util.dart';
+import 'package:wan_android_flutter/base/webview/webView_page.dart';
 import 'package:wan_android_flutter/business/officialAccounts/officialAccountsArticle/official_accounts_article_page.dart';
 import 'package:wan_android_flutter/business/officialAccounts/official_accounts_view_model.dart';
 
@@ -106,7 +107,7 @@ class OfficialAccountsState
         children: viewModel.officialAccounts?.map((item) {
           return Container(
             alignment: Alignment.center,
-            child: OfficialAccountsArticlePage(item),
+            child: OfficialAccountsArticlePage(item, context),
           );
         })?.toList(),
       );

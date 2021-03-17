@@ -5,13 +5,15 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:wan_android_flutter/base/base_listview_state.dart';
 import 'package:wan_android_flutter/base/base_stateful_widget.dart';
 import 'package:wan_android_flutter/base/util/time_util.dart';
+import 'package:wan_android_flutter/base/webview/webView_page.dart';
 import 'package:wan_android_flutter/business/officialAccounts/model/official_account.dart';
 import 'package:wan_android_flutter/business/officialAccounts/officialAccountsArticle/official_accounts_article_view_model.dart';
 
 class OfficialAccountsArticlePage extends BaseStatefulWidget {
   final OfficialAccountItem officialAccount;
+  final BuildContext parentContext;
 
-  OfficialAccountsArticlePage(this.officialAccount);
+  OfficialAccountsArticlePage(this.officialAccount, this.parentContext);
 
   @override
   State<StatefulWidget> createState() {
@@ -20,7 +22,8 @@ class OfficialAccountsArticlePage extends BaseStatefulWidget {
 }
 
 class OfficialAccountsArticleState extends BaseListViewState<
-    OfficialAccountsArticlePage, OfficialAccountsArticleViewModel> with AutomaticKeepAliveClientMixin{
+    OfficialAccountsArticlePage,
+    OfficialAccountsArticleViewModel> with AutomaticKeepAliveClientMixin {
   var controller = new ScrollController();
 
   @override
@@ -29,12 +32,13 @@ class OfficialAccountsArticleState extends BaseListViewState<
   @override
   void initState() {
     super.initState();
+    setContext(widget.parentContext);
     viewModel.officialAccount = widget.officialAccount;
   }
 
   @override
   Widget build(BuildContext context) {
-    super.build(context); /// see AutomaticKeepAliveClientMixin
+    super.build(context);
     return ChangeNotifierProvider(
       create: (_) {
         return viewModel;
@@ -52,51 +56,68 @@ class OfficialAccountsArticleState extends BaseListViewState<
                 controller: refreshController,
                 onRefresh: refresh,
                 onLoading: loadMore,
-                child: ListView.builder(//child直接放ListView，不然可能会导致下拉刷新和分页加载失败
+                child: ListView.builder(
+                    //child直接放ListView，不然可能会导致下拉刷新和分页加载失败
                     itemBuilder: (context, index) {
-                      return Container(
-                        height: 100,
+                      return GestureDetector(
                         child: Container(
-                          height: 100, //高度要加上，不然会卡死
-                          margin: EdgeInsets.only(
-                              left: 15, right: 15, top: 5, bottom: 5),
-                          decoration: new BoxDecoration(
-                              border: new Border.all(
-                                  color: Color(0xFA000000), width: 0.5),
-                              color: Colors.white,
-                              borderRadius: new BorderRadius.circular((5.0))),
-                          child: Stack(
-                            children: [
-                              Positioned(
-                                child: Container(
+                          height: 100,
+                          child: Container(
+                            height: 100, //高度要加上，不然会卡死
+                            margin: EdgeInsets.only(
+                                left: 15, right: 15, top: 5, bottom: 5),
+                            decoration: new BoxDecoration(
+                                border: new Border.all(
+                                    color: Color(0xFA000000), width: 0.5),
+                                color: Colors.white,
+                                borderRadius: new BorderRadius.circular((5.0))),
+                            child: Stack(
+                              children: [
+                                Positioned(
+                                  child: Container(
+                                    child: Text(
+                                        viewModel.getItemData(index)?.title ??
+                                            "",
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis),
+                                    constraints: BoxConstraints(maxWidth: 280),
+                                  ),
+                                  left: 15,
+                                  top: 10,
+                                ),
+                                Positioned(
                                   child: Text(
-                                      viewModel.getItemData(index)?.title ?? "",
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis),
-                                  constraints: BoxConstraints(maxWidth: 280),
+                                    '作者：${viewModel.getItemData(index)?.author ?? ""}',
+                                    style: TextStyle(color: Colors.grey),
+                                  ),
+                                  left: 15,
+                                  top: 30,
                                 ),
-                                left: 15,
-                                top: 10,
-                              ),
-                              Positioned(
-                                child: Text(
-                                  '作者：${viewModel.getItemData(index)?.author ?? ""}',
-                                  style: TextStyle(color: Colors.grey),
-                                ),
-                                left: 15,
-                                top: 30,
-                              ),
-                              Positioned(
-                                child: Text(
-                                  '时间：${TimeUtil.getStandardTime(viewModel.getItemData(index)?.publishTime ?? 0)}',
-                                  style: TextStyle(color: Colors.grey),
-                                ),
-                                left: 15,
-                                top: 60,
-                              )
-                            ],
+                                Positioned(
+                                  child: Text(
+                                    '时间：${TimeUtil.getStandardTime(viewModel.getItemData(index)?.publishTime ?? 0)}',
+                                    style: TextStyle(color: Colors.grey),
+                                  ),
+                                  left: 15,
+                                  top: 60,
+                                )
+                              ],
+                            ),
                           ),
                         ),
+                        onTap: () {
+
+                          // Navigator.push(context, MaterialPageRoute(builder: (context) => WebViewPage(
+                          //   viewModel.dataList[index].link,
+                          //   title: viewModel.dataList[index].title,
+                          // )));
+
+
+                          push(WebViewPage(
+                            viewModel.dataList[index].link,
+                            title: viewModel.dataList[index].title,
+                          ));
+                        },
                       );
                     },
                     itemExtent: 100,
