@@ -5,9 +5,12 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:wan_android_flutter/base/base_listview_state.dart';
 import 'package:wan_android_flutter/base/base_state.dart';
 import 'package:wan_android_flutter/base/base_stateful_widget.dart';
+import 'package:wan_android_flutter/base/widget/common_wrap.dart';
 import 'package:wan_android_flutter/business/knowledgeHierarchy/knowledge_view_model.dart';
 import 'package:wan_android_flutter/business/search/search_page.dart';
 import 'package:wan_android_flutter/const/resource.dart';
+
+import 'model/knowledge.dart';
 
 class KnowledgePage extends BaseStatefulWidget {
   @override
@@ -22,6 +25,7 @@ class KnowledgeState
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (_) {
+        viewModel.getData();
         return viewModel;
       },
       child: MaterialApp(
@@ -48,20 +52,59 @@ class KnowledgeState
                                 .ASSETS_IMAGES_BASELINE_SEARCH_WHITE_24DP_PNG)),
                       ),
                     ),
-                    flexibleSpace: const FlexibleSpaceBar(
+                    flexibleSpace: FlexibleSpaceBar(
                       title: const Text('知识体系'),
+                      background: Image.network(
+                        'http://5b0988e595225.cdn.sohucs.com/images/20171205/d7432f581303481eb92c3f06433b5014.jpeg',
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
-                  SliverFixedExtentList(
-                    itemExtent: 50.0,
+                  SliverList(
                     delegate: new SliverChildBuilderDelegate(
                         (BuildContext context, int index) {
                       return new Container(
-                        alignment: Alignment.center,
-                        color: Colors.lightBlue[100 * (index % 9)],
-                        child: new Text('list item $index'),
+                        alignment: Alignment.topLeft,
+                        margin: EdgeInsets.only(left: 10,right: 10,top: 2.5,bottom: 2.5),
+                        padding: EdgeInsets.all(5),
+                        decoration: new BoxDecoration(
+                            border: new Border.all(
+                                color: Color(0xFA000000), width: 0.5),
+                            color: Colors.white,
+                            borderRadius: new BorderRadius.circular((5.0))),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              child: Text(viewModel.dataList[index].name),
+                              margin: EdgeInsets.only(bottom: 5),
+                            ),
+                            CommonWrap<Children>(
+                                viewModel.dataList[index].children,
+                                    (value, index) {
+                                  return Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Container(
+                                        decoration: new BoxDecoration(
+                                            border: new Border.all(
+                                                color: Colors.black54, width: 0.5),
+                                            color: Colors.white,
+                                            borderRadius:
+                                            new BorderRadius.circular((5.0))),
+                                        padding: EdgeInsets.only(
+                                            left: 5, right: 5, top: 5, bottom: 5),
+                                        child: Text(value.name),
+                                        height: 30,
+                                        alignment: Alignment.center,
+                                      )
+                                    ],
+                                  );
+                                }, spacing: 5, runSpacing: 6)
+                          ],
+                        ),
                       );
-                    }, childCount: 20),
+                    }, childCount: viewModel.dataList?.length ?? 0),
                   ),
                 ],
               ),
