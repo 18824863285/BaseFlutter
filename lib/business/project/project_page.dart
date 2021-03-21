@@ -65,8 +65,6 @@ class ProjectState extends BaseState<ProjectPage, ProjectViewModel> {
                               45 + ScreenUtil.getStatusBarHigh(),
                               260,
                               45 + ScreenUtil.getStatusBarHigh() + 300),
-
-                          /// RelativeRect
                           duration: 300,
                           windowBuilder: (BuildContext context,
                               Animation<double> animation,
