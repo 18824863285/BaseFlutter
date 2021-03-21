@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:provider/provider.dart';
-import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:wan_android_flutter/base/base_listview_state.dart';
-import 'package:wan_android_flutter/base/base_state.dart';
 import 'package:wan_android_flutter/base/base_stateful_widget.dart';
 import 'package:wan_android_flutter/base/widget/common_wrap.dart';
 import 'package:wan_android_flutter/business/knowledgeHierarchy/knowledge_view_model.dart';
@@ -65,7 +63,8 @@ class KnowledgeState
                         (BuildContext context, int index) {
                       return new Container(
                         alignment: Alignment.topLeft,
-                        margin: EdgeInsets.only(left: 10,right: 10,top: 2.5,bottom: 2.5),
+                        margin: EdgeInsets.only(
+                            left: 10, right: 10, top: 2.5, bottom: 2.5),
                         padding: EdgeInsets.all(5),
                         decoration: new BoxDecoration(
                             border: new Border.all(
@@ -81,26 +80,26 @@ class KnowledgeState
                             ),
                             CommonWrap<Children>(
                                 viewModel.dataList[index].children,
-                                    (value, index) {
-                                  return Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Container(
-                                        decoration: new BoxDecoration(
-                                            border: new Border.all(
-                                                color: Colors.black54, width: 0.5),
-                                            color: Colors.white,
-                                            borderRadius:
+                                (value, index) {
+                              return Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Container(
+                                    decoration: new BoxDecoration(
+                                        border: new Border.all(
+                                            color: Colors.black54, width: 0.5),
+                                        color: Colors.white,
+                                        borderRadius:
                                             new BorderRadius.circular((5.0))),
-                                        padding: EdgeInsets.only(
-                                            left: 5, right: 5, top: 5, bottom: 5),
-                                        child: Text(value.name),
-                                        height: 30,
-                                        alignment: Alignment.center,
-                                      )
-                                    ],
-                                  );
-                                }, spacing: 5, runSpacing: 6)
+                                    padding: EdgeInsets.only(
+                                        left: 5, right: 5, top: 5, bottom: 5),
+                                    child: Text(value.name),
+                                    height: 30,
+                                    alignment: Alignment.center,
+                                  )
+                                ],
+                              );
+                            }, spacing: 5, runSpacing: 6)
                           ],
                         ),
                       );

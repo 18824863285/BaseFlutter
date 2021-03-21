@@ -14,7 +14,6 @@ class KnowledgeViewModel extends BaseListViewViewModel<Data, KnowledgeModel> {
   @override
   void getData() {
     sendRequest<Knowledge>(model.getKnowledge(), (value) {
-      // controlResult(value.data);
       dataList = value.data;
       notifyPage();
     });
