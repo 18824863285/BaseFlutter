@@ -17,3 +17,9 @@ samples, guidance on mobile development, and a full API reference.
 
 
 flutter pub run build_runner build --delete-conflicting-outputs
+
+
+计划：
+   1. 路由
+   2. 内存泄漏检测
+   3. 埋点框架 
