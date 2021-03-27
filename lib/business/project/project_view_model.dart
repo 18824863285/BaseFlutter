@@ -26,16 +26,20 @@ class ProjectViewModel extends BaseViewModel<ProjectModel> {
 
   void getProjectClassification() {
     sendRequest<ProjectClassification>(model.getProjectClassification(),
-        (value) {
-      projectClassificationList = value.data;
-      getProjects(projectClassificationList[0].id);
-    });
+            (value) {
+          projectClassificationList = value.data;
+          getProjects(projectClassificationList[currClassificationIndex].id);
+        },isNeedLoading: true);
   }
 
   void getProjects(int cid) {
     sendRequest<Projects>(model.getProjects(1, cid), (value) {
-      projectList = value.data.datas;
+      if (value.data == null || value.data.datas == null) {
+        projectList = [];
+      } else {
+        projectList = value.data.datas;
+      }
       notifyPage();
-    });
+    }, isNeedLoading: true);
   }
 }

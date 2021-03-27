@@ -1,3 +1,4 @@
+import 'package:extended_image/extended_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -69,10 +70,53 @@ class ProjectState extends BaseState<ProjectPage, ProjectViewModel> {
                           windowBuilder: (BuildContext context,
                               Animation<double> animation,
                               Animation<double> secondaryAnimation) {
-                            return Container(
-                              width: 160,
-                              height: 260,
-                              color: Colors.blue,
+                            return Material(
+                              child: Container(
+                                width: 160,
+                                height: 260,
+                                color: Colors.black87,
+                                padding: EdgeInsets.all(0),
+                                alignment: Alignment.topLeft,
+                                child: MediaQuery.removePadding(
+                                    context: context,
+                                    removeTop: true,
+                                    child: ListView.builder(
+                                      itemBuilder: (context, index) {
+                                        return GestureDetector(
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              Container(
+                                                height: 30,
+                                                alignment: Alignment.center,
+                                                child: Text(
+                                                  viewModel
+                                                      .projectClassificationList[
+                                                          index]
+                                                      .name,
+                                                  style: TextStyle(
+                                                      color: Colors.white),
+                                                ),
+                                              ),
+                                              Container(
+                                                height: 0.5,
+                                                color: Colors.white70,
+                                              )
+                                            ],
+                                          ),
+                                          onTap: () {
+                                            viewModel.currClassificationIndex =
+                                                index;
+                                            viewModel
+                                                .getProjectClassification();
+                                            Navigator.pop(context);
+                                          },
+                                        );
+                                      },
+                                      itemCount: viewModel
+                                          .projectClassificationList.length,
+                                    )),
+                              ),
                             );
                           },
                         );
@@ -86,12 +130,15 @@ class ProjectState extends BaseState<ProjectPage, ProjectViewModel> {
                       color: Colors.blue,
                       width: 260,
                       height: 320,
-                      child: PageView.builder(itemBuilder: (context, index) {
-                        return Container(
-                          width: 260,
-                          height: 320,
-                        );
-                      }),
+                      child: PageView.builder(
+                          itemBuilder: (context, index) {
+                            return Container(
+                              width: 260,
+                              height: 320,
+                              child:ExtendedImage.network(viewModel.projectList[index].envelopePic, fit: BoxFit.cover,),
+                            );
+                          },
+                          itemCount: viewModel.projectList.length),
                     ),
                   ))
                 ],
