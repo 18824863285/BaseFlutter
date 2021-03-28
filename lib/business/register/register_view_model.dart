@@ -24,17 +24,18 @@ class RegisterViewModel extends BaseViewModel<RegisterModel> {
     } else if (psw != ensurePsw) {
       showToast(S.of(context).ensure_psw_true);
     } else {
-      sendRequest<RegisterResult>(model.register(loginName, psw, ensurePsw), (value) {
-        if(value.errorCode == 0){
+      sendRequest<RegisterResult>(model.register(loginName, psw, ensurePsw),
+          (value) {
+        if (value.errorCode == 0) {
           UserInfoSp.getInstance().uid = value.data.id;
           UserInfoSp.getInstance().token = value.data.token;
           UserInfoSp.getInstance().userName = value.data.username;
-          sendEvent(RegisterResultEvent(succ: true));
           pop();
-        }else{
+          sendEvent(RegisterResultEvent(succ: true));
+        } else {
           showLongToast(value.errorMsg);
         }
-      });
+      }, isNeedLoading: true);
     }
   }
 }

@@ -21,6 +21,7 @@ class CommonState extends State<CommonWidget> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: Colors.white,
+        resizeToAvoidBottomInset: false, //解决键盘导致页面溢出
         appBar: CommonAppBar(context, titleStr: widget.title),
         body: widget.widget,
       ),

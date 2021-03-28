@@ -15,7 +15,7 @@ class RegisterState extends BaseState<RegisterPage, RegisterViewModel> {
   @override
   Widget build(BuildContext context) {
     return CommonWidget(
-      S.of(context).register,
+      "注册",
       Column(
         children: [
           Container(
@@ -27,7 +27,7 @@ class RegisterState extends BaseState<RegisterPage, RegisterViewModel> {
                 Container(
                   margin: EdgeInsets.only(top: 5),
                   child: Text(
-                    S.of(context).account,
+                    "账号",
                     style: TextStyle(fontSize: 15),
                   ),
                 ),
@@ -44,7 +44,7 @@ class RegisterState extends BaseState<RegisterPage, RegisterViewModel> {
                               TextStyle(color: Color(0Xff313133), fontSize: 18),
                           decoration: InputDecoration(
                             border: InputBorder.none,
-                            hintText: S.of(context).input_login_psw,
+                            hintText: "请输入登录密码",
                           ),
                           onChanged: (value) {
                             viewModel.loginName = value;
@@ -71,7 +71,7 @@ class RegisterState extends BaseState<RegisterPage, RegisterViewModel> {
                 Container(
                   margin: EdgeInsets.only(top: 5),
                   child: Text(
-                    S.of(context).psw,
+                    "密码",
                     style: TextStyle(fontSize: 15),
                   ),
                 ),
@@ -89,7 +89,7 @@ class RegisterState extends BaseState<RegisterPage, RegisterViewModel> {
                               TextStyle(color: Color(0Xff313133), fontSize: 18),
                           decoration: InputDecoration(
                             border: InputBorder.none,
-                            hintText: S.of(context).input_login_psw,
+                            hintText: "请输入登录密码",
                           ),
                           onChanged: (value) {
                             viewModel.psw = value;
@@ -116,7 +116,7 @@ class RegisterState extends BaseState<RegisterPage, RegisterViewModel> {
                 Container(
                   margin: EdgeInsets.only(top: 5),
                   child: Text(
-                    S.of(context).ensure_psw,
+                    "确认密码",
                     style: TextStyle(fontSize: 15),
                   ),
                 ),
@@ -134,7 +134,7 @@ class RegisterState extends BaseState<RegisterPage, RegisterViewModel> {
                               TextStyle(color: Color(0Xff313133), fontSize: 18),
                           decoration: InputDecoration(
                             border: InputBorder.none,
-                            hintText: S.of(context).input_login_psw,
+                            hintText: "请输入登录密码",
                           ),
                           onChanged: (value) {
                             viewModel.ensurePsw = value;
@@ -158,7 +158,7 @@ class RegisterState extends BaseState<RegisterPage, RegisterViewModel> {
             margin: EdgeInsets.only(top: 50),
             child: RaisedButton(
                 child: Text(
-                  S.of(context).register,
+                  "注册",
                   style: TextStyle(color: Colors.white, fontSize: 18),
                 ),
                 color: Colors.blue,

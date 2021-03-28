@@ -6,6 +6,7 @@ import 'package:wan_android_flutter/base/base_state.dart';
 import 'package:wan_android_flutter/base/base_stateful_widget.dart';
 import 'package:wan_android_flutter/base/dialog/center_dialog.dart';
 import 'package:wan_android_flutter/base/event_bus/event_bus.dart';
+import 'package:wan_android_flutter/business/main/mian_page.dart';
 import 'package:wan_android_flutter/business/register/register_page.dart';
 import 'package:wan_android_flutter/event/register_result_event.dart';
 import 'package:wan_android_flutter/generated/l10n.dart';
@@ -25,6 +26,7 @@ class LoginState extends BaseState<LoginPage, LoginViewModel> {
     super.initEventBus();
     EventBus.instance.on<RegisterResultEvent>().listen((event) {
       pop();
+      push(MainPage());
     });
   }
 
