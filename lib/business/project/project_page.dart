@@ -7,6 +7,7 @@ import 'package:wan_android_flutter/base/base_state.dart';
 import 'package:wan_android_flutter/base/base_stateful_widget.dart';
 import 'package:wan_android_flutter/base/dialog/popupWindow/popup_window.dart';
 import 'package:wan_android_flutter/base/util/screen_util.dart';
+import 'package:wan_android_flutter/base/util/time_util.dart';
 import 'package:wan_android_flutter/business/project/project_view_model.dart';
 import 'package:wan_android_flutter/const/resource.dart';
 
@@ -127,15 +128,68 @@ class ProjectState extends BaseState<ProjectPage, ProjectViewModel> {
                       child: Container(
                     alignment: Alignment.center,
                     child: Container(
-                      color: Colors.blue,
-                      width: 260,
-                      height: 320,
+                      width: 360,
+                      height: 420,
                       child: PageView.builder(
                           itemBuilder: (context, index) {
                             return Container(
-                              width: 260,
-                              height: 320,
-                              child:ExtendedImage.network(viewModel.projectList[index].envelopePic, fit: BoxFit.cover,),
+                              width: 360,
+                              height: 420,
+                              alignment: Alignment.center,
+                              child: Container(
+                                decoration: new BoxDecoration(
+                                    border: new Border.all(
+                                        color: Color(0xFA000000), width: 0.5),
+                                    color: Colors.white,
+                                    borderRadius:
+                                        new BorderRadius.circular((10.0))),
+                                height: 420,
+                                child: Stack(
+                                  children: [
+                                    ExtendedImage.network(
+                                      viewModel.projectList[index].envelopePic,
+                                      height: 320,
+                                      width: 310,
+                                      fit: BoxFit.cover,
+                                      shape: BoxShape.rectangle,
+                                      borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(10),
+                                          topRight: Radius.circular(10)),
+                                    ),
+                                    Positioned(
+                                      child: Container(
+                                        width: 310,
+                                        padding: EdgeInsets.only(right: 20),
+                                        child: Text(
+                                            viewModel.projectList[index].title,
+                                            style: TextStyle(fontSize: 15),
+                                            maxLines: 1,
+                                            overflow: TextOverflow.ellipsis),
+                                      ),
+                                      left: 15,
+                                      top: 340,
+                                    ),
+                                    Positioned(
+                                      child: Text(
+                                        "作者：${viewModel.projectList[index].author}",
+                                        style: TextStyle(
+                                            color: Colors.grey, fontSize: 13),
+                                      ),
+                                      left: 15,
+                                      top: 362,
+                                    ),
+                                    Positioned(
+                                      child: Text(
+                                        "时间：${TimeUtil.getStandardTime(viewModel.projectList[index].publishTime)}",
+                                        style: TextStyle(
+                                            color: Colors.grey, fontSize: 13),
+                                      ),
+                                      left: 15,
+                                      top: 383,
+                                    )
+                                  ],
+                                ),
+                              ),
                             );
                           },
                           itemCount: viewModel.projectList.length),
