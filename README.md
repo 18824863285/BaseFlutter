@@ -24,3 +24,5 @@ flutter pub run build_runner build --delete-conflicting-outputs
    2. 组件化
    3. 内存泄漏检测
    4. 埋点框架 
+   
+ qq交流群：414108143 
