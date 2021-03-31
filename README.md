@@ -1,6 +1,6 @@
 # Baseflutter
 
-A new Flutter project.
+.最适合新手学习的flutter开源项目，Provider MVVM的最佳实践
 
 ## Getting Started
 
