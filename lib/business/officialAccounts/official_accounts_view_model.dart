@@ -6,7 +6,7 @@ import 'package:wan_android_flutter/business/officialAccounts/official_accounts_
 @injectable
 class OfficialAccountsViewModel extends BaseViewModel<OfficialAccountsModel> {
 
-  List<OfficialAccountItem> officialAccounts;
+  List<OfficialAccountItem> officialAccounts = [];
 
   @factoryMethod
   OfficialAccountsViewModel();

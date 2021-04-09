@@ -8,7 +8,7 @@ import 'inject/injector.dart';
 import 'navigator/navigator_mixin.dart';
 import 'toast/toast_mixin.dart';
 
-abstract class BaseViewModel<M> extends ChangeNotifier
+abstract class BaseViewModel<M extends Object> extends ChangeNotifier
     with
         BaseViewModelInterface,
         NavigatorMixin,
@@ -18,8 +18,8 @@ abstract class BaseViewModel<M> extends ChangeNotifier
         DataBaseMixin {
   int _loadNum = 0;
   int _minLoadNum = 1;
-  BuildContext context;
-  M model;
+  late BuildContext context;
+  late M model;
   bool _isDispose = false;
 
   bool get isDispose => _isDispose;
@@ -28,9 +28,9 @@ abstract class BaseViewModel<M> extends ChangeNotifier
 
   bool isLoading = false;
 
-  Function() showLoadingFun;
+  Function()? showLoadingFun;
 
-  Function dismissLoadingFun;
+  Function? dismissLoadingFun;
 
   set minLoadNum(int value) {
     _minLoadNum = value;
@@ -40,7 +40,7 @@ abstract class BaseViewModel<M> extends ChangeNotifier
     _loadNum = value;
   }
 
-  get loadNum {
+  int get loadNum {
     return _loadNum;
   }
 
@@ -67,9 +67,7 @@ abstract class BaseViewModel<M> extends ChangeNotifier
       needLoadingRequestCount++;
       if (!isLoading) {
         isLoading = true;
-        if (showLoadingFun != null) {
-          showLoadingFun.call();
-        }
+        showLoadingFun?.call();
       }
     }
   }
@@ -79,16 +77,14 @@ abstract class BaseViewModel<M> extends ChangeNotifier
       needLoadingRequestCount--;
       if (needLoadingRequestCount == 0) {
         isLoading = false;
-        if (dismissLoadingFun != null) {
-          dismissLoadingFun.call();
-        }
+        dismissLoadingFun?.call();
       }
     }
   }
 
   /// 发起网络请求，同时处理异常，loading
   void sendRequest<T>(Future<T> future, FutureOr<dynamic> onValue(T value),
-      {Function(Exception e) error, bool isNeedLoading = false}) {
+      {Function(Exception e)? error, bool isNeedLoading = false}) {
     showLoading(isNeedLoading);
     future.then((t) {
       dismissLoading(isNeedLoading);
