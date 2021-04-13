@@ -9,7 +9,7 @@ mixin EventBusMixin {
 
   void sendEvent(dynamic event) {
     if (!_isDispose) {
-      EventBus.instance.fire(event);
+      EventBus.instance!.fire(event);
     }
   }
 }

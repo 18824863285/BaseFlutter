@@ -17,7 +17,7 @@ class NavigatorHelper {
     }
   }
 
-  static pop<T extends Object>(BuildContext context, [T result]) {
+  static pop<T extends Object>(BuildContext context, [T? result]) {
     Navigator.pop(context, result);
   }
 }

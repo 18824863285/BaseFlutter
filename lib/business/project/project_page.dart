@@ -24,14 +24,14 @@ class ProjectState extends BaseState<ProjectPage, ProjectViewModel> {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (_) {
-        viewModel.getProjectClassification();
+        viewModel!.getProjectClassification();
         return viewModel;
       },
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
           body: Selector<ProjectViewModel, int>(
-            selector: (context, homeViewModel) => viewModel.loadNum,
+            selector: (context, homeViewModel) => viewModel!.loadNum,
             builder: (context, count, child) {
               return Column(
                 children: [
@@ -44,7 +44,7 @@ class ProjectState extends BaseState<ProjectPage, ProjectViewModel> {
                       child: Row(
                         children: [
                           Text(
-                            viewModel.getClassificationTitle(),
+                            viewModel!.getClassificationTitle()!,
                             style: TextStyle(color: Colors.white),
                           ),
                           Container(
@@ -92,10 +92,10 @@ class ProjectState extends BaseState<ProjectPage, ProjectViewModel> {
                                                 height: 30,
                                                 alignment: Alignment.center,
                                                 child: Text(
-                                                  viewModel
-                                                      .projectClassificationList[
+                                                  viewModel!
+                                                      .projectClassificationList![
                                                           index]
-                                                      .name,
+                                                      .name!,
                                                   style: TextStyle(
                                                       color: Colors.white),
                                                 ),
@@ -107,16 +107,16 @@ class ProjectState extends BaseState<ProjectPage, ProjectViewModel> {
                                             ],
                                           ),
                                           onTap: () {
-                                            viewModel.currClassificationIndex =
+                                            viewModel!.currClassificationIndex =
                                                 index;
-                                            viewModel
+                                            viewModel!
                                                 .getProjectClassification();
                                             Navigator.pop(context);
                                           },
                                         );
                                       },
-                                      itemCount: viewModel
-                                          .projectClassificationList.length,
+                                      itemCount: viewModel!
+                                          .projectClassificationList!.length,
                                     )),
                               ),
                             );
@@ -140,8 +140,8 @@ class ProjectState extends BaseState<ProjectPage, ProjectViewModel> {
                               child: GestureDetector(
                                 onTap: () {
                                   push(WebViewPage(
-                                    viewModel.projectList[index].link,
-                                    title: viewModel.projectList[index].title,
+                                    viewModel!.projectList![index].link,
+                                    title: viewModel!.projectList![index].title,
                                   ));
                                 },
                                 child: Container(
@@ -155,8 +155,8 @@ class ProjectState extends BaseState<ProjectPage, ProjectViewModel> {
                                   child: Stack(
                                     children: [
                                       ExtendedImage.network(
-                                        viewModel
-                                            .projectList[index].envelopePic,
+                                        viewModel!
+                                            .projectList![index].envelopePic!,
                                         height: 320,
                                         width: 310,
                                         fit: BoxFit.cover,
@@ -170,8 +170,8 @@ class ProjectState extends BaseState<ProjectPage, ProjectViewModel> {
                                           width: 310,
                                           padding: EdgeInsets.only(right: 20),
                                           child: Text(
-                                              viewModel
-                                                  .projectList[index].title,
+                                              viewModel!
+                                                  .projectList![index].title!,
                                               style: TextStyle(fontSize: 15),
                                               maxLines: 1,
                                               overflow: TextOverflow.ellipsis),
@@ -181,7 +181,7 @@ class ProjectState extends BaseState<ProjectPage, ProjectViewModel> {
                                       ),
                                       Positioned(
                                         child: Text(
-                                          "作者：${viewModel.projectList[index].author}",
+                                          "作者：${viewModel!.projectList![index].author}",
                                           style: TextStyle(
                                               color: Colors.grey, fontSize: 13),
                                         ),
@@ -190,7 +190,7 @@ class ProjectState extends BaseState<ProjectPage, ProjectViewModel> {
                                       ),
                                       Positioned(
                                         child: Text(
-                                          "时间：${TimeUtil.getStandardTime(viewModel.projectList[index].publishTime)}",
+                                          "时间：${TimeUtil.getStandardTime(viewModel!.projectList![index].publishTime!)}",
                                           style: TextStyle(
                                               color: Colors.grey, fontSize: 13),
                                         ),
@@ -203,7 +203,7 @@ class ProjectState extends BaseState<ProjectPage, ProjectViewModel> {
                               ),
                             );
                           },
-                          itemCount: viewModel.projectList.length),
+                          itemCount: viewModel!.projectList!.length),
                     ),
                   ))
                 ],

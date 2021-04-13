@@ -6,7 +6,7 @@ import 'package:wan_android_flutter/business/officialAccounts/official_accounts_
 @injectable
 class OfficialAccountsViewModel extends BaseViewModel<OfficialAccountsModel> {
 
-  List<OfficialAccountItem> officialAccounts = [];
+  List<OfficialAccountItem>? officialAccounts;
 
   @factoryMethod
   OfficialAccountsViewModel();
@@ -14,7 +14,7 @@ class OfficialAccountsViewModel extends BaseViewModel<OfficialAccountsModel> {
   void getOfficialAccounts(Function(int length) callBack) {
     sendRequest<OfficialAccount>(model.getOfficialAccounts(), (value) {
       officialAccounts = value.data;
-      callBack(officialAccounts.length);
+      callBack(officialAccounts!.length);
       notifyPage();
     }, isNeedLoading: true);
   }

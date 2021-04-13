@@ -11,8 +11,8 @@ RegisterResult _$RegisterResultFromJson(Map<String, dynamic> json) {
     ..data = json['data'] == null
         ? null
         : RegisterResultData.fromJson(json['data'] as Map<String, dynamic>)
-    ..errorCode = json['errorCode'] as int
-    ..errorMsg = json['errorMsg'] as String;
+    ..errorCode = json['errorCode'] as int?
+    ..errorMsg = json['errorMsg'] as String?;
 }
 
 Map<String, dynamic> _$RegisterResultToJson(RegisterResult instance) =>
@@ -24,19 +24,19 @@ Map<String, dynamic> _$RegisterResultToJson(RegisterResult instance) =>
 
 RegisterResultData _$RegisterResultDataFromJson(Map<String, dynamic> json) {
   return RegisterResultData()
-    ..admin = json['admin'] as bool
-    ..chapterTops = json['chapterTops'] as List
-    ..coinCount = json['coinCount'] as int
-    ..collectIds = json['collectIds'] as List
-    ..email = json['email'] as String
-    ..icon = json['icon'] as String
-    ..id = json['id'] as int
-    ..nickname = json['nickname'] as String
-    ..password = json['password'] as String
-    ..publicName = json['publicName'] as String
-    ..token = json['token'] as String
-    ..type = json['type'] as int
-    ..username = json['username'] as String;
+    ..admin = json['admin'] as bool?
+    ..chapterTops = json['chapterTops'] as List<dynamic>?
+    ..coinCount = json['coinCount'] as int?
+    ..collectIds = json['collectIds'] as List<dynamic>?
+    ..email = json['email'] as String?
+    ..icon = json['icon'] as String?
+    ..id = json['id'] as int?
+    ..nickname = json['nickname'] as String?
+    ..password = json['password'] as String?
+    ..publicName = json['publicName'] as String?
+    ..token = json['token'] as String?
+    ..type = json['type'] as int?
+    ..username = json['username'] as String?;
 }
 
 Map<String, dynamic> _$RegisterResultDataToJson(RegisterResultData instance) =>

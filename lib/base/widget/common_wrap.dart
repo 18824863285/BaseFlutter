@@ -1,23 +1,23 @@
 import 'package:flutter/cupertino.dart';
 
 class CommonWrap<T> extends Wrap {
-  final List<T> dataList;
+  final List<T>? dataList;
   final Widget Function(T value, int index) itemBuilder;
-  final void Function(T value, int index) onItemTap;
+  final void Function(T value, int index)? onItemTap;
   final Axis direction;
   final WrapAlignment alignment;
   final double spacing;
   final WrapAlignment runAlignment;
   final double runSpacing;
   final WrapCrossAlignment crossAxisAlignment;
-  final TextDirection textDirection;
+  final TextDirection? textDirection;
   final VerticalDirection verticalDirection;
   final Clip clipBehavior;
 
   CommonWrap(
     this.dataList,
     this.itemBuilder, {
-    Key key,
+    Key? key,
     this.onItemTap,
     this.direction = Axis.horizontal,
     this.alignment = WrapAlignment.start,
@@ -43,9 +43,9 @@ class CommonWrap<T> extends Wrap {
 }
 
 List<Widget> getChildList<T>(
-    List<T> dataList,
+    List<T>? dataList,
     Widget Function(T value, int index) itemBuilder,
-    void Function(T value, int index) onItemTap) {
+    void Function(T value, int index)? onItemTap) {
   List<Widget> childList = [];
   if (dataList != null && dataList.length > 0) {
     for (int i = 0; i < dataList.length; i++) {

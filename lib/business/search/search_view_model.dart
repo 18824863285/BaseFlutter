@@ -6,8 +6,8 @@ import 'model/history_search_key.dart';
 
 @injectable
 class SearchViewModel extends BaseViewModel<SearchModel> {
-  List<HotKeyItem> hotKeyItems;
-  List<HistorySearchKey> historySearchKeys;
+  List<HotKeyItem>? hotKeyItems;
+  List<HistorySearchKey>? historySearchKeys;
 
   @factoryMethod
   SearchViewModel();
@@ -27,22 +27,22 @@ class SearchViewModel extends BaseViewModel<SearchModel> {
 
   void getHistorySearchKeys() async {
     historySearchKeys =
-        await database.historySearchKeyDao.findHistorySearchKeys();
+        await database!.historySearchKeyDao.findHistorySearchKeys();
     notifyPage();
   }
 
-  void saveSearchKeyToDataBase(String key) async {
-    await database.historySearchKeyDao
+  void saveSearchKeyToDataBase(String? key) async {
+    await database!.historySearchKeyDao
         .insertHotKeyItem(HistorySearchKey(null, key));
     getHistorySearchKeys();
   }
 
   void deleteAllHistorySearchKey() async {
-    if (historySearchKeys != null && historySearchKeys.length > 0) {
-      int result = await database.historySearchKeyDao
-          .deleteHistorySearchKeys(historySearchKeys);
+    if (historySearchKeys != null && historySearchKeys!.length > 0) {
+      int result = await database!.historySearchKeyDao
+          .deleteHistorySearchKeys(historySearchKeys!);
       if (result > 0) {
-        historySearchKeys.clear();
+        historySearchKeys!.clear();
         notifyPage();
       }
     }

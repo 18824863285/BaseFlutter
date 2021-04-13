@@ -8,13 +8,11 @@ part of 'official_account.dart';
 
 OfficialAccount _$OfficialAccountFromJson(Map<String, dynamic> json) {
   return OfficialAccount(
-    json['errorCode'] as int,
-    json['errorMsg'] as String,
-    (json['data'] as List)
-        ?.map((e) => e == null
-            ? null
-            : OfficialAccountItem.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
+    json['errorCode'] as int?,
+    json['errorMsg'] as String?,
+    (json['data'] as List<dynamic>)
+        .map((e) => OfficialAccountItem.fromJson(e as Map<String, dynamic>))
+        .toList(),
   );
 }
 
@@ -27,13 +25,13 @@ Map<String, dynamic> _$OfficialAccountToJson(OfficialAccount instance) =>
 
 OfficialAccountItem _$OfficialAccountItemFromJson(Map<String, dynamic> json) {
   return OfficialAccountItem(
-    json['courseId'] as int,
-    json['id'] as int,
-    json['name'] as String,
-    json['order'] as int,
-    json['parentChapterId'] as int,
-    json['userControlSetTop'] as bool,
-    json['visible'] as int,
+    json['courseId'] as int?,
+    json['id'] as int?,
+    json['name'] as String?,
+    json['order'] as int?,
+    json['parentChapterId'] as int?,
+    json['userControlSetTop'] as bool?,
+    json['visible'] as int?,
   );
 }
 

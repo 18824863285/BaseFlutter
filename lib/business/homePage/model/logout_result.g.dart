@@ -9,8 +9,8 @@ part of 'logout_result.dart';
 LogoutResult _$LogoutResultFromJson(Map<String, dynamic> json) {
   return LogoutResult(
     json['data'],
-    json['errorCode'] as int,
-    json['errorMsg'] as String,
+    json['errorCode'] as int?,
+    json['errorMsg'] as String?,
   );
 }
 

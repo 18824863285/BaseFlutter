@@ -21,17 +21,17 @@ abstract class BaseState<W extends StatefulWidget, VM extends BaseViewModel>
         EventBusMixin,
         SharePreferenceMixin,
         ScreenAdapterMixin{
-  VM viewModel;
-  EventBus eventBus;
-  LoadingDialog loadingDialog;
+  VM? viewModel;
+  EventBus? eventBus;
+  LoadingDialog? loadingDialog;
 
-  bool isBuildFinish;
+  late bool isBuildFinish;
 
   @override
   void initState() {
     super.initState();
     isBuildFinish = false;
-    WidgetsBinding widgetsBinding = WidgetsBinding.instance;
+    WidgetsBinding widgetsBinding = WidgetsBinding.instance!;
     widgetsBinding.addPostFrameCallback((callback) {
       //说明build结束了
       print("====>build结束了");
@@ -43,12 +43,12 @@ abstract class BaseState<W extends StatefulWidget, VM extends BaseViewModel>
     setIsDispose(false);
     if (viewModel == null) {
       viewModel = getIt.get<VM>();
-      viewModel.context = context;
-      viewModel.init();
-      viewModel.showLoadingFun = () {
+      viewModel!.context = context;
+      viewModel!.init();
+      viewModel!.showLoadingFun = () {
         showLoading();
       };
-      viewModel.dismissLoadingFun = () {
+      viewModel!.dismissLoadingFun = () {
         loadingDialog?.dismissDialog();
       };
     }
@@ -74,7 +74,7 @@ abstract class BaseState<W extends StatefulWidget, VM extends BaseViewModel>
             if (loadingDialog == null) {
               loadingDialog = LoadingDialog();
             }
-            return loadingDialog;
+            return loadingDialog!;
           });
     } else {
       await Future.delayed(Duration(milliseconds: 10));

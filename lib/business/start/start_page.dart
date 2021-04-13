@@ -17,10 +17,10 @@ class StartPage extends BaseStatefulWidget {
 class StartState extends BaseState<StartPage, StartViewModel> {
   @override
   Widget build(BuildContext context) {
-    Density.instance.init(context, 780, null);
+    Density.instance!.init(context, 780, null);
     return ChangeNotifierProvider(
         create: (_) {
-          viewModel.startCountdown(5);
+          viewModel!.startCountdown(5);
           return viewModel;
         },
         child: MaterialApp(
@@ -40,14 +40,14 @@ class StartState extends BaseState<StartPage, StartViewModel> {
                     right: 10,
                     top: 30,
                     child: Text(
-                  S.of(context).name,
+                  S.of(context)!.name,
                   style: TextStyle(color: Colors.white, fontSize: 12),
                 )),
                 Positioned(
                   child: GestureDetector(
                     onTap: () {
-                      viewModel.cancelCountdown();
-                      viewModel.toNextPage();
+                      viewModel!.cancelCountdown();
+                      viewModel!.toNextPage();
                     },
                     child: Container(
                         decoration: BoxDecoration(
@@ -60,7 +60,7 @@ class StartState extends BaseState<StartPage, StartViewModel> {
                               startViewModel.currTime,
                           builder: (context, count, child) {
                             return Text(
-                              "剩余${viewModel.currTime}s",
+                              "剩余${viewModel!.currTime}s",
                               style:
                                   TextStyle(color: Colors.white, fontSize: 12),
                             );

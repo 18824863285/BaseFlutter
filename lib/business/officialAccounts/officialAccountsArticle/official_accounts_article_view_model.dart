@@ -7,7 +7,7 @@ import 'official_accounts_article_model.dart';
 @injectable
 class OfficialAccountsArticleViewModel
     extends BaseListViewViewModel<Datas, OfficialAccountsArticleModel> {
-  OfficialAccountItem officialAccount;
+  late OfficialAccountItem officialAccount;
 
   @factoryMethod
   OfficialAccountsArticleViewModel();
@@ -17,7 +17,7 @@ class OfficialAccountsArticleViewModel
     sendRequest<OfficialAccountsArticle>(
         model.getOfficialAccountsArticle(officialAccount.id, currIndex),
         (value) {
-      controlResult(value.data.datas);
+      controlResult(value.data!.datas!);
     });
   }
 }

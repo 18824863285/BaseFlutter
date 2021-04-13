@@ -2,7 +2,7 @@ import 'package:flutter/widgets.dart';
 
 class LazyIndexedStack extends StatefulWidget {
   final AlignmentGeometry alignment;
-  final TextDirection textDirection;
+  final TextDirection? textDirection;
   final StackFit sizing;
   final int index;
 
@@ -13,13 +13,13 @@ class LazyIndexedStack extends StatefulWidget {
   final IndexedWidgetBuilder itemBuilder;
 
   LazyIndexedStack(
-      {Key key,
+      {Key? key,
       this.alignment = AlignmentDirectional.topStart,
       this.textDirection,
       this.sizing = StackFit.loose,
       this.index = 0,
       this.reuse = true,
-      @required this.itemBuilder,
+      required this.itemBuilder,
       this.itemCount = 0})
       : super(key: key);
 
@@ -28,8 +28,8 @@ class LazyIndexedStack extends StatefulWidget {
 }
 
 class _LazyIndexedStackState extends State<LazyIndexedStack> {
-  List<Widget> _children;
-  List<bool> _loaded;
+  late List<Widget> _children;
+  late List<bool> _loaded;
 
   @override
   void initState() {

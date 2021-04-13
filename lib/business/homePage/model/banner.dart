@@ -5,8 +5,8 @@ part 'banner.g.dart';
 @JsonSerializable()
 class Banner {
 
-  int errorCode;
-  String errorMsg;
+  int? errorCode;
+  String? errorMsg;
   List<BannerItem> data;
 
 
@@ -20,14 +20,14 @@ class Banner {
 
 @JsonSerializable()
 class BannerItem {
-  String desc;
-  int id;
-  String imagePath;
-  int isVisible;
-  int order;
-  String title;
-  int type;
-  String url;
+  String? desc;
+  int? id;
+  String? imagePath;
+  int? isVisible;
+  int? order;
+  String? title;
+  int? type;
+  String? url;
 
   BannerItem(this.desc, this.id, this.imagePath, this.isVisible, this.order,
       this.title, this.type, this.url);

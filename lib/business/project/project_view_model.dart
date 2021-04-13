@@ -6,21 +6,21 @@ import 'model/projects.dart';
 
 @injectable
 class ProjectViewModel extends BaseViewModel<ProjectModel> {
-  List<ProjectClassificationItem> projectClassificationList = [];
+  List<ProjectClassificationItem>? projectClassificationList = [];
 
-  List<Datas> projectList = [];
+  List<Datas>? projectList = [];
 
   int currClassificationIndex = 0;
 
   @factoryMethod
   ProjectViewModel();
 
-  String getClassificationTitle() {
+  String? getClassificationTitle() {
     if (projectClassificationList == null ||
-        projectClassificationList.length == 0) {
+        projectClassificationList!.length == 0) {
       return "";
     } else {
-      return projectClassificationList[currClassificationIndex].name;
+      return projectClassificationList![currClassificationIndex].name;
     }
   }
 
@@ -28,16 +28,16 @@ class ProjectViewModel extends BaseViewModel<ProjectModel> {
     sendRequest<ProjectClassification>(model.getProjectClassification(),
             (value) {
           projectClassificationList = value.data;
-          getProjects(projectClassificationList[currClassificationIndex].id);
+          getProjects(projectClassificationList![currClassificationIndex].id);
         },isNeedLoading: true);
   }
 
-  void getProjects(int cid) {
+  void getProjects(int? cid) {
     sendRequest<Projects>(model.getProjects(1, cid), (value) {
-      if (value.data == null || value.data.datas == null) {
+      if (value.data == null || value.data!.datas == null) {
         projectList = [];
       } else {
-        projectList = value.data.datas;
+        projectList = value.data!.datas;
       }
       notifyPage();
     }, isNeedLoading: true);

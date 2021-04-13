@@ -1,16 +1,16 @@
 import 'app_data_base.dart';
 
 class DatabaseManger {
-  static DatabaseManger _instance;
+  static DatabaseManger? _instance;
   static const _dbName = "base_flutter_database.db";
 
-  AppDatabase _database;
+  AppDatabase? _database;
 
   // ignore: unnecessary_getters_setters
-  AppDatabase get database => _database;
+  AppDatabase? get database => _database;
 
   // ignore: unnecessary_getters_setters
-  set database(AppDatabase value) {
+  set database(AppDatabase? value) {
     _database = value;
   }
 

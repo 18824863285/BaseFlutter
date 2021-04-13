@@ -6,8 +6,8 @@ import 'package:wan_android_flutter/base/dialog/center_dialog.dart';
 // ignore: must_be_immutable
 class EnsureAndCancelDialog extends CenterDialog {
   final String content;
-  final Function onCancel;
-  final Function onEnsure;
+  final Function? onCancel;
+  final Function? onEnsure;
 
   EnsureAndCancelDialog(this.content, {this.onCancel, this.onEnsure});
 
@@ -37,7 +37,7 @@ class EnsureAndCancelDialog extends CenterDialog {
                   onTap: () {
                     dismiss();
                     if (onCancel != null) {
-                      onCancel.call();
+                      onCancel!.call();
                     }
                   },
                   child: Container(
@@ -62,7 +62,7 @@ class EnsureAndCancelDialog extends CenterDialog {
                   onTap: () {
                     dismiss();
                     if (onEnsure != null) {
-                      onEnsure.call();
+                      onEnsure!.call();
                     }
                   },
                   child: Container(

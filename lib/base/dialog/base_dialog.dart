@@ -6,9 +6,9 @@ import 'dialog_interface.dart';
 
 abstract class BaseDialog extends DialogInterface
     with ScreenAdapterMixin, NavigatorMixin, ToastMixin {
-  Widget child;
-  bool outsideDismiss;
-  BuildContext context;
+  Widget? child;
+  bool? outsideDismiss;
+  BuildContext? context;
 
   void init() {
     child = getChild();

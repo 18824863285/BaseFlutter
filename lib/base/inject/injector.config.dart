@@ -38,7 +38,7 @@ import '../../retrofit/RestClient.dart'
 extension GetItInjectableX on _i1.GetIt {
   /// initializes the registration of provided dependencies inside of [GetIt]
   _i1.GetIt init(
-      {String environment, _i2.EnvironmentFilter environmentFilter}) {
+      {String? environment, _i2.EnvironmentFilter? environmentFilter}) {
     final gh = _i2.GetItHelper(this, environment, environmentFilter);
     final retrofitModule = _$RetrofitModule();
     gh.factory<_i3.HomeModel>(() => retrofitModule.homeModel());

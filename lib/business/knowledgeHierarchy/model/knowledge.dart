@@ -5,9 +5,9 @@ part 'knowledge.g.dart';
 
 @JsonSerializable()
 class Knowledge {
-  List<Data> data;
-  int errorCode;
-  String errorMsg;
+  List<Data>? data;
+  int? errorCode;
+  String? errorMsg;
 
   Knowledge({this.data, this.errorCode, this.errorMsg});
 
@@ -21,14 +21,14 @@ class Knowledge {
 
 @JsonSerializable()
 class Data {
-  List<Children> children;
-  int courseId;
-  int id;
-  String name;
-  int order;
-  int parentChapterId;
-  bool userControlSetTop;
-  int visible;
+  List<Children>? children;
+  int? courseId;
+  int? id;
+  String? name;
+  int? order;
+  int? parentChapterId;
+  bool? userControlSetTop;
+  int? visible;
 
   Data(
       {this.children,
@@ -48,13 +48,13 @@ class Data {
 
 @JsonSerializable()
 class Children {
-  int courseId;
-  int id;
-  String name;
-  int order;
-  int parentChapterId;
-  bool userControlSetTop;
-  int visible;
+  int? courseId;
+  int? id;
+  String? name;
+  int? order;
+  int? parentChapterId;
+  bool? userControlSetTop;
+  int? visible;
 
   Children(
       {

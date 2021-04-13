@@ -1,3 +1,5 @@
+import 'dart:core';
+
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
@@ -87,7 +89,7 @@ abstract class RetrofitModule {
 
 @RestApi(baseUrl: url)
 abstract class RestClient {
-  factory RestClient(Dio dio, {String baseUrl}) = _RestClient;
+  factory RestClient(Dio dio, {String? baseUrl}) = _RestClient;
 
   @POST("user/login")
   Future<LoginResult> login(@Body() Map<String, dynamic> map);

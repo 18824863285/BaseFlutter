@@ -18,7 +18,7 @@ class HomeViewModel extends BaseViewModel<HomeModel> {
 
   bool isRequest = true;
 
-  List<BannerItem> bannerItems;
+  List<BannerItem>? bannerItems;
 
   @factoryMethod
   HomeViewModel();
@@ -65,12 +65,12 @@ class HomeViewModel extends BaseViewModel<HomeModel> {
         pop();
         push(LoginPage());
       } else {
-        showToast(value.errorMsg);
+        showToast(value.errorMsg!);
       }
     }, isNeedLoading: true);
   }
 
-  Datas getData(int index) {
+  Datas? getData(int index) {
     if (index <= dataList.length - 1) {
       return dataList[index];
     } else {

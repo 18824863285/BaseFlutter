@@ -24,7 +24,7 @@ class LoginState extends BaseState<LoginPage, LoginViewModel> {
   @override
   void initEventBus() {
     super.initEventBus();
-    EventBus.instance.on<RegisterResultEvent>().listen((event) {
+    EventBus.instance!.on<RegisterResultEvent>().listen((event) {
       pop();
       push(MainPage());
     });
@@ -80,7 +80,7 @@ class LoginState extends BaseState<LoginPage, LoginViewModel> {
                           borderRadius:
                               BorderRadius.all(Radius.circular(100)))),
                   onChanged: (text) {
-                    viewModel.loginName = text;
+                    viewModel!.loginName = text;
                   },
                 ),
               ),
@@ -105,7 +105,7 @@ class LoginState extends BaseState<LoginPage, LoginViewModel> {
                             borderRadius:
                                 BorderRadius.all(Radius.circular(100)))),
                     onChanged: (text) {
-                      viewModel.psw = text;
+                      viewModel!.psw = text;
                     },
                   ),
                 )),
@@ -120,7 +120,7 @@ class LoginState extends BaseState<LoginPage, LoginViewModel> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(100))),
                     onPressed: () {
-                      viewModel.login();
+                      viewModel!.login();
                     },
                     child: Text(
                       "登录",

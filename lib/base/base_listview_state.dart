@@ -11,7 +11,7 @@ abstract class BaseListViewState<W extends StatefulWidget,
     VM extends BaseListViewViewModel> extends BaseState<W, VM> {
   bool isInitialRefresh() => true;
 
-  RefreshController refreshController;
+  late RefreshController refreshController;
 
   @override
   void initState() {
@@ -22,7 +22,7 @@ abstract class BaseListViewState<W extends StatefulWidget,
   @override
   void initEventBus() {
     super.initEventBus();
-    EventBus.instance.on<ListViewLoadStatus>().listen((event) {
+    EventBus.instance!.on<ListViewLoadStatus>().listen((event) {
       if (event.status == ListViewLoadStatus.refresh_succ) {
         refreshController.refreshCompleted();
       } else if (event.status == ListViewLoadStatus.load_more_succ) {
@@ -30,7 +30,7 @@ abstract class BaseListViewState<W extends StatefulWidget,
       }
     });
 
-    EventBus.instance.on<ListViewRequestStatus>().listen((event) {
+    EventBus.instance!.on<ListViewRequestStatus>().listen((event) {
       if (event.status == ListViewRequestStatus.load_finish) {
         refreshController.loadNoData();
       } else if (event.status == ListViewLoadStatus.load_more_succ) {
@@ -40,10 +40,10 @@ abstract class BaseListViewState<W extends StatefulWidget,
   }
 
   refresh() {
-    viewModel.refresh();
+    viewModel!.refresh();
   }
 
   loadMore() {
-    viewModel.loadMore();
+    viewModel!.loadMore();
   }
 }

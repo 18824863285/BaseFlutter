@@ -8,11 +8,9 @@ part of 'login_result.dart';
 
 LoginResult _$LoginResultFromJson(Map<String, dynamic> json) {
   return LoginResult(
-    json['data'] == null
-        ? null
-        : Data.fromJson(json['data'] as Map<String, dynamic>),
-    json['errorCode'] as int,
-    json['errorMsg'] as String,
+    Data.fromJson(json['data'] as Map<String, dynamic>),
+    json['errorCode'] as int?,
+    json['errorMsg'] as String?,
   );
 }
 
@@ -25,19 +23,19 @@ Map<String, dynamic> _$LoginResultToJson(LoginResult instance) =>
 
 Data _$DataFromJson(Map<String, dynamic> json) {
   return Data(
-    json['admin'] as bool,
-    json['chapterTops'] as List,
-    json['coinCount'] as int,
-    json['collectIds'] as List,
-    json['email'] as String,
-    json['icon'] as String,
-    json['id'] as int,
-    json['nickname'] as String,
-    json['password'] as String,
-    json['publicName'] as String,
-    json['token'] as String,
-    json['type'] as int,
-    json['username'] as String,
+    json['admin'] as bool?,
+    json['chapterTops'] as List<dynamic>?,
+    json['coinCount'] as int?,
+    json['collectIds'] as List<dynamic>?,
+    json['email'] as String?,
+    json['icon'] as String?,
+    json['id'] as int?,
+    json['nickname'] as String?,
+    json['password'] as String?,
+    json['publicName'] as String?,
+    json['token'] as String?,
+    json['type'] as int?,
+    json['username'] as String?,
   );
 }
 

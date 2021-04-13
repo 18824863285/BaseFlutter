@@ -8,7 +8,7 @@ abstract class CenterDialog extends BaseDialog {
     init();
     showDialog(
       context: context,
-      barrierDismissible: outsideDismiss,
+      barrierDismissible: outsideDismiss!,
       builder: (_) => StatefulBuilder(builder:
           (BuildContext context, void Function(void Function()) setState) {
         this.context = context;
@@ -21,8 +21,8 @@ abstract class CenterDialog extends BaseDialog {
               ),
             ),
             onWillPop: () async {
-              return outsideDismiss;
-            });
+              return outsideDismiss!;
+            } as Future<bool> Function()?);
       }),
     );
   }

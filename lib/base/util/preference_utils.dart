@@ -2,17 +2,17 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 /// shared_preferences 管理类
 class PreferenceUtils {
-  static PreferenceUtils _instance;
+  static PreferenceUtils? _instance;
 
   static PreferenceUtils get instance => PreferenceUtils();
 
   PreferenceUtils._internal();
 
-  SharedPreferences _sharedPreferences;
+  late SharedPreferences _sharedPreferences;
 
   factory PreferenceUtils() {
     if (_instance == null) _instance = PreferenceUtils._internal();
-    return _instance;
+    return _instance!;
   }
 
   Future<void> initSharedPreferences() async {

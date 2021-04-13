@@ -8,13 +8,13 @@ import 'package:flutter/material.dart';
 ///2、控件中使用：Density.instance.dp(375)
 ///3、文本中使用：Density.instance.sp(37.5)
 class Density {
-  static Density _instance;
+  static Density? _instance;
 
-  static Density get instance => _getInstance();
+  static Density? get instance => _getInstance();
 
-  factory Density() => _getInstance();
+  factory Density() => _getInstance()!;
 
-  static Density _getInstance() {
+  static Density? _getInstance() {
     if (_instance == null) {
       _instance = Density._internal();
     }
@@ -23,17 +23,17 @@ class Density {
 
   Density._internal();
 
-  MediaQueryData _mediaQuery;
+  late MediaQueryData _mediaQuery;
 
   //屏幕宽度值，如 UI 设计稿件是按 750px 设计的，则在 init 函数中传入 750
-  double _screenCopies;
+  late double _screenCopies;
 
   //屏幕宽度和字体大小的比值，字体大小等于 屏幕宽度/该值
-  double _spCopies;
+  late double _spCopies;
 
   //初始化，在程序启动后第一个 state 中进行设置
   //如果 screenCopies、spCopies传入为 null 则获取的 dp sp 为系统默认的
-  void init(BuildContext context, double screenCopies, double spCopies) {
+  void init(BuildContext context, double screenCopies, double? spCopies) {
     _mediaQuery = MediaQuery.of(context);
     _screenCopies = screenCopies != null && screenCopies > 0 ? screenCopies : screenWidth;
     _spCopies = spCopies != null && spCopies > 0 ? spCopies : screenWidth;

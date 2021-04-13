@@ -7,11 +7,11 @@ import 'base_view_model.dart';
 class BaseChangeNotifierProvider<VM extends BaseViewModel>
     extends ChangeNotifierProvider {
   Key key;
-  VM viewModel;
-  Widget widget;
-  Function init;
+  VM? viewModel;
+  Widget? widget;
+  Function? init;
 
-  BaseChangeNotifierProvider({this.key, this.viewModel, this.widget, this.init})
+  BaseChangeNotifierProvider({required this.key, this.viewModel, this.widget, this.init})
       : super(
             key: key,
             create: (BuildContext context) {
@@ -24,9 +24,9 @@ class BaseChangeNotifierProvider<VM extends BaseViewModel>
               debugShowCheckedModeBanner: false,
               home: Scaffold(
                 body: Selector<VM, int>(
-                    selector: (context, homeViewModel) => viewModel.loadNum,
+                    selector: (context, homeViewModel) => viewModel!.loadNum,
                     builder: (context, count, child) {
-                      return widget;
+                      return widget!;
                     }),
               ),
             ));

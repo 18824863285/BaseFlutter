@@ -21,25 +21,26 @@ class SearchPage extends BaseStatefulWidget {
 }
 
 class SearchState extends BaseState<SearchPage, SearchViewModel> {
-  EnsureAndCancelDialog _ensureAndCancelDialog;
+  EnsureAndCancelDialog? _ensureAndCancelDialog;
 
   // ignore: missing_return
-  EnsureAndCancelDialog get ensureAndCancelDialog {
+  EnsureAndCancelDialog? get ensureAndCancelDialog {
     if (_ensureAndCancelDialog == null) {
       _ensureAndCancelDialog =
           EnsureAndCancelDialog("确定清空历史记录吗？", onEnsure: () {
-        viewModel.deleteAllHistorySearchKey();
+        viewModel!.deleteAllHistorySearchKey();
       });
     }
-    _ensureAndCancelDialog.show(context);
+    _ensureAndCancelDialog!.show(context);
+    return _ensureAndCancelDialog;
   }
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (BuildContext context) {
-        viewModel.getHotSearchKey();
-        viewModel.getHistorySearchKeys();
+        viewModel!.getHotSearchKey();
+        viewModel!.getHistorySearchKeys();
         return viewModel;
       },
       child: MaterialApp(
@@ -93,7 +94,7 @@ class SearchState extends BaseState<SearchPage, SearchViewModel> {
                                       borderRadius: BorderRadius.all(
                                           Radius.circular(10)))),
                               onFieldSubmitted: (term) {
-                                viewModel.saveSearchKeyToDataBase(term);
+                                viewModel!.saveSearchKeyToDataBase(term);
                               }),
                         ),
                       ))
@@ -102,7 +103,7 @@ class SearchState extends BaseState<SearchPage, SearchViewModel> {
                 ),
                 Expanded(
                     child: Selector<SearchViewModel, int>(
-                  selector: (context, searchViewModel) => viewModel.loadNum,
+                  selector: (context, searchViewModel) => viewModel!.loadNum,
                   builder: (context, count, child) {
                     return SingleChildScrollView(
                       scrollDirection: Axis.vertical,
@@ -122,7 +123,7 @@ class SearchState extends BaseState<SearchPage, SearchViewModel> {
                               alignment: Alignment.topLeft,
                               padding: EdgeInsets.only(left: 16, right: 16),
                               child: CommonWrap<HotKeyItem>(
-                                  viewModel.hotKeyItems, (hotKeyItem, index) {
+                                  viewModel!.hotKeyItems, (hotKeyItem, index) {
                                 return Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
@@ -136,7 +137,7 @@ class SearchState extends BaseState<SearchPage, SearchViewModel> {
                                               new BorderRadius.circular((5.0))),
                                       padding: EdgeInsets.only(
                                           left: 5, right: 5, top: 5, bottom: 5),
-                                      child: Text(hotKeyItem.name),
+                                      child: Text(hotKeyItem.name!),
                                       height: 30,
                                       alignment: Alignment.center,
                                     )
@@ -144,7 +145,7 @@ class SearchState extends BaseState<SearchPage, SearchViewModel> {
                                 );
                               },
                                   onItemTap: (hotKeyItem, index) {
-                                    viewModel.saveSearchKeyToDataBase(hotKeyItem.name);
+                                    viewModel!.saveSearchKeyToDataBase(hotKeyItem.name);
                                   },
                                   spacing: 5,
                                   runSpacing: 6),
@@ -179,8 +180,8 @@ class SearchState extends BaseState<SearchPage, SearchViewModel> {
                                   ],
                                 ),
                               ),
-                              visible: viewModel.historySearchKeys != null &&
-                                  viewModel.historySearchKeys.length > 0,
+                              visible: viewModel!.historySearchKeys != null &&
+                                  viewModel!.historySearchKeys!.length > 0,
                             ),
                             Container(
                               height: 10,
@@ -189,7 +190,7 @@ class SearchState extends BaseState<SearchPage, SearchViewModel> {
                               alignment: Alignment.topLeft,
                               padding: EdgeInsets.only(left: 16, right: 16),
                               child: CommonWrap<HistorySearchKey>(
-                                  viewModel.historySearchKeys,
+                                  viewModel!.historySearchKeys,
                                   (historySearchKey, index) {
                                 return Row(
                                   mainAxisSize: MainAxisSize.min,
@@ -204,7 +205,7 @@ class SearchState extends BaseState<SearchPage, SearchViewModel> {
                                               new BorderRadius.circular((5.0))),
                                       padding: EdgeInsets.only(
                                           left: 5, right: 5, top: 5, bottom: 5),
-                                      child: Text(historySearchKey.title),
+                                      child: Text(historySearchKey.title!),
                                       height: 30,
                                       alignment: Alignment.center,
                                     )

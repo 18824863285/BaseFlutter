@@ -4,7 +4,7 @@ import 'navigator_helper.dart';
 
 mixin NavigatorMixin {
 
-  BuildContext _buildContext;
+  late BuildContext _buildContext;
 
   void setContext(BuildContext context){
     _buildContext = context;
@@ -18,7 +18,7 @@ mixin NavigatorMixin {
     NavigatorHelper.pushForResult(_buildContext, page, callBack);
   }
 
-  void pop<T extends Object>([T result]) {
+  void pop<T extends Object>([T? result]) {
     Navigator.pop(_buildContext, result);
   }
 

@@ -2,23 +2,23 @@ import 'package:wan_android_flutter/base/base_view_model.dart';
 import 'package:wan_android_flutter/base/event_bus/event_bus.dart';
 import 'event_bus/event/listview_load_status.dart';
 
-abstract class BaseListViewViewModel<T, M> extends BaseViewModel<M> {
+abstract class BaseListViewViewModel<T, M extends Object> extends BaseViewModel<M> {
   int currIndex = 0;
   int pageSize = 10;
 
-  List<T> dataList;
+  List<T>? dataList;
 
   void controlResult(List<T> dataList) {
     if (currIndex == 0) {
       this.dataList = dataList;
-      EventBus.instance.fire(ListViewLoadStatus());
+      EventBus.instance!.fire(ListViewLoadStatus());
     } else {
-      this.dataList.addAll(dataList);
-      EventBus.instance
+      this.dataList!.addAll(dataList);
+      EventBus.instance!
           .fire(ListViewLoadStatus(status: ListViewLoadStatus.load_more_succ));
     }
     if (dataList.length < pageSize) {
-      EventBus.instance.fire(ListViewLoadStatus());
+      EventBus.instance!.fire(ListViewLoadStatus());
     }
     notifyPage();
   }
@@ -33,9 +33,9 @@ abstract class BaseListViewViewModel<T, M> extends BaseViewModel<M> {
     getData();
   }
 
-  T getItemData(int index) {
-    if (index <= dataList.length - 1) {
-      return dataList[index];
+  T? getItemData(int index) {
+    if (index <= dataList!.length - 1) {
+      return dataList![index];
     } else {
       return null;
     }

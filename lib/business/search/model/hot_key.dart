@@ -4,9 +4,9 @@ part 'hot_key.g.dart';
 
 @JsonSerializable()
 class HotKey {
-  int errorCode;
+  int? errorCode;
 
-  String errorMsg;
+  String? errorMsg;
 
   List<HotKeyItem> data;
 
@@ -20,11 +20,11 @@ class HotKey {
 
 @JsonSerializable()
 class HotKeyItem {
-  int id;
-  String link;
-  String name;
-  int order;
-  int visible;
+  int? id;
+  String? link;
+  String? name;
+  int? order;
+  int? visible;
 
   HotKeyItem(this.id, this.link, this.name, this.order, this.visible);
 

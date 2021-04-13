@@ -18,22 +18,22 @@ class RegisterViewModel extends BaseViewModel<RegisterModel> {
 
   void register() {
     if (loginName.isEmpty || !RegExpUtil.isMobilePhoneNum(loginName)) {
-      showToast(S.of(context).true_login_name);
+      showToast(S.of(context)!.true_login_name);
     } else if (psw.isEmpty || !RegExpUtil.isLoginPassword(psw)) {
-      showToast(S.of(context).true_login_psw);
+      showToast(S.of(context)!.true_login_psw);
     } else if (psw != ensurePsw) {
-      showToast(S.of(context).ensure_psw_true);
+      showToast(S.of(context)!.ensure_psw_true);
     } else {
       sendRequest<RegisterResult>(model.register(loginName, psw, ensurePsw),
           (value) {
         if (value.errorCode == 0) {
-          UserInfoSp.getInstance().uid = value.data.id;
-          UserInfoSp.getInstance().token = value.data.token;
-          UserInfoSp.getInstance().userName = value.data.username;
+          UserInfoSp.getInstance().uid = value.data!.id!;
+          UserInfoSp.getInstance().token = value.data!.token!;
+          UserInfoSp.getInstance().userName = value.data!.username!;
           pop();
           sendEvent(RegisterResultEvent(succ: true));
         } else {
-          showLongToast(value.errorMsg);
+          showLongToast(value.errorMsg!);
         }
       }, isNeedLoading: true);
     }

@@ -11,10 +11,10 @@ class LoginResult {
   Data data;
 
   @JsonKey(name: 'errorCode')
-  int errorCode;
+  int? errorCode;
 
   @JsonKey(name: 'errorMsg')
-  String errorMsg;
+  String? errorMsg;
 
   LoginResult(
     this.data,
@@ -31,43 +31,43 @@ class LoginResult {
 @JsonSerializable()
 class Data {
   @JsonKey(name: 'admin')
-  bool admin;
+  bool? admin;
 
   @JsonKey(name: 'chapterTops')
-  List<dynamic> chapterTops;
+  List<dynamic>? chapterTops;
 
   @JsonKey(name: 'coinCount')
-  int coinCount;
+  int? coinCount;
 
   @JsonKey(name: 'collectIds')
-  List<dynamic> collectIds;
+  List<dynamic>? collectIds;
 
   @JsonKey(name: 'email')
-  String email;
+  String? email;
 
   @JsonKey(name: 'icon')
-  String icon;
+  String? icon;
 
   @JsonKey(name: 'id')
-  int id;
+  int? id;
 
   @JsonKey(name: 'nickname')
-  String nickname;
+  String? nickname;
 
   @JsonKey(name: 'password')
-  String password;
+  String? password;
 
   @JsonKey(name: 'publicName')
-  String publicName;
+  String? publicName;
 
   @JsonKey(name: 'token')
-  String token;
+  String? token;
 
   @JsonKey(name: 'type')
-  int type;
+  int? type;
 
   @JsonKey(name: 'username')
-  String username;
+  String? username;
 
   Data(
     this.admin,

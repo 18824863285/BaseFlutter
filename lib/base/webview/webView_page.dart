@@ -6,8 +6,8 @@ import 'package:webview_flutter/webview_flutter.dart';
 
 // ignore: must_be_immutable
 class WebViewPage extends StatefulWidget {
-  final String url;
-  final String title;
+  final String? url;
+  final String? title;
   WebViewPage(this.url, {this.title});
 
   @override
@@ -18,8 +18,8 @@ class WebViewPage extends StatefulWidget {
 
 class WebViewState extends State<WebViewPage> {
 
-  ShareDialog _shareDialog;
-  ShareDialog get shareDialog {
+  ShareDialog? _shareDialog;
+  ShareDialog? get shareDialog {
     if (_shareDialog == null) {
       _shareDialog = ShareDialog();
     }
@@ -35,13 +35,13 @@ class WebViewState extends State<WebViewPage> {
         backgroundColor: Colors.white,
         appBar: CommonAppBar(
           context,
-          titleStr: (widget.title == null || widget.title.isEmpty)
+          titleStr: (widget.title == null || widget.title!.isEmpty)
               ? "网页"
-              : widget.title,
+              : widget.title!,
           actions: [
             GestureDetector(
               onTap: () {
-                shareDialog.show(context);
+                shareDialog!.show(context);
               },
               child: SizedBox(
                 width: 45,

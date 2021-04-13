@@ -23,7 +23,7 @@ class MainState extends BaseState<MainPage, MainViewModel> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: LazyIndexedStack(
-          index: viewModel.currPageIndex,
+          index: viewModel!.currPageIndex,
           itemCount: 4,
           itemBuilder: (BuildContext context, int index) {
             switch (index) {
@@ -46,9 +46,9 @@ class MainState extends BaseState<MainPage, MainViewModel> {
           },
         ),
         bottomNavigationBar: BottomNavigationBar(
-          currentIndex: viewModel.currPageIndex,
+          currentIndex: viewModel!.currPageIndex,
           onTap: (index) {
-            viewModel.currPageIndex = index;
+            viewModel!.currPageIndex = index;
             setState(() {});
           },
           items: [

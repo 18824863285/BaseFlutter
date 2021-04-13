@@ -35,7 +35,7 @@ class OfficialAccountsArticleState extends BaseListViewState<
     super.initState();
     setContext(widget
         .parentContext); // 使用父page的context，解决首页跳转子页面依然显示BottomNavigationBar的问题
-    viewModel.officialAccount = widget.officialAccount;
+    viewModel!.officialAccount = widget.officialAccount;
   }
 
   @override
@@ -50,7 +50,7 @@ class OfficialAccountsArticleState extends BaseListViewState<
         home: Scaffold(
           body: Selector<OfficialAccountsArticleViewModel, int>(
             selector: (context, officialAccountsArticleViewModel) =>
-                viewModel.loadNum,
+                viewModel!.loadNum,
             builder: (context, value, child) {
               return SmartRefresher(
                 enablePullDown: true,
@@ -78,7 +78,7 @@ class OfficialAccountsArticleState extends BaseListViewState<
                                 Positioned(
                                   child: Container(
                                     child: Text(
-                                        viewModel.getItemData(index)?.title ??
+                                        viewModel!.getItemData(index)?.title ??
                                             "",
                                         maxLines: 1,
                                         overflow: TextOverflow.ellipsis),
@@ -89,7 +89,7 @@ class OfficialAccountsArticleState extends BaseListViewState<
                                 ),
                                 Positioned(
                                   child: Text(
-                                    '作者：${viewModel.getItemData(index)?.author ?? ""}',
+                                    '作者：${viewModel!.getItemData(index)?.author ?? ""}',
                                     style: TextStyle(color: Colors.grey),
                                   ),
                                   left: 15,
@@ -97,7 +97,7 @@ class OfficialAccountsArticleState extends BaseListViewState<
                                 ),
                                 Positioned(
                                   child: Text(
-                                    '时间：${TimeUtil.getStandardTime(viewModel.getItemData(index)?.publishTime ?? 0)}',
+                                    '时间：${TimeUtil.getStandardTime(viewModel!.getItemData(index)?.publishTime ?? 0)}',
                                     style: TextStyle(color: Colors.grey),
                                   ),
                                   left: 15,
@@ -109,14 +109,14 @@ class OfficialAccountsArticleState extends BaseListViewState<
                         ),
                         onTap: () {
                           push(WebViewPage(
-                            viewModel.dataList[index].link,
-                            title: viewModel.dataList[index].title,
+                            viewModel!.dataList![index].link,
+                            title: viewModel!.dataList![index].title,
                           ));
                         },
                       );
                     },
                     itemExtent: 100,
-                    itemCount: viewModel.dataList?.length ?? 0),
+                    itemCount: viewModel!.dataList?.length ?? 0),
               );
             },
           ),

@@ -14,5 +14,5 @@ abstract class ProjectModel {
   Future<ProjectClassification> getProjectClassification();
 
   @GET("project/list/{index}/json")
-  Future<Projects> getProjects(@Path("index") int index, @Query("cid") int cid);
+  Future<Projects> getProjects(@Path("index") int index, @Query("cid") int? cid);
 }

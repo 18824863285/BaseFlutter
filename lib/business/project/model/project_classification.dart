@@ -1,16 +1,16 @@
 
 class ProjectClassification {
-  List<ProjectClassificationItem> data;
-  int errorCode;
-  String errorMsg;
+  List<ProjectClassificationItem>? data;
+  int? errorCode;
+  String? errorMsg;
 
   ProjectClassification({this.data, this.errorCode, this.errorMsg});
 
   ProjectClassification.fromJson(Map<String, dynamic> json) {
     if (json['data'] != null) {
-      data = new List<ProjectClassificationItem>();
+      data = [];
       json['data'].forEach((v) {
-        data.add(new ProjectClassificationItem.fromJson(v));
+        data!.add(new ProjectClassificationItem.fromJson(v));
       });
     }
     errorCode = json['errorCode'];
@@ -20,7 +20,7 @@ class ProjectClassification {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     if (this.data != null) {
-      data['data'] = this.data.map((v) => v.toJson()).toList();
+      data['data'] = this.data!.map((v) => v.toJson()).toList();
     }
     data['errorCode'] = this.errorCode;
     data['errorMsg'] = this.errorMsg;
@@ -29,13 +29,13 @@ class ProjectClassification {
 }
 
 class ProjectClassificationItem {
-  int courseId;
-  int id;
-  String name;
-  int order;
-  int parentChapterId;
-  bool userControlSetTop;
-  int visible;
+  int? courseId;
+  int? id;
+  String? name;
+  int? order;
+  int? parentChapterId;
+  bool? userControlSetTop;
+  int? visible;
 
   ProjectClassificationItem(
       {

@@ -22,11 +22,11 @@ class $FloorAppDatabase {
 class _$AppDatabaseBuilder {
   _$AppDatabaseBuilder(this.name);
 
-  final String name;
+  final String? name;
 
   final List<Migration> _migrations = [];
 
-  Callback _callback;
+  Callback? _callback;
 
   /// Adds migrations to the builder.
   _$AppDatabaseBuilder addMigrations(List<Migration> migrations) {
@@ -43,7 +43,7 @@ class _$AppDatabaseBuilder {
   /// Creates the database and initializes it.
   Future<AppDatabase> build() async {
     final path = name != null
-        ? await sqfliteDatabaseFactory.getDatabasePath(name)
+        ? await sqfliteDatabaseFactory.getDatabasePath(name!)
         : ':memory:';
     final database = _$AppDatabase();
     database.database = await database.open(
@@ -56,14 +56,14 @@ class _$AppDatabaseBuilder {
 }
 
 class _$AppDatabase extends AppDatabase {
-  _$AppDatabase([StreamController<String> listener]) {
+  _$AppDatabase([StreamController<String>? listener]) {
     changeListener = listener ?? StreamController<String>.broadcast();
   }
 
-  HistorySearchKeyDao _historySearchKeyDaoInstance;
+  HistorySearchKeyDao? _historySearchKeyDaoInstance;
 
   Future<sqflite.Database> open(String path, List<Migration> migrations,
-      [Callback callback]) async {
+      [Callback? callback]) async {
     final databaseOptions = sqflite.OpenDatabaseOptions(
       version: 1,
       onConfigure: (database) async {
@@ -102,13 +102,13 @@ class _$HistorySearchKeyDao extends HistorySearchKeyDao {
             database,
             'HistorySearchKey',
             (HistorySearchKey item) =>
-                <String, dynamic>{'id': item.id, 'title': item.title}),
+                <String, Object?>{'id': item.id, 'title': item.title}),
         _historySearchKeyDeletionAdapter = DeletionAdapter(
             database,
             'HistorySearchKey',
             ['id'],
             (HistorySearchKey item) =>
-                <String, dynamic>{'id': item.id, 'title': item.title});
+                <String, Object?>{'id': item.id, 'title': item.title});
 
   final sqflite.DatabaseExecutor database;
 
@@ -123,8 +123,8 @@ class _$HistorySearchKeyDao extends HistorySearchKeyDao {
   @override
   Future<List<HistorySearchKey>> findHistorySearchKeys() async {
     return _queryAdapter.queryList('SELECT * FROM HistorySearchKey',
-        mapper: (Map<String, dynamic> row) =>
-            HistorySearchKey(row['id'] as int, row['title'] as String));
+        mapper: (Map<String, Object?> row) =>
+            HistorySearchKey(row['id'] as int?, row['title'] as String?));
   }
 
   @override

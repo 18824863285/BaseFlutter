@@ -5,7 +5,7 @@ import 'package:wan_android_flutter/const/resource.dart';
 class CommonAppBar extends AppBar {
   final String titleStr;
   final BuildContext context;
-  final List<Widget> actions;
+  final List<Widget>? actions;
 
   CommonAppBar(this.context, {this.actions, this.titleStr = ""})
       : super(

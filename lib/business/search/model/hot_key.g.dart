@@ -8,12 +8,11 @@ part of 'hot_key.dart';
 
 HotKey _$HotKeyFromJson(Map<String, dynamic> json) {
   return HotKey(
-    json['errorCode'] as int,
-    json['errorMsg'] as String,
-    (json['data'] as List)
-        ?.map((e) =>
-            e == null ? null : HotKeyItem.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
+    json['errorCode'] as int?,
+    json['errorMsg'] as String?,
+    (json['data'] as List<dynamic>)
+        .map((e) => HotKeyItem.fromJson(e as Map<String, dynamic>))
+        .toList(),
   );
 }
 
@@ -25,11 +24,11 @@ Map<String, dynamic> _$HotKeyToJson(HotKey instance) => <String, dynamic>{
 
 HotKeyItem _$HotKeyItemFromJson(Map<String, dynamic> json) {
   return HotKeyItem(
-    json['id'] as int,
-    json['link'] as String,
-    json['name'] as String,
-    json['order'] as int,
-    json['visible'] as int,
+    json['id'] as int?,
+    json['link'] as String?,
+    json['name'] as String?,
+    json['order'] as int?,
+    json['visible'] as int?,
   );
 }
 

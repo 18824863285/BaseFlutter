@@ -11,7 +11,7 @@ import 'dart:async';
 /// filter events.
 ///事件总线
 class EventBus {
-  static EventBus instance;
+  static EventBus? instance;
   StreamController _streamController;
 
   /// Controller for the event bus stream.
@@ -52,7 +52,7 @@ class EventBus {
   ///
   Stream<T> on<T>() {
     if (T == dynamic) {
-      return streamController.stream;
+      return streamController.stream as Stream<T>;
     } else {
       return streamController.stream.where((event) => event is T).cast<T>();
     }

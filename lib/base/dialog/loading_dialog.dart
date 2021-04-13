@@ -11,11 +11,11 @@ class LoadingDialog extends StatefulWidget {
   final bool outsideDismiss;
 
   //监听弹窗消失
-  final Function dismissListener;
+  final Function? dismissListener;
 
-  _LoadingDialogState _state;
+  late _LoadingDialogState _state;
 
-  LoadingDialog({Key key, this.loadingText = "loading...", this.outsideDismiss = false, this.dismissListener})
+  LoadingDialog({Key? key, this.loadingText = "loading...", this.outsideDismiss = false, this.dismissListener})
       : super(key: key);
 
   @override
@@ -33,7 +33,7 @@ class _LoadingDialogState extends State<LoadingDialog> {
   dismissDialog() {
     Navigator.of(context).pop();
     if(widget.dismissListener != null){
-      widget.dismissListener();
+      widget.dismissListener!();
     }
   }
 
@@ -47,14 +47,14 @@ class _LoadingDialogState extends State<LoadingDialog> {
           onTap: () {},
           child: new Center(
             child: new SizedBox(
-              width: Density.instance.dp(200),
-              height: Density.instance.dp(200),
+              width: Density.instance!.dp(200),
+              height: Density.instance!.dp(200),
               child: new Container(
                 decoration: ShapeDecoration(
                   color: Color(0xffffffff),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(
-                      Radius.circular(Density.instance.dp(16)),
+                      Radius.circular(Density.instance!.dp(16)),
                     ),
                   ),
                 ),
@@ -63,20 +63,20 @@ class _LoadingDialogState extends State<LoadingDialog> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     SizedBox(
-                      width: Density.instance.dp(70),
-                      height: Density.instance.dp(70),
+                      width: Density.instance!.dp(70),
+                      height: Density.instance!.dp(70),
                       child: new CircularProgressIndicator(
-                        strokeWidth: Density.instance.dp(5),
+                        strokeWidth: Density.instance!.dp(5),
                         valueColor: AlwaysStoppedAnimation<Color>(Color.fromARGB(255, 51, 51, 51)),
                       ),
                     ),
                     new Padding(
                       padding: EdgeInsets.only(
-                        top: Density.instance.dp(10),
+                        top: Density.instance!.dp(10),
                       ),
                       child: new Text(
                         widget.loadingText,
-                        style: new TextStyle(fontSize: Density.instance.dp(24), color: Color.fromARGB(255, 51, 51, 51)),
+                        style: new TextStyle(fontSize: Density.instance!.dp(24), color: Color.fromARGB(255, 51, 51, 51)),
                       ),
                     ),
                   ],

@@ -8,7 +8,7 @@ abstract class BottomDialog extends BaseDialog {
     init();
     showModalBottomSheet(
         context: context,
-        isDismissible: outsideDismiss,
+        isDismissible: outsideDismiss!,
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(8),
@@ -25,7 +25,7 @@ abstract class BottomDialog extends BaseDialog {
                 ),
               ),
               onWillPop: () async {
-                return outsideDismiss;
+                return outsideDismiss!;
               });
         });
   }

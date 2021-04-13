@@ -8,7 +8,7 @@ class UserInfoSp {
 
   PreferenceUtils _preferenceUtils = PreferenceUtils.instance;
 
-  static UserInfoSp _instance;
+  static UserInfoSp? _instance;
 
   UserInfoSp._internal();
 
@@ -21,25 +21,25 @@ class UserInfoSp {
     return _instance;
   }
 
-  int _uid;
+  int? _uid;
 
-  get uid => _preferenceUtils.getInteger(ID);
+  int get uid => _preferenceUtils.getInteger(ID);
 
   set uid(int value) => _preferenceUtils.saveInteger(ID, value);
 
-  String _token;
+  String? _token;
 
-  get token => _preferenceUtils.getString(TOKEN);
+  String get token => _preferenceUtils.getString(TOKEN);
 
   set token(String value) => _preferenceUtils.saveString(TOKEN, value);
 
-  String _userName;
+  String? _userName;
 
-  get userName => _preferenceUtils.getString(USER_NAME);
+  String get userName => _preferenceUtils.getString(USER_NAME);
 
   set userName(String value) => _preferenceUtils.saveString(USER_NAME, value);
 
-  bool _isLogin;
+  bool? _isLogin;
 
   get isLogin => uid != 0;
 

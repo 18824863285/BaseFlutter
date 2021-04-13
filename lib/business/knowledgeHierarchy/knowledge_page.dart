@@ -23,13 +23,13 @@ class KnowledgeState
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (_) {
-        viewModel.getData();
+        viewModel!.getData();
         return viewModel;
       },
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Selector<KnowledgeViewModel, int>(
-          selector: (context, knowledgeViewModel) => viewModel.loadNum,
+          selector: (context, knowledgeViewModel) => viewModel!.loadNum,
           builder: (context, value, child) {
             return Scaffold(
               body: CustomScrollView(
@@ -75,11 +75,11 @@ class KnowledgeState
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Container(
-                              child: Text(viewModel.dataList[index].name),
+                              child: Text(viewModel!.dataList![index].name!),
                               margin: EdgeInsets.only(bottom: 5),
                             ),
                             CommonWrap<Children>(
-                                viewModel.dataList[index].children,
+                                viewModel!.dataList![index].children,
                                 (value, index) {
                               return Row(
                                 mainAxisSize: MainAxisSize.min,
@@ -93,7 +93,7 @@ class KnowledgeState
                                             new BorderRadius.circular((5.0))),
                                     padding: EdgeInsets.only(
                                         left: 5, right: 5, top: 5, bottom: 5),
-                                    child: Text(value.name),
+                                    child: Text(value.name!),
                                     height: 30,
                                     alignment: Alignment.center,
                                   )
@@ -103,7 +103,7 @@ class KnowledgeState
                           ],
                         ),
                       );
-                    }, childCount: viewModel.dataList?.length ?? 0),
+                    }, childCount: viewModel!.dataList?.length ?? 0),
                   ),
                 ],
               ),

@@ -9,7 +9,7 @@ import 'package:wan_android_flutter/sharePreference/user_info_share_preference.d
 
 @injectable
 class StartViewModel extends BaseViewModel<StartModel> {
-  Timer _timer;
+  Timer? _timer;
   int currTime = 5;
 
   @factoryMethod

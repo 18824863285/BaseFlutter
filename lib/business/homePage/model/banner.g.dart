@@ -8,12 +8,11 @@ part of 'banner.dart';
 
 Banner _$BannerFromJson(Map<String, dynamic> json) {
   return Banner(
-    json['errorCode'] as int,
-    json['errorMsg'] as String,
-    (json['data'] as List)
-        ?.map((e) =>
-            e == null ? null : BannerItem.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
+    json['errorCode'] as int?,
+    json['errorMsg'] as String?,
+    (json['data'] as List<dynamic>)
+        .map((e) => BannerItem.fromJson(e as Map<String, dynamic>))
+        .toList(),
   );
 }
 
@@ -25,14 +24,14 @@ Map<String, dynamic> _$BannerToJson(Banner instance) => <String, dynamic>{
 
 BannerItem _$BannerItemFromJson(Map<String, dynamic> json) {
   return BannerItem(
-    json['desc'] as String,
-    json['id'] as int,
-    json['imagePath'] as String,
-    json['isVisible'] as int,
-    json['order'] as int,
-    json['title'] as String,
-    json['type'] as int,
-    json['url'] as String,
+    json['desc'] as String?,
+    json['id'] as int?,
+    json['imagePath'] as String?,
+    json['isVisible'] as int?,
+    json['order'] as int?,
+    json['title'] as String?,
+    json['type'] as int?,
+    json['url'] as String?,
   );
 }
 

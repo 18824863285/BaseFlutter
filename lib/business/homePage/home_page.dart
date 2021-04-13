@@ -25,7 +25,7 @@ class HomePage extends BaseStatefulWidget {
 }
 
 class HomeState extends BaseState<HomePage, HomeViewModel> {
-  EnsureAndCancelDialog ensureAndCancelDialog;
+  EnsureAndCancelDialog? ensureAndCancelDialog;
 
   @override
   Widget build(BuildContext context) {
@@ -80,10 +80,10 @@ class HomeState extends BaseState<HomePage, HomeViewModel> {
                             if (ensureAndCancelDialog == null) {
                               ensureAndCancelDialog = EnsureAndCancelDialog(
                                   "确定要退出登录吗？", onEnsure: () {
-                                viewModel.logout();
+                                viewModel!.logout();
                               });
                             }
-                            ensureAndCancelDialog.show(context);
+                            ensureAndCancelDialog!.show(context);
                           },
                           child: Container(
                             height: 50,
@@ -185,18 +185,18 @@ class HomeState extends BaseState<HomePage, HomeViewModel> {
                 ),
                 Expanded(
                   child: Selector<HomeViewModel, int>(
-                    selector: (context, homeViewModel) => viewModel.loadNum,
+                    selector: (context, homeViewModel) => viewModel!.loadNum,
                     builder: (context, count, child) {
                       return SmartRefresher(
                         enablePullDown: true,
                         enablePullUp: true,
-                        controller: viewModel.refreshController,
+                        controller: viewModel!.refreshController,
                         onRefresh: () {
-                          viewModel.getBanner();
-                          viewModel.refresh();
+                          viewModel!.getBanner();
+                          viewModel!.refresh();
                         },
                         onLoading: () {
-                          viewModel.loadMore();
+                          viewModel!.loadMore();
                         },
                         child: CustomScrollView(
                           slivers: <Widget>[
@@ -208,18 +208,18 @@ class HomeState extends BaseState<HomePage, HomeViewModel> {
                                 child: Swiper(
                                   onTap: (int index) {
                                     push(WebViewPage(
-                                      viewModel.bannerItems[index].url,
-                                      title: viewModel.bannerItems[index].title,
+                                      viewModel!.bannerItems![index].url,
+                                      title: viewModel!.bannerItems![index].title,
                                     ));
                                   },
                                   itemBuilder:
                                       (BuildContext context, int index) {
                                     return Image.network(
-                                      viewModel.bannerItems[index].imagePath,
+                                      viewModel!.bannerItems![index].imagePath!,
                                       fit: BoxFit.cover,
                                     );
                                   },
-                                  itemCount: viewModel.bannerItems?.length ?? 0,
+                                  itemCount: viewModel!.bannerItems?.length ?? 0,
                                   pagination: SwiperPagination(
                                       builder: DotSwiperPaginationBuilder(
                                           color: Colors.white,
@@ -238,8 +238,8 @@ class HomeState extends BaseState<HomePage, HomeViewModel> {
                                   return GestureDetector(
                                     onTap: () {
                                       push(WebViewPage(
-                                        viewModel.dataList[index].link,
-                                        title: viewModel.dataList[index].title,
+                                        viewModel!.dataList[index].link,
+                                        title: viewModel!.dataList[index].title,
                                       ));
                                     },
                                     child: Container(
@@ -261,7 +261,7 @@ class HomeState extends BaseState<HomePage, HomeViewModel> {
                                           Positioned(
                                             child: Container(
                                               child: Text(
-                                                  viewModel
+                                                  viewModel!
                                                           .getData(index)
                                                           ?.title ??
                                                       "",
@@ -276,7 +276,7 @@ class HomeState extends BaseState<HomePage, HomeViewModel> {
                                           ),
                                           Positioned(
                                             child: Text(
-                                              '作者：${viewModel.getData(index)?.author ?? ""}',
+                                              '作者：${viewModel!.getData(index)?.author ?? ""}',
                                               style:
                                                   TextStyle(color: Colors.grey),
                                             ),
@@ -285,7 +285,7 @@ class HomeState extends BaseState<HomePage, HomeViewModel> {
                                           ),
                                           Positioned(
                                             child: Text(
-                                              '时间：${TimeUtil.getStandardTime(viewModel.getData(index)?.publishTime ?? 0)}',
+                                              '时间：${TimeUtil.getStandardTime(viewModel!.getData(index)?.publishTime ?? 0)}',
                                               style:
                                                   TextStyle(color: Colors.grey),
                                             ),
@@ -296,7 +296,7 @@ class HomeState extends BaseState<HomePage, HomeViewModel> {
                                       ),
                                     ),
                                   );
-                                }, childCount: viewModel.dataList.length),
+                                }, childCount: viewModel!.dataList.length),
                                 itemExtent: 100)
                           ],
                         ),

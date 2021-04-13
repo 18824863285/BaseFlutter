@@ -274,6 +274,36 @@ class S {
       args: [],
     );
   }
+
+  /// `退出登录`
+  String get logout1 {
+    return Intl.message(
+      '退出登录',
+      name: 'logout1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `退出登录`
+  String get logout2 {
+    return Intl.message(
+      '退出登录',
+      name: 'logout2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `退出登录`
+  String get logout3 {
+    return Intl.message(
+      '退出登录',
+      name: 'logout3',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

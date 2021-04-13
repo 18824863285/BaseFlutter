@@ -4,8 +4,8 @@ part 'official_account.g.dart';
 
 @JsonSerializable()
 class OfficialAccount {
-  int errorCode;
-  String errorMsg;
+  int? errorCode;
+  String? errorMsg;
   List<OfficialAccountItem> data;
 
   OfficialAccount(this.errorCode, this.errorMsg, this.data);
@@ -18,13 +18,13 @@ class OfficialAccount {
 
 @JsonSerializable()
 class OfficialAccountItem {
-  int courseId;
-  int id;
-  String name;
-  int order;
-  int parentChapterId;
-  bool userControlSetTop;
-  int visible;
+  int? courseId;
+  int? id;
+  String? name;
+  int? order;
+  int? parentChapterId;
+  bool? userControlSetTop;
+  int? visible;
 
   OfficialAccountItem(this.courseId, this.id, this.name, this.order,
       this.parentChapterId, this.userControlSetTop, this.visible);

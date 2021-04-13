@@ -6,7 +6,7 @@ import 'model/knowledge.dart';
 
 @injectable
 class KnowledgeViewModel extends BaseListViewViewModel<Data, KnowledgeModel> {
-  List<Data> dataList = [];
+  List<Data>? dataList = [];
 
   @factoryMethod
   KnowledgeViewModel();

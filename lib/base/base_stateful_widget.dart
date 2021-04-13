@@ -8,7 +8,7 @@ import 'navigator/navigator_mixin.dart';
 abstract class BaseStatefulWidget extends StatefulWidget{
 
    void sendEvent(dynamic event){
-      EventBus.instance.fire(event);
+      EventBus.instance!.fire(event);
    }
 
 }

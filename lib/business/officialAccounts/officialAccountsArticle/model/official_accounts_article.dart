@@ -1,7 +1,7 @@
 class OfficialAccountsArticle {
-  Data data;
-  int errorCode;
-  String errorMsg;
+  Data? data;
+  int? errorCode;
+  String? errorMsg;
 
   OfficialAccountsArticle({this.data, this.errorCode, this.errorMsg});
 
@@ -14,7 +14,7 @@ class OfficialAccountsArticle {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     if (this.data != null) {
-      data['data'] = this.data.toJson();
+      data['data'] = this.data!.toJson();
     }
     data['errorCode'] = this.errorCode;
     data['errorMsg'] = this.errorMsg;
@@ -23,13 +23,13 @@ class OfficialAccountsArticle {
 }
 
 class Data {
-  int curPage;
-  List<Datas> datas;
-  int offset;
-  bool over;
-  int pageCount;
-  int size;
-  int total;
+  int? curPage;
+  List<Datas>? datas;
+  int? offset;
+  bool? over;
+  int? pageCount;
+  int? size;
+  int? total;
 
   Data(
       {this.curPage,
@@ -43,9 +43,9 @@ class Data {
   Data.fromJson(Map<String, dynamic> json) {
     curPage = json['curPage'];
     if (json['datas'] != null) {
-      datas = new List<Datas>();
+      datas = [];
       json['datas'].forEach((v) {
-        datas.add(new Datas.fromJson(v));
+        datas!.add(new Datas.fromJson(v));
       });
     }
     offset = json['offset'];
@@ -59,7 +59,7 @@ class Data {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['curPage'] = this.curPage;
     if (this.datas != null) {
-      data['datas'] = this.datas.map((v) => v.toJson()).toList();
+      data['datas'] = this.datas!.map((v) => v.toJson()).toList();
     }
     data['offset'] = this.offset;
     data['over'] = this.over;
@@ -71,39 +71,39 @@ class Data {
 }
 
 class Datas {
-  String apkLink;
-  int audit;
-  String author;
-  bool canEdit;
-  int chapterId;
-  String chapterName;
-  bool collect;
-  int courseId;
-  String desc;
-  String descMd;
-  String envelopePic;
-  bool fresh;
-  String host;
-  int id;
-  String link;
-  String niceDate;
-  String niceShareDate;
-  String origin;
-  String prefix;
-  String projectLink;
-  int publishTime;
-  int realSuperChapterId;
-  int selfVisible;
-  int shareDate;
-  String shareUser;
-  int superChapterId;
-  String superChapterName;
-  List<Tags> tags;
-  String title;
-  int type;
-  int userId;
-  int visible;
-  int zan;
+  String? apkLink;
+  int? audit;
+  String? author;
+  bool? canEdit;
+  int? chapterId;
+  String? chapterName;
+  bool? collect;
+  int? courseId;
+  String? desc;
+  String? descMd;
+  String? envelopePic;
+  bool? fresh;
+  String? host;
+  int? id;
+  String? link;
+  String? niceDate;
+  String? niceShareDate;
+  String? origin;
+  String? prefix;
+  String? projectLink;
+  int? publishTime;
+  int? realSuperChapterId;
+  int? selfVisible;
+  int? shareDate;
+  String? shareUser;
+  int? superChapterId;
+  String? superChapterName;
+  List<Tags>? tags;
+  String? title;
+  int? type;
+  int? userId;
+  int? visible;
+  int? zan;
 
   Datas(
       {this.apkLink,
@@ -169,9 +169,9 @@ class Datas {
     superChapterId = json['superChapterId'];
     superChapterName = json['superChapterName'];
     if (json['tags'] != null) {
-      tags = new List<Tags>();
+      tags = [];
       json['tags'].forEach((v) {
-        tags.add(new Tags.fromJson(v));
+        tags!.add(new Tags.fromJson(v));
       });
     }
     title = json['title'];
@@ -211,7 +211,7 @@ class Datas {
     data['superChapterId'] = this.superChapterId;
     data['superChapterName'] = this.superChapterName;
     if (this.tags != null) {
-      data['tags'] = this.tags.map((v) => v.toJson()).toList();
+      data['tags'] = this.tags!.map((v) => v.toJson()).toList();
     }
     data['title'] = this.title;
     data['type'] = this.type;
@@ -223,8 +223,8 @@ class Datas {
 }
 
 class Tags {
-  String name;
-  String url;
+  String? name;
+  String? url;
 
   Tags({this.name, this.url});
 

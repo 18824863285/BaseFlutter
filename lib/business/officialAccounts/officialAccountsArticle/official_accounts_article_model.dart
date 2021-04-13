@@ -11,5 +11,5 @@ abstract class OfficialAccountsArticleModel {
 
   @GET("wxarticle/list/{id}/{index}/json")
   Future<OfficialAccountsArticle> getOfficialAccountsArticle(
-      @Path("id") int id, @Path("index") int index);
+      @Path("id") int? id, @Path("index") int index);
 }

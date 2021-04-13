@@ -4,9 +4,9 @@ part 'register_result.g.dart';
 
 @JsonSerializable()
 class RegisterResult {
-  RegisterResultData data;
-  int errorCode;
-  String errorMsg;
+  RegisterResultData? data;
+  int? errorCode;
+  String? errorMsg;
 
   RegisterResult();
 
@@ -18,19 +18,19 @@ class RegisterResult {
 
 @JsonSerializable()
 class RegisterResultData {
-  bool admin;
-  List<dynamic> chapterTops;
-  int coinCount;
-  List<dynamic> collectIds;
-  String email;
-  String icon;
-  int id;
-  String nickname;
-  String password;
-  String publicName;
-  String token;
-  int type;
-  String username;
+  bool? admin;
+  List<dynamic>? chapterTops;
+  int? coinCount;
+  List<dynamic>? collectIds;
+  String? email;
+  String? icon;
+  int? id;
+  String? nickname;
+  String? password;
+  String? publicName;
+  String? token;
+  int? type;
+  String? username;
 
   factory RegisterResultData.fromJson(Map<String, dynamic> srcJson) =>
       _$RegisterResultDataFromJson(srcJson);
