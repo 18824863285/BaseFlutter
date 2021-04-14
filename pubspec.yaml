@@ -30,9 +30,9 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   fluttertoast: ^8.0.3 # null safe
-  pull_to_refresh: 1.6.5
+#  pull_to_refresh: 1.6.5
   floor: 1.0.1 # null safe
-  flutter_swiper: 1.1.6
+#  flutter_swiper: 1.1.6
 
 dev_dependencies:
   flutter_test:

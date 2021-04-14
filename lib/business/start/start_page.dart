@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:wan_android_flutter/base/base_change_notifier_provider.dart';
 import 'package:wan_android_flutter/base/base_state.dart';
 import 'package:wan_android_flutter/base/base_stateful_widget.dart';
+import 'package:wan_android_flutter/base/inject/injector.dart';
 import 'package:wan_android_flutter/base/util/density_util.dart';
 import 'package:wan_android_flutter/business/login/login_page.dart';
 import 'package:wan_android_flutter/business/start/start_view_model.dart';
@@ -21,7 +22,7 @@ class StartState extends BaseState<StartPage, StartViewModel> {
     Density.instance!.init(context, 780, null);
     return ChangeNotifierProvider(
         create: (_) {
-          viewModel!.startCountdown(5);
+          viewModel.startCountdown(5);
           return viewModel;
         },
         child: Stack(
@@ -57,7 +58,7 @@ class StartState extends BaseState<StartPage, StartViewModel> {
                       selector: (context, startViewModel) => startViewModel.currTime,
                       builder: (context, count, child) {
                         return Text(
-                          "剩余${viewModel!.currTime}s",
+                          "剩余${count}s",
                           style:
                           TextStyle(color: Colors.white, fontSize: 12),
                         );

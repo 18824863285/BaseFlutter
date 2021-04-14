@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:provider/provider.dart';
-import 'package:pull_to_refresh/pull_to_refresh.dart';
+// import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:wan_android_flutter/base/base_listview_state.dart';
 import 'package:wan_android_flutter/base/base_stateful_widget.dart';
 import 'package:wan_android_flutter/base/util/time_util.dart';
@@ -52,72 +52,73 @@ class OfficialAccountsArticleState extends BaseListViewState<
             selector: (context, officialAccountsArticleViewModel) =>
                 viewModel!.loadNum,
             builder: (context, value, child) {
-              return SmartRefresher(
-                enablePullDown: true,
-                enablePullUp: true,
-                controller: refreshController,
-                onRefresh: refresh,
-                onLoading: loadMore,
-                child: ListView.builder(
-                    //child直接放ListView，不然可能会导致下拉刷新和分页加载失败
-                    itemBuilder: (context, index) {
-                      return GestureDetector(
-                        child: Container(
-                          height: 100,
-                          child: Container(
-                            height: 100, //高度要加上，不然会卡死
-                            margin: EdgeInsets.only(
-                                left: 15, right: 15, top: 5, bottom: 5),
-                            decoration: new BoxDecoration(
-                                border: new Border.all(
-                                    color: Color(0xFA000000), width: 0.5),
-                                color: Colors.white,
-                                borderRadius: new BorderRadius.circular((5.0))),
-                            child: Stack(
-                              children: [
-                                Positioned(
-                                  child: Container(
-                                    child: Text(
-                                        viewModel!.getItemData(index)?.title ??
-                                            "",
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis),
-                                    constraints: BoxConstraints(maxWidth: 280),
-                                  ),
-                                  left: 15,
-                                  top: 10,
-                                ),
-                                Positioned(
-                                  child: Text(
-                                    '作者：${viewModel!.getItemData(index)?.author ?? ""}',
-                                    style: TextStyle(color: Colors.grey),
-                                  ),
-                                  left: 15,
-                                  top: 30,
-                                ),
-                                Positioned(
-                                  child: Text(
-                                    '时间：${TimeUtil.getStandardTime(viewModel!.getItemData(index)?.publishTime ?? 0)}',
-                                    style: TextStyle(color: Colors.grey),
-                                  ),
-                                  left: 15,
-                                  top: 60,
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                        onTap: () {
-                          push(WebViewPage(
-                            viewModel!.dataList![index].link,
-                            title: viewModel!.dataList![index].title,
-                          ));
-                        },
-                      );
-                    },
-                    itemExtent: 100,
-                    itemCount: viewModel!.dataList?.length ?? 0),
-              );
+              return Container();
+              // return SmartRefresher(
+              //   enablePullDown: true,
+              //   enablePullUp: true,
+              //   controller: refreshController,
+              //   onRefresh: refresh,
+              //   onLoading: loadMore,
+              //   child: ListView.builder(
+              //       //child直接放ListView，不然可能会导致下拉刷新和分页加载失败
+              //       itemBuilder: (context, index) {
+              //         return GestureDetector(
+              //           child: Container(
+              //             height: 100,
+              //             child: Container(
+              //               height: 100, //高度要加上，不然会卡死
+              //               margin: EdgeInsets.only(
+              //                   left: 15, right: 15, top: 5, bottom: 5),
+              //               decoration: new BoxDecoration(
+              //                   border: new Border.all(
+              //                       color: Color(0xFA000000), width: 0.5),
+              //                   color: Colors.white,
+              //                   borderRadius: new BorderRadius.circular((5.0))),
+              //               child: Stack(
+              //                 children: [
+              //                   Positioned(
+              //                     child: Container(
+              //                       child: Text(
+              //                           viewModel!.getItemData(index)?.title ??
+              //                               "",
+              //                           maxLines: 1,
+              //                           overflow: TextOverflow.ellipsis),
+              //                       constraints: BoxConstraints(maxWidth: 280),
+              //                     ),
+              //                     left: 15,
+              //                     top: 10,
+              //                   ),
+              //                   Positioned(
+              //                     child: Text(
+              //                       '作者：${viewModel!.getItemData(index)?.author ?? ""}',
+              //                       style: TextStyle(color: Colors.grey),
+              //                     ),
+              //                     left: 15,
+              //                     top: 30,
+              //                   ),
+              //                   Positioned(
+              //                     child: Text(
+              //                       '时间：${TimeUtil.getStandardTime(viewModel!.getItemData(index)?.publishTime ?? 0)}',
+              //                       style: TextStyle(color: Colors.grey),
+              //                     ),
+              //                     left: 15,
+              //                     top: 60,
+              //                   )
+              //                 ],
+              //               ),
+              //             ),
+              //           ),
+              //           onTap: () {
+              //             push(WebViewPage(
+              //               viewModel!.dataList![index].link,
+              //               title: viewModel!.dataList![index].title,
+              //             ));
+              //           },
+              //         );
+              //       },
+              //       itemExtent: 100,
+              //       itemCount: viewModel!.dataList?.length ?? 0),
+              // );
             },
           ),
         ),

@@ -1,5 +1,5 @@
 import 'package:injectable/injectable.dart';
-import 'package:pull_to_refresh/pull_to_refresh.dart';
+// import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:wan_android_flutter/base/base_view_model.dart';
 import 'package:wan_android_flutter/business/homePage/home_model.dart';
 import 'package:wan_android_flutter/business/homePage/model/article.dart';
@@ -10,7 +10,7 @@ import 'package:wan_android_flutter/sharePreference/user_info_share_preference.d
 
 @injectable
 class HomeViewModel extends BaseViewModel<HomeModel> {
-  var refreshController = RefreshController(initialRefresh: true);
+  // var refreshController = RefreshController(initialRefresh: true);
 
   List<Datas> dataList = [];
 
@@ -37,13 +37,13 @@ class HomeViewModel extends BaseViewModel<HomeModel> {
       size = value.data.datas.length;
       if (_currIndex == 0) {
         dataList = value.data.datas;
-        refreshController.refreshCompleted();
+        // refreshController.refreshCompleted();
       } else {
         dataList.addAll(value.data.datas);
-        refreshController.loadComplete();
+        // refreshController.loadComplete();
       }
       if (size < 10) {
-        refreshController.loadNoData();
+        // refreshController.loadNoData();
       }
       notifyPage();
     }, error: (e) {

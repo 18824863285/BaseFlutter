@@ -21,7 +21,7 @@ abstract class BaseState<W extends StatefulWidget, VM extends BaseViewModel>
         EventBusMixin,
         SharePreferenceMixin,
         ScreenAdapterMixin{
-  VM? viewModel;
+  late VM viewModel;//这里需要改成late，不能用？，不然Provider会报错
   EventBus? eventBus;
   LoadingDialog? loadingDialog;
 
@@ -41,17 +41,15 @@ abstract class BaseState<W extends StatefulWidget, VM extends BaseViewModel>
 
     setContext(context);
     setIsDispose(false);
-    if (viewModel == null) {
-      viewModel = getIt.get<VM>();
-      viewModel!.context = context;
-      viewModel!.init();
-      viewModel!.showLoadingFun = () {
-        showLoading();
-      };
-      viewModel!.dismissLoadingFun = () {
-        loadingDialog?.dismissDialog();
-      };
-    }
+    viewModel = getIt.get<VM>();
+    viewModel.context = context;
+    viewModel.init();
+    viewModel.showLoadingFun = () {
+      showLoading();
+    };
+    viewModel.dismissLoadingFun = () {
+      loadingDialog?.dismissDialog();
+    };
     initEventBus();
   }
 
