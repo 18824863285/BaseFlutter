@@ -70,6 +70,7 @@ abstract class BaseViewModel<M extends Object> extends ChangeNotifier
         if (showLoadingFun != null) {
           showLoadingFun!.call();
         }
+        showLoadingFun?.call();
       }
     }
   }
@@ -82,6 +83,7 @@ abstract class BaseViewModel<M extends Object> extends ChangeNotifier
         if (dismissLoadingFun != null) {
           dismissLoadingFun!.call();
         }
+        dismissLoadingFun?.call();
       }
     }
   }

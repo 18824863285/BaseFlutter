@@ -103,7 +103,7 @@ class _PopupWindowButtonState<T> extends State<PopupWindowButton> {
         state: this,
         child: InkWell(
           onTap: showPopupWindow,
-          child: widget.buttonBuilder?.call(context),
+          child: widget.buttonBuilder.call(context),
         ));
   }
 }

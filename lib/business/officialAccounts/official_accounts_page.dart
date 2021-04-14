@@ -47,7 +47,7 @@ class OfficialAccountsState
               padding: EdgeInsets.only(top: ScreenUtil.getStatusBarHigh()),
               alignment: Alignment.center,
               child: DefaultTabController(
-                length: viewModel!.officialAccounts?.length ?? 0,
+                length: viewModel!.officialAccounts.length,
                 child: Column(
                   children: [
                     Container(
@@ -76,8 +76,7 @@ class OfficialAccountsState
   }
 
   Widget getTab() {
-    if (viewModel!.officialAccounts == null ||
-        viewModel!.officialAccounts!.length == 0) {
+    if (viewModel!.officialAccounts.length == 0) {
       return Container();
     } else {
       return TabBar(
@@ -85,31 +84,30 @@ class OfficialAccountsState
         controller: _tabController,
         indicatorSize: TabBarIndicatorSize.label,
         isScrollable: true,
-        tabs: viewModel!.officialAccounts?.map((item) {
+        tabs: viewModel!.officialAccounts.map((item) {
           return Tab(
             child: Text(
               item.name!,
               style: TextStyle(color: Colors.black87),
             ),
           );
-        })?.toList() ?? [],
+        }).toList(),
       );
     }
   }
 
   Widget getTabView() {
-    if (viewModel!.officialAccounts == null ||
-        viewModel!.officialAccounts!.length == 0) {
+    if (viewModel?.officialAccounts.length == 0) {
       return Container();
     } else {
       return TabBarView(
         controller: _tabController,
-        children: viewModel!.officialAccounts?.map((item) {
+        children: viewModel!.officialAccounts.map((item) {
           return Container(
             alignment: Alignment.center,
             child: OfficialAccountsArticlePage(item, context),
           );
-        }).toList()?? [],
+        }).toList(),
       );
     }
   }

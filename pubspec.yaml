@@ -16,7 +16,7 @@ dependencies:
   analyzer: ^1.4.0 # null safe
   injectable: ^1.2.2 # null safe
   dio: ^4.0.0 # null safe
-  provider: ^4.3.2+2
+  provider: ^5.0.0 # null safe
   get_it: ^6.0.0 # null safe
   retrofit: any
   logger: any
@@ -30,10 +30,9 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   fluttertoast: ^8.0.3 # null safe
-  pull_to_refresh: 1.6.3
+  pull_to_refresh: 1.6.5
   floor: 1.0.1 # null safe
   flutter_swiper: 1.1.6
-  intl: ^0.17.0
 
 dev_dependencies:
   flutter_test:
@@ -49,3 +48,5 @@ flutter:
   assets:
     - assets/images/
 
+flutter_intl:
+  enabled: true

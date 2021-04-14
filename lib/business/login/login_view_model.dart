@@ -16,9 +16,9 @@ class LoginViewModel extends BaseViewModel<LoginModel> {
 
   void login() {
     if (loginName.isEmpty) {
-      showToast(S.of(context)!.login_is_not_empty);
+      showToast(S.of(context).login_is_not_empty);
     } else if (psw.isEmpty) {
-      showToast(S.of(context)!.login_psw_is_not_empty);
+      showToast(S.of(context).login_psw_is_not_empty);
     } else {
       sendRequest<LoginResult>(model.login(loginName, psw), (value) {
         if (value.errorCode == 0) {

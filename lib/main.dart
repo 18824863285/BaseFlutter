@@ -91,10 +91,10 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              S.of(context)!.pageHomeWelcome(Intl.getCurrentLocale()),
+              S.of(context).pageHomeWelcome(Intl.getCurrentLocale()),
             ),
             Text(
-              S.of(context)!.name,
+              S.of(context).name,
             ),
             //没有context时可用
           ],

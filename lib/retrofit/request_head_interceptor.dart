@@ -3,9 +3,9 @@ import 'package:wan_android_flutter/sharePreference/user_info_share_preference.d
 
 class RequestHeadInterceptor extends Interceptor {
   @override
-  Future? onRequest(RequestOptions options) {
+  Future? onRequest(RequestOptions options, RequestInterceptorHandler handler) {
     options.headers
         .addAll({"Cookie": "JSESSIONID=${UserInfoSp.getInstance().token}"});
-    return super.onRequest(options) as Future<dynamic>?;
+    return super.onRequest(options, handler) as Future<dynamic>?;
   }
 }
