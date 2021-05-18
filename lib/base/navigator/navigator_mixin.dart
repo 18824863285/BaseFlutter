@@ -22,4 +22,9 @@ mixin NavigatorMixin {
     Navigator.pop(_buildContext, result);
   }
 
+  void popAndPush(Widget page) {
+    pop();
+    NavigatorHelper.push(_buildContext, page);
+  }
+
 }
