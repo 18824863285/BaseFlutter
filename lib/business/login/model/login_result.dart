@@ -8,7 +8,7 @@ part 'login_result.g.dart';
 @JsonSerializable()
 class LoginResult {
   @JsonKey(name: 'data')
-  Data data;
+  Data? data;
 
   @JsonKey(name: 'errorCode')
   int? errorCode;

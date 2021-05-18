@@ -8,7 +8,9 @@ part of 'login_result.dart';
 
 LoginResult _$LoginResultFromJson(Map<String, dynamic> json) {
   return LoginResult(
-    Data.fromJson(json['data'] as Map<String, dynamic>),
+    json['data'] == null
+        ? null
+        : Data.fromJson(json['data'] as Map<String, dynamic>),
     json['errorCode'] as int?,
     json['errorMsg'] as String?,
   );

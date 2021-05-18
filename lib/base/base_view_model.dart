@@ -95,13 +95,14 @@ abstract class BaseViewModel<M extends Object> extends ChangeNotifier
     future.then((t) {
       dismissLoading(isNeedLoading);
       onValue(t);
-    }).catchError((e) {
-      dismissLoading(isNeedLoading);
-      print("====>error:$e");
-      if (error != null) {
-        error(e);
-      }
     });
+    //     .catchError((e) {
+    //   dismissLoading(isNeedLoading);
+    //   print("====>error:$e");
+    //   if (error != null) {
+    //     error(e);
+    //   }
+    // });
   }
 
   @override

@@ -22,9 +22,9 @@ class LoginViewModel extends BaseViewModel<LoginModel> {
     } else {
       sendRequest<LoginResult>(model.login(loginName, psw), (value) {
         if (value.errorCode == 0) {
-          UserInfoSp.getInstance().uid = value.data.id!;
-          UserInfoSp.getInstance().token = value.data.token!;
-          UserInfoSp.getInstance().userName = value.data.username!;
+          UserInfoSp.getInstance().uid = value.data!.id!;
+          UserInfoSp.getInstance().token = value.data!.token!;
+          UserInfoSp.getInstance().userName = value.data!.username!;
           pop();
           push(MainPage());
         } else {
