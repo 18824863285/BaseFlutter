@@ -47,7 +47,7 @@ class RegisterState extends BaseState<RegisterPage, RegisterViewModel> {
                             hintText: "请输入登录密码",
                           ),
                           onChanged: (value) {
-                            viewModel!.loginName = value;
+                            viewModel.loginName = value;
                           },
                         ),
                       ),
@@ -92,7 +92,7 @@ class RegisterState extends BaseState<RegisterPage, RegisterViewModel> {
                             hintText: "请输入登录密码",
                           ),
                           onChanged: (value) {
-                            viewModel!.psw = value;
+                            viewModel.psw = value;
                           },
                         ),
                       ),
@@ -137,7 +137,7 @@ class RegisterState extends BaseState<RegisterPage, RegisterViewModel> {
                             hintText: "请输入登录密码",
                           ),
                           onChanged: (value) {
-                            viewModel!.ensurePsw = value;
+                            viewModel.ensurePsw = value;
                           },
                         ),
                       ),
@@ -163,7 +163,7 @@ class RegisterState extends BaseState<RegisterPage, RegisterViewModel> {
                 ),
                 color: Colors.blue,
                 onPressed: () {
-                  viewModel!.register();
+                  viewModel.register();
                 },
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(100)))),

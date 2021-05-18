@@ -45,8 +45,8 @@ class StartState extends BaseState<StartPage, StartViewModel> {
             Positioned(
               child: GestureDetector(
                 onTap: () {
-                  viewModel!.cancelCountdown();
-                  viewModel!.toNextPage();
+                  viewModel.cancelCountdown();
+                  viewModel.toNextPage();
                 },
                 child: Container(
                     decoration: BoxDecoration(

@@ -84,7 +84,7 @@ abstract class BaseState<W extends StatefulWidget, VM extends BaseViewModel>
   void dispose() {
     super.dispose();
     setIsDispose(true);
-    viewModel?.showLoadingFun = null;
-    viewModel?.dismissLoadingFun = null;
+    viewModel.showLoadingFun = null;
+    viewModel.dismissLoadingFun = null;
   }
 }

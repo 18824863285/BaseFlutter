@@ -35,7 +35,7 @@ class OfficialAccountsState
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
         create: (_) {
-          viewModel!.getOfficialAccounts((length) {
+          viewModel.getOfficialAccounts((length) {
             _initTabControl(length);
           });
           return viewModel;
@@ -47,7 +47,7 @@ class OfficialAccountsState
               padding: EdgeInsets.only(top: ScreenUtil.getStatusBarHigh()),
               alignment: Alignment.center,
               child: DefaultTabController(
-                length: viewModel!.officialAccounts.length,
+                length: viewModel.officialAccounts.length,
                 child: Column(
                   children: [
                     Container(
@@ -57,7 +57,7 @@ class OfficialAccountsState
                             return getTab();
                           },
                           selector: (context, searchViewModel) =>
-                              viewModel!.loadNum),
+                              viewModel.loadNum),
                     ),
                     Expanded(
                       child: Selector<OfficialAccountsViewModel, int>(
@@ -65,7 +65,7 @@ class OfficialAccountsState
                             return getTabView();
                           },
                           selector: (context, searchViewModel) =>
-                              viewModel!.loadNum),
+                              viewModel.loadNum),
                     )
                   ],
                 ),
@@ -76,7 +76,7 @@ class OfficialAccountsState
   }
 
   Widget getTab() {
-    if (viewModel!.officialAccounts.length == 0) {
+    if (viewModel.officialAccounts.length == 0) {
       return Container();
     } else {
       return TabBar(
@@ -84,7 +84,7 @@ class OfficialAccountsState
         controller: _tabController,
         indicatorSize: TabBarIndicatorSize.label,
         isScrollable: true,
-        tabs: viewModel!.officialAccounts.map((item) {
+        tabs: viewModel.officialAccounts.map((item) {
           return Tab(
             child: Text(
               item.name!,
@@ -97,12 +97,12 @@ class OfficialAccountsState
   }
 
   Widget getTabView() {
-    if (viewModel?.officialAccounts.length == 0) {
+    if (viewModel.officialAccounts.length == 0) {
       return Container();
     } else {
       return TabBarView(
         controller: _tabController,
-        children: viewModel!.officialAccounts.map((item) {
+        children: viewModel.officialAccounts.map((item) {
           return Container(
             alignment: Alignment.center,
             child: OfficialAccountsArticlePage(item, context),

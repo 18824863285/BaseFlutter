@@ -4,10 +4,10 @@ import 'package:wan_android_flutter/base/dialog/base_dialog.dart';
 
 // ignore: must_be_immutable
 abstract class CenterDialog extends BaseDialog {
-  void show(BuildContext context) {
+  void show(BuildContext buildContext) {
     init();
     showDialog(
-      context: context,
+      context: buildContext,
       barrierDismissible: outsideDismiss!,
       builder: (_) => StatefulBuilder(builder:
           (BuildContext context, void Function(void Function()) setState) {
@@ -22,7 +22,7 @@ abstract class CenterDialog extends BaseDialog {
             ),
             onWillPop: () async {
               return outsideDismiss!;
-            } as Future<bool> Function()?);
+            });
       }),
     );
   }

@@ -36,9 +36,7 @@ class EnsureAndCancelDialog extends CenterDialog {
                 GestureDetector(
                   onTap: () {
                     dismiss();
-                    if (onCancel != null) {
-                      onCancel!.call();
-                    }
+                    onCancel?.call();
                   },
                   child: Container(
                     alignment: Alignment.center,
@@ -61,9 +59,7 @@ class EnsureAndCancelDialog extends CenterDialog {
                 GestureDetector(
                   onTap: () {
                     dismiss();
-                    if (onEnsure != null) {
-                      onEnsure!.call();
-                    }
+                    onEnsure?.call();
                   },
                   child: Container(
                     width: 129.5,
