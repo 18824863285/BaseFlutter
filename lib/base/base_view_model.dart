@@ -32,6 +32,8 @@ abstract class BaseViewModel<M extends Object> extends ChangeNotifier
 
   Function? dismissLoadingFun;
 
+  static bool isNeedCatchError = false;
+
   set minLoadNum(int value) {
     _minLoadNum = value;
   }
@@ -96,13 +98,15 @@ abstract class BaseViewModel<M extends Object> extends ChangeNotifier
       dismissLoading(isNeedLoading);
       onValue(t);
     });
-    //     .catchError((e) {
-    //   dismissLoading(isNeedLoading);
-    //   print("====>error:$e");
-    //   if (error != null) {
-    //     error(e);
-    //   }
-    // });
+    if (isNeedCatchError) {
+      future.catchError((e) {
+        dismissLoading(isNeedLoading);
+        print("====>error:$e");
+        if (error != null) {
+          error(e);
+        }
+      });
+    }
   }
 
   @override
