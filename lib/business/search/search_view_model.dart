@@ -22,7 +22,7 @@ class SearchViewModel extends BaseViewModel<SearchModel> {
     sendRequest<HotKey>(model.getHotkey(), (value) {
       hotKeyItems = value.data;
       notifyPage();
-    }, isNeedLoading: true);
+    }, isNeedLoading: false);
   }
 
   void getHistorySearchKeys() async {
