@@ -42,13 +42,16 @@
     图片轮播
 
 使用的架构和基础封装
-
-    1.结合Provider实现MVVM架构,封装了BaseState，BaseStatefulWidget，BaseViewModel
-    2.结合模板方法模式，泛型，Mixin，依赖注入等方式，封装了大量重复的逻辑，简化了开发难度
-    3.Mixin类的封装：目前包含NavigatorMixin，ToastMixin，SharePreferenceMixin，EventBusMixin
-    4.DataBaseMixin基础Widget的封装：例如BottomDialog，CenterDialog，EnsureAndCancelDialog，
+    
+    1.基于flutter2.0 
+    2.结合Provider实现MVVM架构,封装了BaseState，BaseStatefulWidget，BaseViewModel
+    3.结合模板方法模式，泛型，Mixin，依赖注入等方式，封装了大量重复的逻辑，简化了开发难度
+    4.Mixin类的封装：目前包含NavigatorMixin，ToastMixin，SharePreferenceMixin，EventBusMixin
+    5.DataBaseMixin基础Widget的封装：例如BottomDialog，CenterDialog，EnsureAndCancelDialog，
       LoadingDialog，PopupWindow，CommonWrap，LazyIndexedStack等等
-    5.BaseViewModel统一网络请求，统一发起网络请求，同时处理异常，loading
+    6.BaseViewModel统一网络请求，统一发起网络请求，同时处理异常，loading
+
+当前跟新：兼容flutter2.0，使用空安全
 
 后期规划\
     1.路由，实现各模块，各业务的解耦\
