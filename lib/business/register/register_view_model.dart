@@ -18,11 +18,11 @@ class RegisterViewModel extends BaseViewModel<RegisterModel> {
 
   void register() {
     if (loginName.isEmpty || !RegExpUtil.isMobilePhoneNum(loginName)) {
-      showToast(S.of(context).true_login_name);
+      showToast("请输入正确格式的手机号码");
     } else if (psw.isEmpty || !RegExpUtil.isLoginPassword(psw)) {
-      showToast(S.of(context).true_login_psw);
+      showToast("请输入6-16数字或字母组合的密码");
     } else if (psw != ensurePsw) {
-      showToast(S.of(context).ensure_psw_true);
+      showToast("密码和确认密码不一致");
     } else {
       sendRequest<RegisterResult>(model.register(loginName, psw, ensurePsw),
           (value) {
