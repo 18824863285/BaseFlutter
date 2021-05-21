@@ -102,9 +102,11 @@ extension WidgetExt on Widget {
           double bottomRight = 0,
           Color borderColor = Colors.white,
           double borderWidth = 0.5,
+          AlignmentGeometry? alignment = Alignment.center,
           Color color = Colors.white}) =>
       Container(
           child: this,
+          alignment: alignment,
           decoration: BoxDecoration(
               border: Border.all(color: borderColor, width: borderWidth),
               color: color,
@@ -119,9 +121,11 @@ extension WidgetExt on Widget {
           {double radius = 0,
           Color borderColor = Colors.white,
           double borderWidth = 0.5,
+          AlignmentGeometry? alignment = Alignment.center,
           Color color = Colors.white}) =>
       Container(
           child: this,
+          alignment: alignment,
           decoration: BoxDecoration(
               border: Border.all(color: borderColor, width: borderWidth),
               color: color,
