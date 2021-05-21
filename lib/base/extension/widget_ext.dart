@@ -157,9 +157,11 @@ extension WidgetExt on Widget {
       Color borderColor = Colors.white,
       double borderWidth = 0.5,
       Color color = Colors.white,
+      AlignmentGeometry alignment = Alignment.center,
       Function()? onClick}) {
-    Container container = Container(
+    var container = Container(
         child: this,
+        alignment: alignment,
         margin: marginAll == 0
             ? EdgeInsets.only(
                 left: marginLeft,
