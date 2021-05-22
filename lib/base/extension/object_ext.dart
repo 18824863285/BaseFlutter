@@ -38,17 +38,4 @@ class B {
   }
 }
 
-// extension AllExt<T> on T {
-//   void apply(f(T e)) {
-//     f(this);
-//   }
-//
-//   R let<R>(R f(T e)) {
-//     return f(this);
-//   }
-// }
 
-// <T, R> T.let(block: (T) -> R): R {
-//
-// return block(this)
-// }
