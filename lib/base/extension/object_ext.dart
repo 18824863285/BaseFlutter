@@ -4,38 +4,6 @@ extension ObjectExt<R, T extends Object> on T {
   R let(R Function(T t) block) {
     return block(this);
   }
-
-  //  Function() apply(R Function() block) {
-  //   return this._callBlock(block);
-  // }
-  //
-  // R Function() _callBlock(R Function() block) {
-  //   return block;
-  // }
-
-  // R apply1(R Function() block){
-  //   return _callBlock( apply(block));
-  //   //apply(block);
-  // }
-
-}
-
-class A {
-  void t() {}
-}
-
-class B {
-  void testM() {
-    A? a;
-
-    a?.let((a) {
-      a.t();
-    });
-
-    // a?.apply(() {
-    //   t();
-    // });
-  }
 }
 
 

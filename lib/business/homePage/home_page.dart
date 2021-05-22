@@ -16,6 +16,8 @@ import 'package:wan_android_flutter/business/homePage/home_view_model.dart';
 import 'package:wan_android_flutter/business/search/search_page.dart';
 import 'package:wan_android_flutter/const/resource.dart';
 import 'package:wan_android_flutter/sharePreference/user_info_share_preference.dart';
+import 'package:wan_android_flutter/base/extension/int_ext.dart';
+import 'package:wan_android_flutter/base/extension/widget_ext.dart';
 
 class HomePage extends BaseStatefulWidget {
   @override
@@ -63,7 +65,7 @@ class HomeState extends BaseState<HomePage, HomeViewModel> {
                         Positioned(
                           child: Text(
                             UserInfoSp.getInstance().userName,
-                            style: TextStyle(color: Colors.white),
+                            style: TextStyle(color: 0xFFFFFFFF.toColor()),
                           ),
                           top: 120,
                         )
@@ -85,26 +87,22 @@ class HomeState extends BaseState<HomePage, HomeViewModel> {
                             }
                             ensureAndCancelDialog!.show(context);
                           },
-                          child: Container(
-                            height: 50,
-                            alignment: Alignment.center,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Image.asset(
-                                  R.ASSETS_IMAGES_BASELINE_POWER_SETTINGS_NEW_BLACK_36DP_PNG,
-                                  width: 25,
-                                  height: 25,
-                                  fit: BoxFit.cover,
-                                ),
-                                Container(
-                                  padding: EdgeInsets.only(left: 5, right: 15),
-                                  child: Text("退出登录"),
-                                )
-                              ],
-                            ),
-                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Image.asset(
+                                R.ASSETS_IMAGES_BASELINE_POWER_SETTINGS_NEW_BLACK_36DP_PNG,
+                                width: 25,
+                                height: 25,
+                                fit: BoxFit.cover,
+                              ),
+                              Container(
+                                padding: EdgeInsets.only(left: 5, right: 15),
+                                child: Text("退出登录"),
+                              )
+                            ],
+                          ).size(height: 50),
                         ),
                         bottom: 0,
                       )
