@@ -1,3 +1,5 @@
+//import 'package:wan_android_flutter/base/extension/list_ext.dart';
+
 extension listExt<T> on List<T> {
   List<T> operator +(List<T> list) {
     this.addAll(list);
@@ -13,6 +15,4 @@ extension listExt<T> on List<T> {
     });
     return result;
   }
-
-
 }
