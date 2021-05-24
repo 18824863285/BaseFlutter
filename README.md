@@ -50,6 +50,7 @@
     5.DataBaseMixin基础Widget的封装：例如BottomDialog，CenterDialog，EnsureAndCancelDialog，
       LoadingDialog，PopupWindow，CommonWrap，LazyIndexedStack等等
     6.BaseViewModel统一网络请求，统一发起网络请求，同时处理异常，loading
+    7.使用扩展函数：扩展自Object，List，int，Widget，让代码更加简洁优雅
 
 当前跟新：兼容flutter2.0，使用空安全
 
