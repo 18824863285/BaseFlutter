@@ -3,8 +3,8 @@ import 'package:wan_android_flutter/base/base_view_model.dart';
 import 'package:wan_android_flutter/business/login/login_model.dart';
 import 'package:wan_android_flutter/business/login/model/login_result.dart';
 import 'package:wan_android_flutter/business/main/mian_page.dart';
-import 'package:wan_android_flutter/generated/l10n.dart';
 import 'package:wan_android_flutter/sharePreference/user_info_share_preference.dart';
+import 'package:wan_android_flutter/base/extension/object_ext.dart';
 
 @injectable
 class LoginViewModel extends BaseViewModel<LoginModel> {
@@ -22,9 +22,11 @@ class LoginViewModel extends BaseViewModel<LoginModel> {
     } else {
       sendRequest<LoginResult>(model.login(loginName, psw), (value) {
         if (value.errorCode == 0) {
-          UserInfoSp.getInstance().uid = value.data!.id!;
-          UserInfoSp.getInstance().token = value.data!.token!;
-          UserInfoSp.getInstance().userName = value.data!.username!;
+          value.data?.let((it) {
+            UserInfoSp.getInstance().uid = it.id ?? 0;
+            UserInfoSp.getInstance().token = it.token ?? "";
+            UserInfoSp.getInstance().userName = it.username ?? "";
+          });
           pop();
           push(MainPage());
         } else {
