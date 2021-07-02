@@ -69,9 +69,6 @@ abstract class BaseViewModel<M extends Object> extends ChangeNotifier
       needLoadingRequestCount++;
       if (!isLoading) {
         isLoading = true;
-        if (showLoadingFun != null) {
-          showLoadingFun!.call();
-        }
         showLoadingFun?.call();
       }
     }
