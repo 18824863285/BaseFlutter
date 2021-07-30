@@ -33,6 +33,7 @@ dependencies:
   pull_to_refresh: 2.0.0
   floor: 1.0.1 # null safe
   flutter_swiper_null_safety: 1.0.2
+  keframe: 2.0.2
 
 dev_dependencies:
   flutter_test:

@@ -378,6 +378,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "4.1.0"
+  keframe:
+    dependency: "direct main"
+    description:
+      name: keframe
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.0.2"
   logger:
     dependency: "direct main"
     description:
